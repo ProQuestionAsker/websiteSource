@@ -34,3 +34,4 @@ vignettes/*.pdf
 
 # Adobe Illustrator Files
 AIFiles/
+.Rproj.user

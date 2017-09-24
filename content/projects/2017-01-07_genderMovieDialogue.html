@@ -3,6 +3,7 @@ date: "2017-01-07"
 type: "post"
 showonlyimage: false
 draft: false
+slug: "genderMovieDialogue"
 title: "Gender Equality and Dialogue in 2016’s Highest Grossing Films"
 image: "projects/img/mainImages/2017-01-07_genderMovieDialogue.jpg"
 description: "Text parsing, analytics, and d3.js interactive data visualization of movie transcripts"
@@ -170,19 +171,19 @@ RO_full2 &lt;- RO_full %&gt;%
 <div id="scatter-plot" class="section level4">
 <h4>Scatter Plot</h4>
 <p>As a native R user, my first attempt to visualize all of this data was naturally in R. I started with a simple scatter plot for each movie. I had “Number of Turns Speaking” (i.e., the number of independent times that character’s name showed up) on the x-axis, “Total Number of Words Spoken” on the y-axis, and the “Total Number of Words Spoken” also mapped to circle size. I decided to use the <code>highcharter</code> package and ended up with something like this:</p>
-<iframe seamless src="../img/articleImages/2017-01-07_genderMovieDialogue_img/RO_fig/index.html" width="100%" height="500" id="iframe_container">
+<iframe seamless src="/projects/img/articleImages/2017-01-07_genderMovieDialogue_img/RO_fig/index.html" width="100%" height="500" id="iframe_container">
 </iframe>
 <p>Again, this is the figure for Rogue One, and we can see some potentially interesting things here. For instance, Cassian (the male lead) speaks more than Jyn (the female lead). It’s also easy to spot characters that are a bit more long-winded when they get to speak (Bodhi Rook and Galen) while others keep things short and to the point (Baze Malbus).</p>
 <p>I looked at these figures for each movie, and found a few other entertaining outliers. In The Jungle Book, Baloo spoke the most words, but also had fewer speaking opportunities than Mowgli. He rambled more than any other character in the movie (which, didn’t actually contain too much dialogue, overall).</p>
-<p><img src="../img/articleImages/2017-01-07_genderMovieDialogue_img/JB_Baloo.jpg" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="/projects/img/articleImages/2017-01-07_genderMovieDialogue_img/JB_Baloo.jpg" width="80%" style="display: block; margin: auto;" /></p>
 <p>There was another funny outlier in the Zootopia figure. This time, instead of the outlier belonging to a talkative bear, it belonged to a slow-talking sloth, Flash Slothmore. He spoke quite a few times, but didn’t actually say many words.</p>
-<p><img src="../img/articleImages/2017-01-07_genderMovieDialogue_img/Zootopia_Sloth.jpg" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="/projects/img/articleImages/2017-01-07_genderMovieDialogue_img/Zootopia_Sloth.jpg" width="80%" style="display: block; margin: auto;" /></p>
 <p>Unfortunately, other than those few amusing findings, these figures weren’t helping me to see the number of speaking female characters amongst the entire speaking cast or the number of words each spoke, particularly because there were so many characters with so few words that they all overlapped.</p>
 </div>
 <div id="bar-graph" class="section level4">
 <h4>Bar Graph</h4>
 <p>Since the scatter plot didn’t work, I thought maybe a bar chart would. I plotted the characters along the X axis and total number of spoken words along the Y and (again for Rogue One) ended up with this:</p>
-<iframe seamless src="../img/articleImages/2017-01-07_genderMovieDialogue_img/RO_fig2/index.html" width="100%" height="500" id="iframe_container">
+<iframe seamless src="/projects/img/articleImages/2017-01-07_genderMovieDialogue_img/RO_fig2/index.html" width="100%" height="500" id="iframe_container">
 </iframe>
 <p>Still less than ideal. My biggest problem here is that there is such a big range between the main characters with lots of words and the minor characters with very few. Even in an interactive figure, you are required to zoom to get an idea of the smaller characters’ contributions.</p>
 <p>Needless to say, I wasn’t happy with the bar graph either.</p>
@@ -193,7 +194,7 @@ RO_full2 &lt;- RO_full %&gt;%
 <p>In the end, I decided to make an axis-free bubble chart. I should point out that I am perfectly aware of the arguments against bubble charts (look <a href="http://junkcharts.typepad.com/junk_charts/2013/03/blowing-the-whistle-at-bubble-charts.html">here</a>), but in this case, I thought the visualization would be effective.</p>
 <p>The problem? I had no idea how to make an axis-free bubble chart in R.</p>
 <p>Before going down the rabbit-hole of making a new type of graphic in R, I decided to use my trusty Adobe Illustrator to quickly see what these visualizations might look like first. So I pulled my highcharter bubble charts into Illustrator and traced the circles to get an idea of relative size. I ended up with lots of groups of bubbles that looked like this:</p>
-<p><img src="../img/articleImages/2017-01-07_genderMovieDialogue_img/RO_V1.jpg" width="30%" style="display: block; margin: auto;" /></p>
+<p><img src="/projects/img/articleImages/2017-01-07_genderMovieDialogue_img/RO_V1.jpg" width="30%" style="display: block; margin: auto;" /></p>
 <p>But there were a few issues with this. While I liked that you could easily spot the main characters, I knew that there were several characters in Rogue One who had fewer than 10 words, but their bubbles seemed to indicate more. I’d clearly have to alter how I sized the circles. It was also difficult to get an idea of what percentage of the characters or spoken words actually came from female characters.</p>
 <p>So, I adjusted the figure. I calculated the proper radius of a circle so that each circle’s <a href="https://en.wikipedia.org/wiki/Bubble_chart#Choosing_bubble_sizes_correctly"><strong>area</strong></a> was scaled to the total number of words spoken by each character.</p>
 <p>I did this in R.</p>
@@ -202,9 +203,9 @@ RO_full2 &lt;- RO_full %&gt;%
                    diameter = radius*2)</code></pre>
 <p>I could now manually enter the necessary diameter for each circle into Adobe Illustrator.</p>
 <p><em>While a full how-to for Adobe Illustrator design is outside the scope of this post, you can find lots of information on <a href="https://helpx.adobe.com/illustrator/using/drawing-simple-lines-shapes.html">Adobe’s site</a>.</em></p>
-<p><img src="../img/articleImages/2017-01-07_genderMovieDialogue_img/RO_V2.jpg" width="30%" style="display: block; margin: auto;" /></p>
+<p><img src="/projects/img/articleImages/2017-01-07_genderMovieDialogue_img/RO_V2.jpg" width="30%" style="display: block; margin: auto;" /></p>
 <p>That definitely helped make the circles a more reasonable size. Now to add some extra information, like the percentage of female characters and spoken words. Again, I calculated in R and added the data to Illustrator. I thought that the best way to display that information was just to put a circle around the bubbles, cut the circle, and color it to match the bubbles it was near. Then add a call-out of information. It looked like this:</p>
-<p><img src="../img/articleImages/2017-01-07_genderMovieDialogue_img/RO_V3.jpg" width="30%" style="display: block; margin: auto;" /></p>
+<p><img src="/projects/img/articleImages/2017-01-07_genderMovieDialogue_img/RO_V3.jpg" width="30%" style="display: block; margin: auto;" /></p>
 <p>I was decently happy with it, until I (luckily) asked a friend to look at it. Her first response was asking about which percentage the pink outer line represented: the percentage of female characters or percentage of words spoken by females. It was an excellent question because, although I had intended the outer lines to be mostly decorative, they were so reminiscent of a pie or donut graph that we instinctively read it this way. So either I had to find a way to get the bubbles into “pie” pieces or get rid of the outer lines.</p>
 <p>Back to the drawing board.</p>
 </div>
@@ -270,7 +271,7 @@ function ready (error, datapoints) {
       .on(&quot;mouseout&quot;, mouseout);
 }         </code></pre>
 <p>I added a clickable element within each svg box to toggle between the combined and separated conditions for the bubbles. The style and functionality were inspired by the <a href="http://jfmdev.github.io/SaVaGe/docs/toggle-switch.html">toggle switch widget</a> from the <a href="http://jfmdev.github.io/SaVaGe/index.html">SaVaGe</a> library. I generated rectangles of sizes corresponding to the percentages of male and female characters and words spoken beneath my bubble grouping to give viewers an overall idea of representation within each movie. This percentage-wise stacked bar graph seemed to make the overarching trends clearest. I used <a href="http://fontawesome.io/icons/">Font Awesome</a> icons alongside each bar graph to differentiate between character and word percentages. And that’s about it! The final design looks like this:</p>
-<p><img src="../img/articleImages/2017-01-07_genderMovieDialogue_img/FinalDesign.jpg" width="30%" style="display: block; margin: auto;" /></p>
+<p><img src="/projects/img/articleImages/2017-01-07_genderMovieDialogue_img/FinalDesign.jpg" width="30%" style="display: block; margin: auto;" /></p>
 <p>Again, the entire code used to generate the d3.js figure is available on my <a href="https://github.com/ProQuestionAsker/ProQuestionAsker.github.io/tree/sources/content/projects/MovieDialogueInteractive">Github</a> and the interactive version is <a href="https://ProQuestionAsker.github.io/projects/MovieDialogueInteractive/">here</a></p>
 </div>
 <div id="color-considerations" class="section level3">
@@ -283,7 +284,7 @@ function ready (error, datapoints) {
 <li><a href="https://dribbble.com/">Dribbble</a></li>
 </ul>
 <p>But I ran into an issue. I must have tried hundreds of color schemes (many of which looked better with the background gray than the ones that I screenshot here).</p>
-<p><img src="../img/articleImages/2017-01-07_genderMovieDialogue_img/ColorScheme1.png" width="30%" height="200px" /><img src="../img/articleImages/2017-01-07_genderMovieDialogue_img/ColorScheme2.png" width="30%" height="200px" /><img src="../img/articleImages/2017-01-07_genderMovieDialogue_img/ColorScheme3.png" width="30%" height="200px" /></p>
+<p><img src="/projects/img/articleImages/2017-01-07_genderMovieDialogue_img/ColorScheme1.png" width="30%" height="200px" /><img src="/projects/img/articleImages/2017-01-07_genderMovieDialogue_img/ColorScheme2.png" width="30%" height="200px" /><img src="/projects/img/articleImages/2017-01-07_genderMovieDialogue_img/ColorScheme3.png" width="30%" height="200px" /></p>
 <p>But regardless of the color scheme, I couldn’t easily tell which group represented males and which represented females. Yes, that’s what legends are for, but in the end, data visualization should be as easy to interpret as possible. In this case, that meant that some shade of blue and pink/red would be the easiest to understand. So, I found my favorite combination of the two and moved on.</p>
 </div>
 </div>

@@ -1,6 +1,7 @@
 ---
 date: "2017-05-02"
 title: "Nesting and Accessing Data in d3v4"
+slug: "d3Nest"
 author: "Amber Thomas"
 showonlyimage: true
 draft: false
@@ -54,9 +55,9 @@ description: "My explorations of d3's nesting functions"
 ## 6   Jun    17</code></pre>
 <p>These data are just random numbers, but for our purposes, we’ll say that they are monthly sales of strawberries. And although there are a few ways we could represent this totally fake data, for demonstration purposes, we’ll use a line chart.</p>
 <p><i class="fa fa-question-circle" aria-hidden="true"></i> <strong>The basics for creating a line chart in d3 are outside the scope of this post, but if you need more background, <a href="http://www.d3noob.org/2016/08/create-simple-line-graph-using-d3js-v4.html">this</a> is a good place to start.</strong></p>
-<p>Here’s what the final product looks like: <img src="img/articleImages/2017-05-02_d3Nest_img/Example1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Here’s what the final product looks like: <img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p><i class="fa fa-github" aria-hidden="true"></i> <strong>The javascript, HTML and CSS needed to generate this figure are available <a href="https://bl.ocks.org/ProQuestionAsker/9a909417edf206f2d3ff38cd41a30524/c7c24def8aea8d2e3f50453ee1d963e8f6ffc09b#file-example1-csv">here</a>. </strong></p>
-<p>Now, if we use <code>console.log()</code> to look at the structure of the data, it looks like this: <img src="img/articleImages/2017-05-02_d3Nest_img/Example1Structure.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>Now, if we use <code>console.log()</code> to look at the structure of the data, it looks like this: <img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example1Structure.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>So there’s an array with 12 objects inside: one for each month. And each object contains both the month variable and the Sales count. When generating the path for the line graph, we can access the data like this:</p>
 <pre class="js"><code>// Define the line
 var valueLine = d3.line()
@@ -85,7 +86,7 @@ var valueLine = d3.line()
 ## 5   May     1 strawberry
 ## 6   Jun    17 strawberry</code></pre>
 <p>If we try plotting the line chart the exact same way as before, we end up with something that looks like this:</p>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example2.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example2.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Whoops, it looks like d3 tried to plot all of our data as one continuous line, which makes sense because we didn’t tell it that there are 3 separate categories here.</p>
 <p>For native R users, the solution to this issue would be simple. In ggplot2, you’d just use the <code>group=</code> and/or <code>color=</code> options like this:</p>
 <pre class="r"><code>library(ggplot2)
@@ -107,7 +108,7 @@ ggplot(ex2, aes(x = Month, y = Sales, group = Fruit, color = Fruit)) +
 <li>The entries (the variable that holds the data that you are nesting)</li>
 </ul>
 <p>Perhaps unsurprisingly, doing this changes the structure of our data.</p>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example2Structure.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example2Structure.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>To access the nested data and generate multiple lines, we can do this:</p>
 <pre class="js"><code>// Define the line
 var valueLine = d3.line()
@@ -135,7 +136,7 @@ var valueLine = d3.line()
 </ul></li>
 </ul>
 <p>Just by making these small changes, you’ll see that we now have 3 separate lines. Hooray!</p>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example2Complete.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example2Complete.png" width="80%" style="display: block; margin: auto;" /></p>
 <p><i class="fa fa-github" aria-hidden="true"></i> <strong>The entire js, html, css, and csv scripts are included <a href="https://bl.ocks.org/ProQuestionAsker/295b81e1d59de386ce332a6401b98cc8">here</a>.</strong></p>
 </div>
 <div id="rollup-level-1" class="section level1">
@@ -164,9 +165,9 @@ annualSales</code></pre>
     })
   .entries(data)</code></pre>
 <p>The rollup function generates a sum of the sales data for each Fruit value, similarly to the <code>dplyr</code> <code>group_by</code> and <code>summarise</code> functions.</p>
-<p>The data structure then looks like this: <img src="img/articleImages/2017-05-02_d3Nest_img/Example3Structure.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>The data structure then looks like this: <img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example3Structure.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Since we’ve reduced the data to just 3 values (one for each fruit), we can no longer represent the data using a line chart. Instead, here’s a bar chart generated with the nested and rolled-up data.</p>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example3Complete.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example3Complete.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>Although the code is different due to the difference in chart type, here is the code to generate the bars.</p>
 <pre class="js"><code>  // Draw the bars
   svg.selectAll(&quot;.rect&quot;)
@@ -192,7 +193,7 @@ annualSales</code></pre>
     })
   .entries(data)</code></pre>
 <p>Which results in an updated chart like this:</p>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example3Complete2.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example3Complete2.png" width="60%" style="display: block; margin: auto;" /></p>
 <p><i class="fa fa-github" aria-hidden="true"></i> <strong>The full code for this example is available <a href="https://bl.ocks.org/ProQuestionAsker/60e7a6e3117f9f433ef9c998f6c776b6">here</a>.</strong></p>
 </div>
 </div>
@@ -217,7 +218,7 @@ annualSales</code></pre>
   })
   .entries(data)</code></pre>
 <p>Our resulting data structure looks like this:</p>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example4Structure.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example4Structure.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>The original sales data is still present, but notice that it’s now two levels down. That’ll make it slightly more challenging to access for making graphics with it.</p>
 <p>Here’s how we get to it:</p>
 <p>First, we need to bind the upper levels of data to “groups”, or in d3, g-elements.</p>
@@ -240,7 +241,7 @@ annualSales</code></pre>
   })
   .attr(&quot;class&quot;, &quot;line&quot;)</code></pre>
 <p>After we’ve added that bit of code, this is the resulting graph:</p>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example4.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example4.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>Awesome! We now have 6 lines on our chart. It’s a little hard to tell the difference between our lines though, so we can add some styling.</p>
 <div id="styling-nested-elements" class="section level2">
 <h2>Styling Nested Elements</h2>
@@ -255,7 +256,7 @@ var colors = d3.scaleOrdinal()
     .enter()
     .append(&quot;g&quot;)
     .attr(&quot;stroke&quot;, function(d){ return colors(d.key)}); // Adding color!</code></pre>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example4Colors.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example4Colors.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>Getting closer! But we have a 2015 line for each fruit and a 2016 line for each fruit. Let’s separate those out by line type, adding a dash for 2015 lines.</p>
 <p>That’s pretty simple, we can just add this line to the end of our path attributes:</p>
 <pre class="js"><code>paths
@@ -266,7 +267,7 @@ var colors = d3.scaleOrdinal()
   .style(&quot;stroke-dasharray&quot;, function(d){ 
     return (d.key == 2015) ? (&quot;3, 3&quot;) : (&quot;0, 0&quot;)}); // Adding dashes to 2015!</code></pre>
 <p>And we end up with this:</p>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example4Dash.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example4Dash.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>Yay! We now have 6 lines, 2 for each of our 3 fruits.</p>
 <p><i class="fa fa-github" aria-hidden="true"></i> <strong>All of the code for this chart is available <a href="https://bl.ocks.org/ProQuestionAsker/952a0699278d1bdfda36d4b7175924d3">here</a>.</strong></p>
 </div>
@@ -291,7 +292,7 @@ var colors = d3.scaleOrdinal()
           return d.key;
       })</code></pre>
 <p>This creates a figure like this:</p>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example5Menu.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example5Menu.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>Currently, clicking on the different options doesn’t do anything. We need to set up an event listener for the dropdown menu so that when something is changed, something happens on our figure. In this case, we’ll initially draw the chart with only the data for strawberries, and we’ll make the data update when the menu item is changed.</p>
 <p>To do that, I’ve created 2 functions. The first, draws the initial graph:</p>
 <pre class="js"><code>    // Function to create the initial graph
@@ -361,7 +362,7 @@ var colors = d3.scaleOrdinal()
 
 });</code></pre>
 <p>Great! We end up with a graph that looks like this:</p>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example5.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example5.png" width="60%" style="display: block; margin: auto;" /></p>
 <p><i class="fa fa-github" aria-hidden="true"></i> <strong>It is fully functional with all the supporting code <a href="https://bl.ocks.org/ProQuestionAsker/8382f70af7f4a7355827c6dc4ee8817d">here</a>.</strong></p>
 </div>
 <div id="rollup-level-2" class="section level1">
@@ -369,7 +370,7 @@ var colors = d3.scaleOrdinal()
 <p>We’re doing great so far and our code is sufficient enough to handle more data. Let’s add data for other years for each fruit’s sales.</p>
 <p>I’ve added data so that each fruit now has 4 years worth of (remember, totally fake) data.</p>
 <p>Here’s what 2 of the views look like:</p>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example6Examples.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example6Examples.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>You’ll notice that the view for strawberries looks a little strange because of the Y-axis. Currently, we set our Y-domain like this:</p>
 <pre class="js"><code>y.domain([0, d3.max(data, function(d) { return d.Sales; })]);</code></pre>
 <p>We assign the Y-domain from 0 to the maximum Sales value across all of our data. So, even though the maximum number of fake strawberries sold in a month was 99, the Y axis extends to 250 because there was a month where either blueberry or grape sales reached 250. Once again, this is where nests can come to the rescue. We just need to determine the maximum number for each fruit and update the Y-domain dynamically.</p>
@@ -391,7 +392,7 @@ var colors = d3.scaleOrdinal()
           return {max:max, year:year};
           })
   .entries(data)</code></pre>
-<p>The resulting data structure would then look like this: <img src="img/articleImages/2017-05-02_d3Nest_img/Example6Structure.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>The resulting data structure would then look like this: <img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example6Structure.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>Now it’s just a matter of accessing and using this data. We already have a good initial structure for how to build this figure, so now to update it.</p>
 <p>Here’s the updated function to create the initial graph:</p>
 <pre class="js"><code>    // Function to create the initial graph
@@ -489,7 +490,7 @@ var colors = d3.scaleOrdinal()
 <p>Again, we’ve added the <code>.each(function(d){ y.domain([0, d.value.max]) });</code> to the end of our group. We’ve updated the <code>.data</code> call to <code>.data(function(d) { return d.value.year; })</code> just like in the above function. I’ve also included a way to update the Y axis based on the new data.</p>
 <p>And that’s it!</p>
 <p>Here’s what the graphs now look like. And check out those Y-axes!</p>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example6.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example6.png" width="100%" style="display: block; margin: auto;" /></p>
 <p><i class="fa fa-github" aria-hidden="true"></i> <strong><a href="https://bl.ocks.org/ProQuestionAsker/ee398d1478f6416bba9916cee66f145d">Here</a>’s the functional version and code.</strong></p>
 </div>
 <div id="creating-dropdown-menus-from-2nd-level-nests" class="section level1">
@@ -515,7 +516,7 @@ yearMenu
     })</code></pre>
 <p>Notice that this time, there are 2 <code>.data()</code> calls. The first indicates that it will once again be our nested data that we’ll be dealing with. The second, specifies that it’s not the entire nested data set, but the data within the <code>d.value.year</code> section.</p>
 <p>Just adding that small amount of code has generated our second dropdown menu.</p>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example7Menu.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example7Menu.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>So far so good. Once again, we just need to add an event listener to the dropdown so that when a value is clicked, something happens. In this case, I want to change the color of the line that corresponds to the selected year.</p>
 <p>This should work:</p>
 <pre class="js"><code>// Change color of selected line when year dropdown changes
@@ -537,7 +538,7 @@ yearMenu.on(&#39;change&#39;, function(){
           .classed(&quot;selected&quot;, true)
 })</code></pre>
 <p><em>Note: Make sure to also add styling for a “.selected” class in your CSS!</em></p>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example7Selected.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example7Selected.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Looking good! One more minor aesthetic thing that can we can adjust.</p>
 <p>d3 draws our lines as SVG elements in the order that it runs into them in the code. That means the 2016 line is on the bottom and 2013 is on top. When all of the lines are the same color, this doesn’t matter, but if you look closely at our last image, you’ll see that the gray lines cross over the pink one.</p>
 <p>Luckily in d3v4, this is an easy fix thanks to <code>.raise()</code>. We can add that to the end of our Year dropdown event listener:</p>
@@ -572,7 +573,7 @@ yearMenu.on(&#39;change&#39;, function(){
         .attr(&quot;d&quot;, function(d){
           return valueLine(d.values)
         })</code></pre>
-<p><img src="img/articleImages/2017-05-02_d3Nest_img/Example7Selected2.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="/blog/img/articleImages/2017-05-02_d3Nest_img/Example7Selected2.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>That’s it!</p>
 <p><i class="fa fa-github" aria-hidden="true"></i> <strong>You’ll find the fully functional version with all of the necessary code <a href="https://bl.ocks.org/ProQuestionAsker/b8f8c2ab12c4f21e882aeb68728216c2">here</a>.</strong></p>
 <p>I hope this has been a helpful resource on using the <code>d3.nest()</code> functions in your work. Good luck!</p>

@@ -8,7 +8,18 @@ disqusShortname = "amberthomas"
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = "UA-89036876-1"
 
+[permalinks]
+  work = "work/:year/:month/:day/:slug/"
+  projects = "projects/:year/:month/:day/:slug"
+  blog = "blog/:year/:month/:day/:slug"
+
+enableEmoji = true
+
+relativeurls = true
+
 publishDir= "../ProQuestionAsker.github.io"
+
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [params]
   # Style options: default (pink), blue, green, pink, red, sea, violet
@@ -67,4 +78,4 @@ publishDir= "../ProQuestionAsker.github.io"
     tags = false
     search = false
     
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+

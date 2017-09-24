@@ -4,6 +4,7 @@ draft = false
 image = "projects/img/mainImages/2016-12-27_fccCourses.jpg"
 date = "2016-12-27"
 title = "Mapping Student Course Activity"
+slug = "fccCourses"
 weight = 0
 type = "post"
 author = "Amber Thomas"
@@ -1125,7 +1126,7 @@ fig1 <- hchart(first_2, "column", x = course, y = n, zoomType = "x") %>%
 
 fig1
 ```
-<iframe seamless src="../img/articleImages/2016-12-27_fccCourses_img/fig1/index.html" width = "100%" height="500" id="iframe_container"></iframe>
+<iframe seamless src="/projects/img/articleImages/2016-12-27_fccCourses_img/fig1/index.html" width = "100%" height="500" id="iframe_container"></iframe>
 
 So about 48% of users start with the very first course in the curriculum "Learn How Free Code Camp Works", another 10% skip straight to the first course in the "HTML5 and CSS" section to start their FCC journey. The remaining 42% of users started their first class on random courses throughout the curriculum.
 
@@ -1154,7 +1155,7 @@ fig2 <- hchart(pop_fig, "column", x = course, y = count, color = section) %>%
 
 fig2
 ```
-<iframe seamless src="../img/articleImages/2016-12-27_fccCourses_img/fig2/index.html" width = "100%" height="500" id="iframe_container"></iframe>
+<iframe seamless src="/projects/img/articleImages/2016-12-27_fccCourses_img/fig2/index.html" width = "100%" height="500" id="iframe_container"></iframe>
 
 It definitely seems like the courses offered earlier in the curriculum are completed more frequently than courses offered later in the curriculum. There is also a spike in course completion at the beginning of the "HTML5 and CSS" and "Responsive Design with Boostrap" sections that declines throughout the course section. In the latter, that drop-off seems to happen sharply after the course "Line up Form Elements Responsively with Bootstrap" where almost 11,000 did not complete the next course.
 
@@ -1183,7 +1184,7 @@ fig3 <- hchart(time_spent, "column", x = course, y = mean, color = section) %>%
 
 fig3
 ```
-<iframe seamless src="../img/articleImages/2016-12-27_fccCourses_img/fig3/index.html" width = "100%" height="500" id="iframe_container"></iframe>
+<iframe seamless src="/projects/img/articleImages/2016-12-27_fccCourses_img/fig3/index.html" width = "100%" height="500" id="iframe_container"></iframe>
 
 The class that took the longest to complete ("Claim Your Backend Development Certificate" with average 6845 minutes or 4.75 days) is the last and one of the least popular courses in the curriculum. It is possible that students completed all of the other courses and returned to FCC days later to claim their certificate. 
 
@@ -1230,7 +1231,7 @@ fig4 <- hchart(net, minSize = 3, maxSize = 20, layout = layout_nicely)
 
 fig4
 ```
-<iframe seamless src="../img/articleImages/2016-12-27_fccCourses_img/fig4/index.html" width = "100%" height="500" id="iframe_container"></iframe>
+<iframe seamless src="/projects/img/articleImages/2016-12-27_fccCourses_img/fig4/index.html" width = "100%" height="500" id="iframe_container"></iframe>
 
 There are several notable things about this figure:
 
@@ -1269,7 +1270,7 @@ fig5 <- hchart(student_courses$count) %>%
 
 fig5
 ```
-<iframe seamless src="../img/articleImages/2016-12-27_fccCourses_img/fig5/index.html" width = "100%" height="500" id="iframe_container"></iframe>
+<iframe seamless src="/projects/img/articleImages/2016-12-27_fccCourses_img/fig5/index.html" width = "100%" height="500" id="iframe_container"></iframe>
 
 Wow! There's a few things to point out here:
 
@@ -1300,7 +1301,7 @@ ggplot(student_courses2, aes(x = count, y = median_time)) + geom_point(alpha = 1
     labs(x = "Number of Completed Courses", y = "Average time per Course (minutes)")
 ```
 
-<img src="../img/articleImages/2016-12-27_fccCourses_img/unnamed-chunk-44-1.png" class = "img-responsive" style = "display: block; margin: auto;" />
+<img src="/projects/img/articleImages/2016-12-27_fccCourses_img/unnamed-chunk-44-1.png" class = "img-responsive" style = "display: block; margin: auto;" />
 
 
 This figure is a little overwhelmed with outliers who spent a very long time completing few courses.
@@ -1323,7 +1324,7 @@ ggplot(student_no_break, aes(x = count, y = average_time)) +
     y = "Average time per Course (minutes)")
 ```
 
-<img src="../img/articleImages/2016-12-27_fccCourses_img/unnamed-chunk-45-1.png" class = "img-responsive" style = "display: block; margin: auto;" />
+<img src="/projects/img/articleImages/2016-12-27_fccCourses_img/unnamed-chunk-45-1.png" class = "img-responsive" style = "display: block; margin: auto;" />
 
 Generally speaking, it looks like students who complete courses quickly (not including any breaks) complete the most courses overall. But what if we take breaks into account?
 
@@ -1353,7 +1354,7 @@ fig6 <- highchart() %>%
 
 fig6
 ```
-<iframe seamless src="../img/articleImages/2016-12-27_fccCourses_img/fig6/index.html" width = "100%" height="500" id="iframe_container"></iframe>
+<iframe seamless src="/projects/img/articleImages/2016-12-27_fccCourses_img/fig6/index.html" width = "100%" height="500" id="iframe_container"></iframe>
 
 It seems possible that taking one or more 2 week breaks from the FCC program may actually have a positive impact on the number of courses completed. However, it is unclear at this time if any of those courses are repeats. Let's try to take out repeat courses.
 
@@ -1380,7 +1381,7 @@ fig7 <- highchart() %>%
 
 fig7
 ```
-<iframe seamless src="../img/articleImages/2016-12-27_fccCourses_img/fig7/index.html" width = "100%" height="500" id="iframe_container"></iframe>
+<iframe seamless src="/projects/img/articleImages/2016-12-27_fccCourses_img/fig7/index.html" width = "100%" height="500" id="iframe_container"></iframe>
 
 Even taking repeated courses out of the dataset seems to indicate that of students who completed more than one course, the presence of one or more 2 week breaks actually increases the median number of courses that will be completed. It may be worth encouraging students to take short breaks between classes if they feel they need to.
 
@@ -1411,7 +1412,7 @@ fig8 <- hchart(repeats, "column", x = course, y = avg_repeats, color = section) 
 
 fig8
 ```
-<iframe seamless src="../img/articleImages/2016-12-27_fccCourses_img/fig8/index.html" width = "100%" height="500" id="iframe_container"></iframe>
+<iframe seamless src="/projects/img/articleImages/2016-12-27_fccCourses_img/fig8/index.html" width = "100%" height="500" id="iframe_container"></iframe>
 
 The courses closest to 1 in this figure were repeated the fewest number of times by students. The most commonly repeated course in the entire curriculum was "Where art thou", a course near the beginning of the "Intermediate Algorithm Scripting" Section.
 
@@ -1655,14 +1656,14 @@ summary(resampled)
 dotplot(resampled, metric = "RMSE")
 ```
 
-<img src ="../img/articleImages/2016-12-27_fccCourses_img/unnamed-chunk-60-1.png" class = "img-responsive" style = "display: block; margin: auto;" />
+<img src ="/projects/img/articleImages/2016-12-27_fccCourses_img/unnamed-chunk-60-1.png" class = "img-responsive" style = "display: block; margin: auto;" />
 
 
 ``` r
 dotplot(resampled, metric = "Rsquared")
 ```
 
-<img src ="../img/articleImages/2016-12-27_fccCourses_img/unnamed-chunk-60-2.png" class = "img-responsive" style = "display: block; margin: auto;" />
+<img src ="/projects/img/articleImages/2016-12-27_fccCourses_img/unnamed-chunk-60-2.png" class = "img-responsive" style = "display: block; margin: auto;" />
 
 
 So our Random Forest model has a better fit and a lower error than the glmnet model. Let's see which predictors were the most important to that model.
@@ -1675,7 +1676,7 @@ vimp <- varImp(rf_model)
 ggplot(vimp, top = 20[1])
 ```
 
-<img src="../img/articleImages/2016-12-27_fccCourses_img/unnamed-chunk-61-1.png" class = "img-responsive" style = "display: block; margin: auto;" />
+<img src="/projects/img/articleImages/2016-12-27_fccCourses_img/unnamed-chunk-61-1.png" class = "img-responsive" style = "display: block; margin: auto;" />
 
 
 The median time spent on each class is the most important variable in our current model, followed by the first course in the series, and the number of courses that were repeated.

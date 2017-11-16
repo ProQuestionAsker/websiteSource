@@ -6,7 +6,7 @@ slug: "syntax-highlighting"
 categories: []
 tags: ['R', 'tips', 'blogdown']
 showonlyimage: true
-draft: true
+draft: false
 image: "blog/img/mainImages/2017-11-15-syntax-highlighting.png"
 weight: 1
 type: "post"

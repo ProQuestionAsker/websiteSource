@@ -1,6 +1,7 @@
-baseurl = "https://proquestionasker.github.io/"
+baseurl = "https://amber.rbind.io/"
 title = "Amber Thomas"
 theme = "hugo-creative-portfolio-theme"
+twitterAuthor = "@proquesasker"
 languageCode = "en-us"
 pluralizeListTitles = false
 # Enable comments by entering your Disqus shortname
@@ -78,4 +79,9 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     tags = false
     search = false
     
+# options for highlight.js (version, additional languages, and theme)
+    highlightjsVersion = "9.11.0"
+    highlightjsCDN = "//cdn.bootcss.com"
+    highlightjsLang = ["r", "yaml"]
+    highlightjsTheme = "tomorrow-night-bright"
 

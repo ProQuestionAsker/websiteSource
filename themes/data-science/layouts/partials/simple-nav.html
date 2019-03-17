@@ -1,0 +1,19 @@
+<nav class="nav__simple">
+  <div class="nav__content">
+    <div class="goHome">
+      <a href="/" aria-label="Go back to all posts">{{ partial "icon.html" "arrow-left" }} <span class='scroll-text'>Back to All</span></a>
+    </div>
+
+    <p class="nav__title">{{ $.Site.Params.author }} </p>
+
+    <div class='toggle-container'>
+      <button class="theme-toggle">
+        <span class="scroll-text theme-text">Enable Dark Mode</span>
+        <div class="single-toggle">
+          {{ partial "icon.html" "moon" }}
+          {{ partial "icon.html" "sun" }}
+        </div>
+      </button>
+    </div>
+  </div>
+</nav>

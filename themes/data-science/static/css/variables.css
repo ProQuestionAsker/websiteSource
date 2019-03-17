@@ -1,0 +1,49 @@
+:root {
+  --titleFont: 'Merriweather', serif;
+  --bodyFont: 'Noto Sans', sans-serif;
+  --annotationFont: 'Merriweather Sans', sans-serif;
+  --gray: #999999;
+  --grayDark: #2E343B;
+  --white: #FFFFFF;
+  --black: #000000;
+  --buttonDark: #404685;
+}
+
+body.light{
+  --primary: #da1f3f;
+  --secondary: #1A2849;
+  --tertiary: #696E84;
+  --portfolioBG: #FBE0DE;
+  --drawerBG: #F4BAB7;
+  --cardBG: #FEF9F8;
+  --cardBGHover: #FFFFFF;
+  --cardShadow: 0px 2px 3px rgba(137, 21, 35, 0.3);
+  --cardShadowHover: 0px 10px 20px rgba(137, 21, 35, 0.2);
+  --filterShadow: 0px 1px 3px rgba(81, 33, 33, 0.3);
+  --tagShadow: 0px 1px 1px rgba(77, 21, 35, 0.3);
+  --buttonBG: #FFFFFF;
+  --buttonBGHover: #E5566E;
+  --introGradient: linear-gradient(180deg, #FDF0EF 0%, var(--portfolioBG) 100%);
+  --drawerGradient: linear-gradient(270deg, #F4BAB7 0%, rgba(244, 186, 183, 0) 10%, rgba(244, 186, 183, 0) 100%);
+  --codeBG: #FFFFFF;
+  --codeFont: #da1f3f;
+}
+
+body.dark{
+  --primary: #FFF9F9;
+  --secondary: #FFF9F9;
+  --tertiary: #C4C4CA;
+  --portfolioBG: #252D3E;
+  --drawerBG: #1B2334;
+  --cardBG: #3D465C;
+  --cardBGHover: #4A5570;
+  --cardShadow: 0px 2px 3px rgba(14, 11, 33, 0.3);
+  --cardShadowHover: 0px 10px 20px rgba(14, 11, 33, 0.3);
+  --filterShadow: 0px 1px 3px rgba(14, 11, 33, 0.3);
+  --tagShadow: 0px 1px 1px rgba(77, 21, 35, 0.3);
+  --buttonBG: #4A5570;
+  --introGradient: linear-gradient(180deg, #3B4251 0%, var(--portfolioBG) 100%);
+  --drawerGradient: linear-gradient(270deg, #1B2334 0%, rgba(27, 35, 52, 0) 10%, rgba(27, 35, 52, 0) 100%);
+  --codeBG: rgba(37, 45, 62, 0.4);
+  --codeFont: #82b4e3;
+}

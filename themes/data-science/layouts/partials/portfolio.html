@@ -1,0 +1,110 @@
+<section class='portfolio'>
+
+  <div class="portfolio__filters">
+    <div class="filters__content">
+      <div class="filters-category">
+        <select class="category-dropdown" aria-label="Filter posts by category">
+          <option>All Categories</option>
+            {{ range $key, $value := .Site.Taxonomies.categories }}
+                <option>{{ $key | humanize | pluralize }}</option>
+            {{ end }}
+        </select>
+      </div>
+
+      <div class="filters-tags">
+        <button class='filters-click' aria-label="Filter posts by tag" aria-expanded="false">
+          <p class='tags-meta'>Filters</p>
+          {{ partial "icon.html" "chevron-down" }}
+          {{ partial "icon.html" "chevron-up" }}
+        </button>
+        <div class='filters-selected'>
+        {{ range $key, $value := .Site.Taxonomies.tags }}
+          <button class='item__meta-tag tag-selected' hidden="true" data-tag="{{ $key }}" aria-pressed="true" aria-label="Filter by posts tagged {{ $key }}">
+            <p class="tag-text">
+              {{ $key }}
+            </p>
+            {{ partial "icon.html" "times" }}
+          </button>
+        {{ end }}
+        </div>
+      </div>
+
+      <button class="theme-toggle" aria-label="Enable Dark Mode">
+        {{ partial "icon.html" "moon" }}
+        {{ partial "icon.html" "sun" }}
+        <!--<i class="far fa-moon"></i>-->
+      </button>
+    </div>
+  </div>
+
+  <div class='filters-drawer' hidden>
+
+    <div class='drawer-contents'>
+      <div class='drawer-gradient'></div>
+      <div class='drawer-tags'>
+      {{ range $key, $value := .Site.Taxonomies.tags }}
+        <button class='item__meta-tag drawer-tag' data-drawertag="{{ $key }}" aria-pressed="false" aria-label="Filter by posts tagged {{ $key }}">
+          <p class="tag-text drawer-tag">
+            {{ $key }}
+          </p>
+          {{ partial "icon.html" "plus" }}
+          {{ partial "icon.html" "times" }}
+        </button>
+      {{ end }}
+      </div>
+    </div>
+  </div>
+
+
+  <div class='portfolio__contents'>
+
+    {{ partial "empty-grid.html" . }}
+
+    <div class="portfolio__grid">
+
+      <!-- Change the range number here to affect the maximum number of items in your grid -->
+      {{ range first 50 (where .Data.Pages "Type" "post") }}
+
+        <div class="item {{ range .Params.categories }}{{ . }}{{ end }}" data-tags="{{ delimit .Params.tags ", " }}">
+          <a class="item__link" href="{{ .Permalink }}">
+            {{ if .Params.thumbnail }}
+              <img class="item__image" src="{{ .Params.thumbnail }}" alt="{{ .Params.imageAlt }}" class="img-responsive">
+            {{else if .Params.image}}
+              <img class="item__image" src="{{ .Params.image }}" alt="{{ .Params.imageAlt }}" class="img-responsive">
+            {{end}}
+            <div class="item__details">
+              {{ range .Params.categories }}
+                <p class='item__meta-category'>{{ . }}</p>
+              {{ end }}
+
+              <div class="details__title">
+                <h4>{{ .Title }}</h4>
+              </div>
+              <div class="details__date">
+                <p>{{ .Date.Format "January 2, 2006" }} • {{ .ReadingTime }} min read</p>
+              </div>
+              <div class="details__desc">
+                <p>
+                  {{ if .Description }}
+                      {{ .Description }}
+                  {{ else }}
+                      {{ .Summary | plainify | safeHTML }}
+                  {{ end }}
+                </p>
+              </div>
+              <div class="item__meta">
+                <!-- <p class='item__meta-category'>{{ .Params.categories }}</p> -->
+                <span class='card-tag' >{{ delimit .Params.tags ", " }}</span>
+
+              </div>
+            </div>
+
+
+          </a>
+        </div>
+
+      {{ end }}
+      
+    </div>
+  </div>
+</section>

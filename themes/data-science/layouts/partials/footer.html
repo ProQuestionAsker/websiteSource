@@ -1,0 +1,39 @@
+
+  <div class='footer__content'>
+    <div class="footer-buttons">
+      {{ partial "social-icons.html" .}}
+    </div>
+  </div>
+
+  <div class='footer-more'>
+    <a href="/about">About</a><a href='/contact'>Contact</a>
+  </div>
+
+  <div class='credits'>
+    <div class='credits-location'>
+      <p >Made with {{ partial "icon.html" "heart" }} in Seattle, WA</p>
+    </div>
+    <div class='credits-people'>
+      <p>Design by Parker Young</p>
+      <p>0s and 1s by Amber Thomas</p>
+    </div>
+
+  </div>
+
+
+
+{{ if $.Scratch.Get "highlight_enabled" }}
+  {{ $highVer := .Site.Params.highlightjsVersion }}
+  {{ $highCDN := (.Site.Params.highlightjsCDN | default "//cdn.bootcss.com")}}
+  {{ $highLang := .Site.Params.highlightjsLang }}
+  <script src="https:{{ $highCDN }}/highlight.js/{{ $highVer }}/highlight.min.js"></script>
+  {{ range .Site.Params.highlightjsLang }}
+    <script src="https:{{ $highCDN }}/highlight.js/{{ $highVer }}/languages/{{ . }}.min.js"></script>
+  {{ end }}
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+{{ end }}
+
+
+  <script src="{{ "js/theme.js" | absURL }}"></script>

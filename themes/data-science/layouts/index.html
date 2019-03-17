@@ -1,0 +1,15 @@
+
+<html>
+	{{ partial "header.html" . }}
+	<!-- {{ template "_internal/google_analytics.html" . }} -->
+
+	<body>
+    {{ partial "homepage-intro.html" . }}
+    {{ partial "portfolio.html" . }}
+		{{ partial "scripts.html" . }}
+	</body>
+
+	<footer class='footer__home'>
+  	{{ partial "footer.html" . }}
+	</footer>
+</html>

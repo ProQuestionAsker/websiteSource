@@ -1,0 +1,72 @@
+/**
+ * Soft Era Theme
+ * Inspired by the Soft Aesthetic https://github.com/soft-aesthetic by Audrey Moon http://loveme.computer/
+ * Author : Amber Thomas - https://github.com/ProQuestionAsker
+ */
+
+.hljs {
+  display: block;
+  background: rgba(37, 45, 62, 0.4);
+  padding: 1em;
+  color: #f2f2f2;
+  overflow-x: auto;
+}
+
+.hljs-comment,
+.hljs-meta {
+  color: #abacb1;
+}
+
+.hljs-string,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-strong,
+.hljs-emphasis,
+.hljs-quote {
+  color: #ede7c5;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-type {
+  color: #cfc9f4;
+}
+
+.hljs-literal,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-attribute {
+  color: #82b4e3;
+}
+
+.hljs-section,
+.hljs-name {
+  color: #eeaabe;
+}
+
+.hljs-tag {
+  color: #abacb1;
+}
+
+.hljs-title,
+.hljs-attr,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #69c8c9;
+}
+
+.hljs-addition {
+  color: #55a532;
+  background-color: #eaffea;
+}
+
+.hljs-deletion {
+  color: #bd2c00;
+  background-color: #ffecec;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  <link rel="stylesheet" type="text/css" href="{{ "css/style.css" | relURL }}">
+  <link rel="stylesheet" type="text/css" href="{{ "css/variables.css" | relURL }}">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans|Merriweather:300,700|Noto+Sans:400,700" rel="stylesheet">
+
+ <!-- Set a scratch value of highlight_enabled based on whether the "highlight" param is set to true or false -->
+
+  {{ if isset .Site.Params "highlight" }}
+    {{ .Scratch.Set "highlight_enabled" true }}
+    {{ $highVer := .Site.Params.highlightjsVersion }}
+    {{ $highCDN := (.Site.Params.highlightjsCDN | default "//cdn.bootcss.com")}}
+    {{ $custom := .Site.Params.custom }}
+    {{ if $custom }}
+      <link rel="stylesheet" type="text/css" href="{{ "css/custom-light-syntax.css" | relURL }}" id="syntaxLight">
+      <link rel="stylesheet alternate" type="text/css" href="{{ "css/custom-dark-syntax.css" | relURL }}" id="syntaxDark">
+    {{ else }}
+      {{ $light := (.Site.Params.highlightjsThemeLight | default "github-gist")}}
+      <link rel="stylesheet" href="{{ $highCDN }}/highlight.js/{{ $highVer }}/styles/{{ $light }}.min.css" id="syntaxLight">
+      {{ $dark := (.Site.Params.highlightjsThemeDark | default "atom-one-dark" )}}
+      <link rel="stylesheet alternate" href="{{ $highCDN }}/highlight.js/{{ $highVer }}/styles/{{ $dark }}.min.css" id="syntaxDark"></script>
+    {{ end }}
+
+  {{ end }}
+
+</head>

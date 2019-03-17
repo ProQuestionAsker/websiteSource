@@ -1,0 +1,95 @@
+{{ partial "header.html" . }}
+<main>
+  <div class='post-background'>
+    <div class='post-gradient'></div>
+    {{ partial "simple-nav.html" . }}
+
+    <div class='container-toTop'>
+      <div class='toTop-spacing'>
+        <div class='toTop-hidden'></div>
+        <a href="#" class="toTop is-hidden" aria-label="Scroll to top">
+          {{ partial "icon.html" "chevron-up" }}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <article class="article">
+
+    <section class="post__info">
+      {{ range .Params.categories }}
+        <p class='item__meta-category single'>{{ . }}</p>
+      {{ end }}
+
+      <h1 class="post__title">{{ .Title }}</h1>
+
+      {{ if .Params.buttons }}
+        <div class="post__links">
+          <p class='post__tags-meta'>View:</p>
+          {{ range .Params.buttons }}
+            <a href={{ .link }}><span class='item__meta-tag post-links'>{{ .text }}</span></a>
+          {{ end }}
+        </div>
+      {{ end }}
+
+      {{ if .Params.tags }}
+      <div class='post__tags'>
+        <p class='post__tags-meta'>Tags:</p>
+        {{ range .Params.tags }}
+            <button class='item__meta-tag post-tag' aria-label='Back to all posts filtered by {{ . }}'>{{ . }}</button>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      {{ if .Params.date }}
+      <div class="post__date">
+        <p>{{ .Date.Format "January 2, 2006" }} • {{ .ReadingTime }} min read</p>
+      </div>
+      {{ end }}
+
+      {{ if .Params.authors }}
+      <div class='post__authors'>
+        {{- range .Params.authors }}
+          {{- with $.Site.GetPage "taxonomyTerm" (printf "authors/%s" (urlize .)) }}
+          <a href="https://twitter.com/{{ .Params.twitter }}" ref="author">
+            <div class='post__author'>
+              <img src="{{ .Params.photo }}" alt="" class='post__author-img'>
+              <div class='post__author-social'>
+                <span class='post__author-name'>{{ .Params.name }}</span>
+                <span class='post__author-twitter'>{{ partial "icon.html" "twitter"}} @{{ .Params.twitter }}</span>
+              </div>
+            </div>
+            </a>
+          {{ end }}
+        {{ end }}
+      </div>
+      {{ end }}
+
+      {{ if .Params.image }}
+        <img class="post__image" src="{{ .Params.image }}" alt="{{ .Params.imageAlt }}" class="img-responsive">
+        {{ if .Params.imageCredit }}
+          <p class="post__image-credit">Image Credit: <a href="{{ .Params.imageCreditLink }}">{{ .Params.imageCredit }}</a></p>
+        {{ end }}
+      {{ end }}
+
+
+    </section>
+
+    <section class="post__content">
+      {{ .Content }}
+    </section>
+
+    {{ if .Params.disqus }}
+    <div class='disqus'>
+      <button class='disqus-show'><span class="show-message">Show Comments</span> {{ partial "icon.html" "bubbles" }}</button>
+      <div class='disqus-comments' hidden>
+        {{ template "_internal/disqus.html" . }}
+      </div>
+    </div>
+    {{ end }}
+  </article>
+
+</main>
+<footer class='footer__single'>
+  {{ partial "footer.html" . }}
+</footer>

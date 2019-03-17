@@ -1,88 +1,47 @@
-baseurl = "https://amber.rbind.io/"
-title = "Amber Thomas"
-theme = "hugo-creative-portfolio-theme"
-twitterAuthor = "@proquesasker"
-enableEmoji = true
+baseURL = "/"
 languageCode = "en-us"
-pluralizeListTitles = false
-# Enable comments by entering your Disqus shortname
-disqusShortname = "amberthomas"
-# Enable Google Analytics by entering your tracking code
-googleAnalytics = "UA-89036876-1"
+title = "My New Hugo Site"
+theme = "data-science"
+disqusShortname = "yourdiscussshortname"
+
+preserveTaxonomyNames = true
+
+# sectionPagesMenu = "main"
 
 
-[permalinks]
-  work = "work/:year/:month/:day/:slug/"
-  projects = "projects/:year/:month/:day/:slug"
-  blog = "blog/:year/:month/:day/:slug"
 
-
-relativeurls = true
-
-publishDir= "../ProQuestionAsker.github.io"
-
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+[taxonomies]
+  author = "authors"
+  tag = "tags"
+  category = "categories"
 
 [params]
-  # Style options: default (pink), blue, green, pink, red, sea, violet
-  # Use custom.css for your custom styling
-  style = "default"
-  description = "This website serves as a portfolio for my data science projects, as well as blog posts and tutorials for using R, RStudio and other data science topics."
-  copyright = "&copy;2017 Amber Thomas"
-  sidebarAbout = [
-    "I am a data-lover, story-teller, and professional question asker. This site is home to projects done for work and pleasure as well as some blog posts about my data adventures.",
-    "I'm a Journalist Engineer at <a href='https://pudding.cool'>The Pudding</a>."
-  ]
-  # Contact page
-     # Since this template is static, the contact form uses www.formspree.io as a
-     # proxy. The form makes a POST request to their servers to send the actual
-     # email. Visitors can send up to a 1000 emails each month for free.
-     #
-     # What you need to do for the setup?
-     #
-     # - set your email address under 'email' below
-     # - upload the generated site to your server
-     # - send a dummy email yourself to confirm your account
-     # - click the confirm link in the email from www.formspree.io
-     # - you're done. Happy mailing!
-  email = "AmberThomasMSc@gmail.com"
+  author = "Amber Thomas"
 
-  # Nav links in the side bar
-  [[params.navlinks]]
-  name = "About"
-  url = "about/"
-  
-  [[params.navlinks]]
-  name = "Personal Projects"
-  url = "projects/"
-  
-  [[params.navlinks]]
-  name = "Work Portfolio"
-  url = "work/"
-  
-  [[params.navlinks]]
-  name = "Blog"
-  url = "blog/"
+  # options for highlight.js (version, additional languages, and theme)
+  highlight = true
+  highlightjsVersion = "9.15.6"
+  highlightjsCDN = "//cdnjs.cloudflare.com/ajax/libs"
+  highlightjsLang = ["r", "yaml", "javascript"]
+  custom = true
+  highlightjsThemeLight = ""
+  highlightjsThemeDark = ""
 
-  [[params.navlinks]]
-  name = "Get in Touch"
-  url = "contact/"
 
-  [params.social]
-  email        = "AmberThomasMSc@gmail.com"
-  twitter      = "https://twitter.com/ProQuesAsker"
-  linkedin     = "https://www.linkedin.com/in/amberrthomas"
-  github       = "https://www.github.com/ProQuestionAsker"
-  
-  #Adding widgets to the sidebar
-  [params.widgets]
-    categories = false
-    tags = false
-    search = false
-    
-# options for highlight.js (version, additional languages, and theme)
-    highlightjsVersion = "9.11.0"
-    highlightjsCDN = "//cdn.bootcss.com"
-    highlightjsLang = ["r", "yaml"]
-    highlightjsTheme = "tomorrow-night-bright"
 
+
+
+[params.social]
+  email = "mailto:AmberThomasMSc@gmail.com"
+  twitter = "https://twitter.com/ProQuesAsker"
+  github = "https://www.github.com/ProQuestionAsker"
+  linkedin = "https://www.linkedin.com/in/amberrthomas/"
+  stackoverflow = ""
+  facebook = ""
+  instagram = ""
+  dribbble = ""
+  kaggle = ""
+  medium = ""
+  patreon = ""
+  pinterest = ""
+  youtube = ""

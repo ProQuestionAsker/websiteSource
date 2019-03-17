@@ -1,0 +1,7 @@
+{{ range $key, $value := .Site.Params.social }}
+  {{ with $value }}
+    <a href="{{ $value }}" class="social-button {{$key}}" aria-label="Find me on {{$key}}">
+      {{ partial "icon.html" $key }}
+    </a>
+  {{ end }}
+{{ end }}

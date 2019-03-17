@@ -1,0 +1,50 @@
+---
+title: Table for One
+author: Amber Thomas
+date: '2017-07-27'
+slug: eating-alone
+categories:
+  - project
+tags:
+  - d3.js
+  - The Pudding
+buttons:
+  - link: 'The Dining Habits and Companions of Americans'
+    text: Interactive Essay
+authors: []
+description: 'The dining habits and companions of Americans.'
+disqus: ''
+image: 'burger.jpg'
+imageAlt: 'A burger on a white plate on a large white table'
+imageCredit: 'Toa Heftiba'
+imageCreditLink: 'https://unsplash.com/photos/ThtzElwvwyM'
+type: ''
+---
+
+## The Premise
+
+Americans are beginning to spend more of their mealtimes solo. What does that look like for the US as a community of people? We explore the data surrounding the dining habits and companions of Americans. 
+
+## My Contributions
+
+* Story Design
+* Front-End Development (HTML, CSS, and D3)
+
+## Collaborators
+
+The data collection, analysis, graphic wireframes, and story-writing for this project came from [Henrik Lindberg](https://twitter.com/hnrklndbrg). 
+
+## Screenshots
+
+```{r echo = FALSE, out.width = "640", fig.align = "center", fig.cap = "The first graphic in this story is driven by the reader's scrolling. As the story continues, the data update to follow along."}
+knitr::include_graphics("eatingAloneVideo.gif")
+```
+
+```{r echo = FALSE, out.width = "50%"}
+knitr::include_graphics("eatingAlone_img1.png")
+knitr::include_graphics("eatingAlone_img2.png")
+```
+
+```{r echo = FALSE, out.width = "100%"}
+knitr::include_graphics("eatingAlone_img3.png")
+```

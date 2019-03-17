@@ -633,6 +633,10 @@ pre {
   overflow: hidden;
 }
 
+.article img{
+  max-width: 100%;
+}
+
 @media(min-width: 730px){
   .article{
     padding: 40px 55px;

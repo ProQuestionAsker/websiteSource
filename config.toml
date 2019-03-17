@@ -8,6 +8,9 @@ preserveTaxonomyNames = true
 
 # sectionPagesMenu = "main"
 
+[permalinks]
+    post = "/:year/:month/:day/:slug/"
+
 
 
 [taxonomies]

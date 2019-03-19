@@ -1,0 +1,54 @@
+---
+title: 10 Things Everyone Hates About You
+authors:
+  - Russell Goldenberg
+  - Amber Thomas
+date: '2017-12-04'
+slug: hater
+categories:
+  - project
+tags:
+  - data viz
+  - The Pudding
+  - d3.js
+buttons:
+  - link: 'https://pudding.cool/2017/12/hater/'
+    text: Interactive Article
+description: 'Exploring over 30 million feelings towards 3,000+ topics using data from a dating app'
+disqus: 'true'
+image: 'keyboard.jpg'
+imageAlt: 'zoomed in keyboard with pink key with heart on it'
+imageCredit: 'athree23'
+imageCreditLink: 'https://pixabay.com/users/athree23-6195572/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3698156'
+type: ''
+---
+
+## The Premise
+
+Using data from the new-age dating app, [Hater](www.haterdater.com), we can learn about the types of things that people in the US love, hate, and can never agree on. 
+
+## My Contributions
+
+* Data Analysis
+* Story Writing
+* Some front-end work (primarily the swarm chart)
+* Static chart design
+* Social image creation
+
+## Collaborators
+
+This project was done in collaboration with [Russell Goldenberg](https://twitter.com/codenberg) at [The Pudding](www.pudding.cool). Russell took the design-lead for this piece, and also was responsible for the front-end development of the small multiple graphics and the maps. 
+
+## Screenshots
+
+```{r echo = FALSE, out.width = "640", fig.align = "center"}
+knitr::include_graphics("haterDater_video.gif")
+```
+
+```{r echo = FALSE, out.width = "50%"}
+knitr::include_graphics("hater_1.png")
+knitr::include_graphics("hater_2.png")
+knitr::include_graphics("hater_3.png")
+knitr::include_graphics("hater_4.png")
+```
+

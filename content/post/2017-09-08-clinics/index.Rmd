@@ -1,0 +1,54 @@
+---
+title: 'How Far is Too Far? '
+authors: 
+  - Russell Goldenberg
+  - Amber Thomas
+  - Caitlyn Ralph
+date: '2017-09-08'
+slug: clinics
+buttons:
+  - link: 'https://pudding.cool/2017/09/clinics'
+    text: Interactive Article
+categories:
+  - project
+tags:
+  - d3.js
+  - maps
+  - The Pudding
+description: 'An analysis of driving times to abortion clinics in the US'
+disqus: ''
+image: ''
+imageAlt: ''
+imageCredit: ''
+imageCreditLink: ''
+type: ''
+---
+
+## The Premise
+
+For some people in the US, round-trip travel time to the nearest abortion-providing clinic can be about nine hours. We set out to quantify access to abortion clinics by measuring what really affects people: how long it takes to drive there. 
+
+## My Contributions
+
+* Data Collection
+* Some Data Analysis
+* Some Graphical Mockups
+* Animation
+* Story Writing
+
+## Collaborators
+
+This project was done in collaboration with many of the fine folks at [The Pudding](www.pudding.cool). [Matt Daniels](https://twitter.com/matthew_daniels) came up with the original story idea. Background research and initial data collection was done by [Caitlyn Ralph](https://twitter.com/EarthTo_Caitlyn). [Russell Goldenberg](https://twitter.com/codenberg) designed the story, performed the majority of the data analysis, made the maps, and performed the front-end development.
+
+## Screenshots
+
+```{r echo = FALSE, out.width = "640", fig.align = "center"}
+knitr::include_graphics("clinicsVideo.gif")
+```
+
+```{r echo = FALSE, out.width = "50%"}
+knitr::include_graphics("clinics_img1.png")
+knitr::include_graphics("clinics_img2.png")
+knitr::include_graphics("clinics_img3.png")
+knitr::include_graphics("clinics_img4.png")
+```

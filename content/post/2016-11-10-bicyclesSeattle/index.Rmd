@@ -11,10 +11,10 @@ tags:
   - data viz
   - R
 description: 'Exploring the usage of Pronto! ridesharing bikes in Seattle'
-image: 'bike.jpg'
-imageAlt: 'Zoomed in image of a brown shoe on the pedal of a white bike.'
-imageCredit: 'Soroush Karimi'
-imageCreditLink: 'https://unsplash.com/photos/igHY7CFa-dI'
+image: 'bike2.jpg'
+imageAlt: 'Orange and purple bike leaning against a white brick wall'
+imageCredit: 'Tiffany Nutt'
+imageCreditLink: 'https://unsplash.com/photos/0ClfreiNppM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'
 type: ''
 disqus: 'true'
 ---

@@ -1,0 +1,54 @@
+---
+title: Internet Boy Band Database
+authors: 
+  - Russell Goldenberg
+  - Amber Thomas
+  - Malik Yusuf
+date: '2018-11-27'
+slug: boybands
+categories:
+  - project
+tags:
+  - d3.js
+  - lottie
+  - The Pudding
+buttons:
+  - link: 'https://pudding.cool/2018/11/boy-bands/'
+    text: Interactive Article
+  - link: 'https://github.com/the-pudding/data/tree/master/boybands'
+    text: Download Data
+description: 'Every boy band to chart the Hot 100 since 1980, rendered as adorable, data-driven, dancing illustrations.'
+disqus: 'true'
+image: 'boybands.gif'
+imageAlt: 'Gif of N*Sync dancing in their Bye Bye Bye music video'
+imageCredit: ''
+imageCreditLink: ''
+type: ''
+---
+
+
+## The Premise
+
+```{r echo = FALSE}
+blogdown::shortcode("tweet", "1067431018100011009")
+```
+
+*Seriously, this was just a "we want to experiment with making in-browser animations and make something fun on the internet" kinda thing*
+
+## My Contributions
+
+* Managing dozens of data collection volunteers
+* Data Cleaning
+* Some Front End Programming (HTML, CSS, JS)
+* Some Story Design
+
+## Collaborators
+
+This story was suggested by [Russell Goldenberg](https://twitter.com/codenberg) who wanted to see the physical characteristics of boybands switch while they continued dancing (that is, switch from the members of a single band to the members of another). To make this a reality, we worked with motion-graphics animator, [Malik Yusuf](https://twitter.com/thisismrmalik) who handled all of the illustrations and animations in Adobe After Effects. He then output his work into [Lottie](https://airbnb.io/lottie/#/), a library to render animations natively on the web. We asked for help from dozens of volunteers (thank you volunteers!!) to help us collect data on the physical appearance (and other details) about every boy band member in that band's highest ranking music video. I worked with these volunteers and cleaned all of the data they entered. Then Russell and I worked together to make Malik's illustrations switch out using the data that we were feeding into it. 
+
+## Screenshots
+
+```{r echo = FALSE, out.width = "640", fig.align = "center"}
+knitr::include_graphics("boybands_video.gif")
+```
+

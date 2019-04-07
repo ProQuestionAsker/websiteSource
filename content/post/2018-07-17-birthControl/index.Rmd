@@ -1,0 +1,52 @@
+---
+title: Let’s Talk About Birth Control
+authors: 
+  - Amber Thomas
+date: '2018-07-17'
+slug: birthControl
+categories:
+  - project
+tags:
+  - d3.js
+  - The Pudding
+buttons:
+  - link: 'https://pudding.cool/2018/07/birth_control/'
+    text: Interactive Article
+  - link: 'https://github.com/the-pudding/data/tree/master/birth-control'
+    text: Download Data
+description: "There's no TMI here, just 20,000 people talking about their experiences with contraception."
+disqus: 'true'
+image: 'condoms.jpg'
+imageAlt: 'Red packaged condoms on a white table'
+imageCredit: 'Anqa'
+imageCreditLink: 'https://pixabay.com/users/Anqa-46293/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=849407'
+type: ''
+---
+
+## The Premise
+
+Hundreds of thousands of people throughout the US are contraceptive users, but generally, the topic is kept "hush-hush". We talk about it with friends and peers, but the more information we have, the more informed decisions we can make for ourselves. I analyzed data from the CDC's [National Survey on Family Growth]() to learn more about contraceptive use in the US.
+
+## My Contributions
+
+* Data acquisition and analysis
+* Article Design
+* Front End Programming (HTML, CSS, JS)
+* Story Writing
+
+## Collaborators
+
+[Rachel Jones](https://www.guttmacher.org/about/staff/rachel-k-jones) of the [Guttmacher Institute](https://www.guttmacher.org/) provided a lot of helpful feedback on both the analysis and the story. I also interviewed several contraceptive users to learn more about their personal experiences, and I am so grateful that they were willing to share! 
+
+## Screenshots
+
+```{r echo = FALSE, out.width = "640", fig.align = "center"}
+knitr::include_graphics("birthControl_video.gif")
+```
+
+```{r echo = FALSE, out.width = "50%"}
+knitr::include_graphics("birthControl_1.png")
+knitr::include_graphics("birthControl_2.png")
+knitr::include_graphics("birthControl_3.png")
+knitr::include_graphics("birthControl_4.png")
+```

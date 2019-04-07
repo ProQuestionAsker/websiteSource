@@ -1,0 +1,35 @@
+---
+title: Making Data Viz Without SVG Using D3 & Flexbox
+authors: 
+  - Amber Thomas
+date: '2018-07-06'
+slug: flexbox
+categories:
+  - post
+tags:
+  - The Pudding
+  - d3.js
+  - flexbox
+buttons:
+  - link: 'https://pudding.cool/process/flexbox-layout/'
+    text: Full Post
+description: 'Bye bye tricky SVG alignments.'
+disqus: 'true'
+image: 'jenga.jpg'
+imageAlt: 'Unfocused image of young boy playing Jenga by stacking blocks'
+imageCredit: 'Michał Parzuchowski'
+imageCreditLink: 'https://unsplash.com/photos/geNNFqfvw48'
+type: ''
+---
+
+
+
+<p><em>This post is available in its entirety on <a href="pudding.cool">The Pudding</a>. Click <a href="https://pudding.cool/process/flexbox-layout/">here</a> to check it out!</em></p>
+<div id="sneak-peek" class="section level2">
+<h2>Sneak Peek</h2>
+<p>A few months ago, my co-worker Matt and I were collaborating on a project. I had been building a stacked bar chart in D3.js, and was seriously struggling to get the bars to stack on top of each other nicely and to animate from the bottom of the graphic instead of the top. For some reason, the fact that an SVG space places its (0,0) coordinates at the top left corner instead of the bottom left corner will always cause some weird mental disconnect in my brain.</p>
+<p>Amid all of my frustration, Matt suggested ditching the SVG altogether, making the bars out of div elements with a background-color and aligning them using Flexbox. To be totally honest, I was super confused by the suggestion because it involved a few things that I honestly didn’t know were possible. I should have asked: You can make D3 graphics without SVG? Divs can be used to make bars? I can use flexbox to do all the alignment math for me?</p>
+<p>It turns out the answer to all of those questions is yes. In that moment, I was being stubborn and eventually got the SVG to work the way I wanted, but Matt’s suggestion stuck with me. And when I actually saw it in action in one of his more recent projects, I was mind-blown. I ended up loving it so much that one of the most recent data-viz stories that I programmed contains no SVG. I’m so in love with this method (for very specific circumstances) that I wanted to shout it from the rooftops…or at least from this post.</p>
+<p>In this post, I’ll give some background information that I wish I knew, and an example of how to use this method to make a waffle chart, a modified histogram, and a stacked bar chart.</p>
+<p><em>Again, go <a href="https://pudding.cool/process/flexbox-layout/">here</a> to read the whole thing, complete with source code!</em></p>
+</div>

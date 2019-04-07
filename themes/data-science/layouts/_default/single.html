@@ -51,12 +51,20 @@
       <div class='post__authors'>
         {{- range .Params.authors }}
           {{- with $.Site.GetPage "taxonomyTerm" (printf "authors/%s" (urlize .)) }}
+          {{ if .Params.twitter }}
           <a href="https://twitter.com/{{ .Params.twitter }}" ref="author">
+          {{ else }}
+          <a href="{{ .Params.website }}" ref="author">
+          {{ end }}
             <div class='post__author'>
               <img src="{{ .Params.photo }}" alt="" class='post__author-img'>
               <div class='post__author-social'>
-                <span class='post__author-name'>{{ .Params.name }}</span>
-                <span class='post__author-twitter'>{{ partial "icon.html" "twitter"}} @{{ .Params.twitter }}</span>
+                  <span class='post__author-name'>{{ .Params.name }}</span>
+                {{ if.Params.twitter }}
+                  <span class='post__author-twitter'>{{ partial "icon.html" "twitter"}} @{{ .Params.twitter }}</span>
+                {{ else }}
+                  <span class='post__author-website'>Website</span>
+                {{ end }}
               </div>
             </div>
             </a>

@@ -1,0 +1,52 @@
+---
+title: Women’s Pockets are Inferior
+authors:
+  - Jan Diehm
+  - Amber Thomas
+date: '2018-08-15'
+slug: pockets
+categories:
+  - project
+tags:
+  - d3.js
+  - The Pudding
+buttons:
+  - link: 'https://pudding.cool/2018/08/pockets/'
+    text: Interactive Article
+  - link: 'https://github.com/the-pudding/data/tree/master/pockets'
+    text: Download Data
+description: "If you wear women's clothes, you already know this. But now we've got the data to show it."
+disqus: 'true'
+image: 'pockets.jpg'
+imageAlt: 'iPhone sticking half way out of back pocket of jeans, while woman looks at mountains in distance'
+imageCredit: 'Mikail McVerry'
+imageCreditLink: 'https://unsplash.com/@mcverry'
+type: ''
+---
+
+## The Premise
+
+Once on a company retreat, my team was walking down the streets of NYC. Some of our coworkers (those that wore men's jeans) were able to leave their bulky bags at our previous location as we walked to dinner. Jan and I, however, each had bags in tow simply to hold our necessities: our phones and wallets. We were complaining about how non-functional the pockets in women's jeans were (assuming that the pants had pockets at all) and decided that this could make for an interesting data story. After a few weeks when we still couldn't stop talking about this, we came up with a plan to measure the pockets in 80 pairs of jeans from 20 manufacturers. From each brand, we measured both men's and women's skinny and straight jeans, each with a 32 inch waist. The results: women's pockets are the worst.
+
+## My Contributions
+
+* Data acquisition assistance
+* Front End Programming (HTML, CSS, JS)
+* Partial Story Writing
+
+## Collaborators
+
+[Jan Diehm](https://twitter.com/jadiehm), one of my amazing co-workers at [The Pudding](pudding.cool), and I split the work of this project pretty evenly. We both measured pockets (she in NYC and Tennessee, me in Seattle). She handled the design of the story and much of the writing while I handled the bulk of the programming. 
+
+## Screenshots
+
+```{r echo = FALSE, out.width = "640", fig.align = "center"}
+knitr::include_graphics("pockets_video.gif")
+```
+
+```{r echo = FALSE, out.width = "100%"}
+knitr::include_graphics("pockets_1.png")
+knitr::include_graphics("pockets_2.png")
+knitr::include_graphics("pockets_3.png")
+knitr::include_graphics("pockets_4.png")
+```

@@ -1,0 +1,59 @@
+---
+title: The Sexualized Messages Dress Codes are Sending to Students
+authors: 
+  - Amber Thomas
+date: '2019-02-07'
+slug: dress_codes
+categories:
+  - project
+tags:
+  - d3.js
+  - text analysis
+  - The Pudding
+buttons:
+  - link: 'https://pudding.cool/2019/02/dress-code-sexualization/'
+    text: Interactive Article
+  - link: 'https://github.com/the-pudding/data/tree/master/dress_codes'
+    text: Download Data
+description: 'What we learned about sexualization from analyzing 481 high school dress code policies.'
+disqus: 'true'
+image: 'measure.jpg'
+imageAlt: 'Woman in black sports bra wraps measuring tape around her hand.'
+imageCredit: 'rawpixel.com'
+imageCreditLink: 'https://www.pexels.com/photo/woman-holding-measuring-tape-1368689/'
+type: ''
+---
+
+## The Premise
+
+If you aren’t currently in high school, it’s probably been a while since you’ve read a student handbook. The dress code section, present in about 55% of US public high schools, contains a set of hotly debated policies. They are most commonly accused of being racist, sexist, reinforcing gender stereotypes, and promoting sexualization. This is the first piece in a forthcoming series where we examine how public high schools police bodies differently and attempt to add data to each of these conversations. Here, we’ll focus on the last issue: how dress codes sexualize students by analyzing the rules and their framing in 481 public high schools across the US.
+
+## My Contributions
+
+* Story idea and conception
+* Data collection and managing 2 data assistants
+* Data cleaning & analysis
+* Story writing
+* Front-end development (HTML, CSS, and D3)
+
+## Collaborators
+
+This project has been no small undertaking and it would not have been possible without the help of so many people. Thank you to my editor, [Matt Daniels](https://twitter.com/matthewfdaniels), for providing feedback on all (what feels like) 8493084 versions of this story. To [Parker Young](https://twitter.com/animoplex) for helping me iterate through every angle for months, and to both Parker and [Jan Diehm](https://twitter.com/jadiehm) for the invaluable design assistance. To the many outside reviewers that read through drafts of this story and provided vital feedback. To the data assistants, Kait Thomas and Anna Houston, that helped unbury me from a pile of virtual student handbooks. And to the entire Pudding team who kept me going. 💖
+
+```{r echo = FALSE}
+blogdown::shortcode("tweet", "1093547315690762241")
+```
+
+
+## Screenshots
+
+```{r echo = FALSE, out.width = "640", fig.align = "center"}
+knitr::include_graphics("dresscode_video.gif")
+```
+
+```{r echo = FALSE, out.width = "100%"}
+knitr::include_graphics("dc_1.png")
+knitr::include_graphics("dc_2.png")
+knitr::include_graphics("dc_3.png")
+knitr::include_graphics("dc_4.png")
+```

@@ -797,7 +797,7 @@ hr{
   color: var(--secondary)
 }
 
-.post__author-twitter{
+.post__author-twitter, .post__author-website{
   font-family: var(--bodyFont);
   font-size: 12px;
   color: var(--tertiary);

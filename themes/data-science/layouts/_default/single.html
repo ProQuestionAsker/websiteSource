@@ -76,7 +76,11 @@
       {{ if .Params.image }}
         <img class="post__image" src="{{ .Params.image }}" alt="{{ .Params.imageAlt }}" class="img-responsive">
         {{ if .Params.imageCredit }}
-          <p class="post__image-credit">Image Credit: <a href="{{ .Params.imageCreditLink }}">{{ .Params.imageCredit }}</a></p>
+          <p class="post__image-credit">Image by <a href="{{ .Params.imageCreditLink }}">{{ .Params.imageCredit }}</a>
+            {{ if .Params.imageSrc }}
+              on <a href="{{ .Params.imageSrcLink }}">{{ .Params.imageSrc }}</a>
+            {{ end }}
+          </p>
         {{ end }}
       {{ end }}
 

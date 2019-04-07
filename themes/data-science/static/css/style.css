@@ -649,6 +649,9 @@ pre {
   }
 }
 
+twitter-widget{
+  margin: 0 auto;
+}
 
 .post__image{
   width: 100%;
@@ -664,6 +667,7 @@ pre {
   margin: 0 0 25px 0;
   line-height: 1;
   letter-spacing: 0.02em;
+  padding-top: 10px;
 }
 
 .post__links{

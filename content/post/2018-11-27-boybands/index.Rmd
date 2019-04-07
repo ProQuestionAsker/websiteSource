@@ -19,10 +19,10 @@ buttons:
     text: Download Data
 description: 'Every boy band to chart the Hot 100 since 1980, rendered as adorable, data-driven, dancing illustrations.'
 disqus: 'true'
-image: 'boybands.gif'
-imageAlt: 'Gif of N*Sync dancing in their Bye Bye Bye music video'
-imageCredit: ''
-imageCreditLink: ''
+image: 'bts.jpg'
+imageAlt: 'BTS performing "Fake Love" at Seoul Music Awards, 15 January 2019'
+imageCredit: 'ChoHyeri'
+imageCreditLink: 'https://commons.wikimedia.org/wiki/File:BTS_performing_%22Fake_Love%22_at_Seoul_Music_Awards,_15_January_2019.jpg'
 type: ''
 ---
 

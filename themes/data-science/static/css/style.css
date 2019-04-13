@@ -961,7 +961,7 @@ footer{
 .footer-more a{
   color: var(--primary);
   margin: 5px;
-  font-size: 16px;
+  font-size: 14px;
   text-decoration: none;
 }
 
@@ -977,11 +977,15 @@ footer{
 
 .credits-location{
   padding-bottom: 5px;
-  border-bottom: 1px solid var(--primary);
 }
 
 .credits-people{
-  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.credits-people a{
+  text-decoration: none;
+  font-weight: bold;
 }
 
 /* Disqus */

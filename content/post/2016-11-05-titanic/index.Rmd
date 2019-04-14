@@ -11,6 +11,7 @@ tags:
   - machine learning
   - R
 description: 'Data exploration and machine learning in RMarkdown for a Kaggle playground competition.'
+thumbnail: 'thumbnail.jpg'
 image: 'titanic.jpg'
 imageAlt: 'Blurred image of a ship on the water.'
 imageCredit: '동철 이'

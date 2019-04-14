@@ -18,6 +18,7 @@ buttons:
     text: Download Data
 description: "Rihanna's Fenty Beauty is a champion for makeup inclusivity. But how do other brands across the US and the world compare?"
 disqus: 'true'
+thumbnail: 'thumbnail.jpg'
 image: 'shades.jpg'
 imageAlt: 'three makeup brushes on top of compact powders'
 imageCredit: 'Raphael Lovaski'

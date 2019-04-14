@@ -17,6 +17,7 @@ buttons:
     text: Download Data
 description: "If you wear women's clothes, you already know this. But now we've got the data to show it."
 disqus: 'true'
+thumbnail: 'thumbnail.jpg'
 image: 'pockets.jpg'
 imageAlt: 'iPhone sticking half way out of back pocket of jeans, while woman looks at mountains in distance'
 imageCredit: 'Mikail McVerry'

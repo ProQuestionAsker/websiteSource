@@ -17,6 +17,7 @@ tags:
 authors: []
 description: "Exploring today's weather on Mars and in your area through postcard correspondance with the Curiosity Rover."
 disqus: 'true'
+thumbnail: 'thumbnail.jpg'
 image: 'postcard.jpg'
 imageAlt: 'Pen resting on postcard on table'
 imageCredit: 'Mira Metzer'

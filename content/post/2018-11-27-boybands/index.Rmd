@@ -19,6 +19,7 @@ buttons:
     text: Download Data
 description: 'Every boy band to chart the Hot 100 since 1980, rendered as adorable, data-driven, dancing illustrations.'
 disqus: 'true'
+thumbnail: 'thumbnail.jpg'
 image: 'bts.jpg'
 imageAlt: 'BTS performing "Fake Love" at Seoul Music Awards, 15 January 2019'
 imageCredit: 'ChoHyeri'

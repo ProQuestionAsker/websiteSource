@@ -15,6 +15,7 @@ buttons:
     text: Interactive Essay
 description: 'The dining habits and companions of Americans.'
 disqus: ''
+thumbnail: 'thumbnail.jpg'
 image: 'burger.jpg'
 imageAlt: 'A burger on a white plate on a large white table'
 imageCredit: 'Toa Heftiba'

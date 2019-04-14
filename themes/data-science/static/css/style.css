@@ -22,6 +22,12 @@ pre {
   max-height: 75vh;
  }
 
+ blockquote{
+  font-family: var(--annotationFont);
+  font-style: italic;
+  color: var(--tertiary);
+ }
+
 /* Changes the style of everything at the top of the homepage */
 
 .intro{
@@ -373,6 +379,20 @@ pre {
 .tag-selected i{
   margin-left: 5px;
 }
+
+
+@media(min-width: 550px){
+  .tag-selected{
+    display: flex;
+  }
+}
+
+@media(max-width: 550px){
+  .tag-selected{
+    display: none !important;
+  }
+}
+
 
 .portfolio__grid-empty{
   height: 300px;
@@ -802,6 +822,7 @@ hr{
   font-size: 16px;
   letter-spacing: 0.02em;
   font-weight: 400;
+  line-height: 1.5;
 }
 
 .post__authors{

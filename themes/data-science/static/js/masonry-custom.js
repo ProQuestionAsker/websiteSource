@@ -42,13 +42,13 @@ var macy = Macy({
       x: 25,
       y: 25
     },
-    columns: 3,
+    columns: 1,
     breakAt: {
-        1200: 3,
-        940: 3,
-        700: 2,
-        400: 1
-    }
+        750: 3,
+        500: 2,
+        350: 1
+    },
+    mobileFirst: true,
 });
 
 //macy.runOnImageLoad(function () { console.log("loaded") }, true)

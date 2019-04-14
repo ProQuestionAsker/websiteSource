@@ -11,6 +11,7 @@ tags:
   - courses
 description: "A list of the data science courses I've taken, my ratings on them, and comments for future learners."
 disqus: 'true'
+thumbnail: 'thumbnail.jpg'
 image: 'laptop.jpg'
 imageAlt: 'Hands resting on MacBook keyboard'
 imageCredit: 'Crew'

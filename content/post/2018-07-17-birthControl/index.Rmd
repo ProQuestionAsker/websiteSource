@@ -16,10 +16,11 @@ buttons:
     text: Download Data
 description: "There's no TMI here, just 20,000 people talking about their experiences with contraception."
 disqus: 'true'
+thumbnail: 'thumbnail.jpg'
 image: 'condoms.jpg'
-imageAlt: 'Red packaged condoms on a white table'
-imageCredit: 'Anqa'
-imageCreditLink: 'https://pixabay.com/users/Anqa-46293/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=849407'
+imageAlt: 'multicolored condoms aligned on a table'
+imageCredit: 'Bruno Glätsch'
+imageCreditLink: 'https://pixabay.com/photos/condoms-condom-rubber-prevention-3112007/'
 type: ''
 ---
 

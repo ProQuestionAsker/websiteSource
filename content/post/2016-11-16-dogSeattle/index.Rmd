@@ -13,6 +13,7 @@ tags:
   - data cleaning
 description: 'Cleaning, exploring, and mapping dog ownership data in Seattle'
 image: 'dogs.jpg'
+thumbnail: 'thumbnail.jpg'
 imageAlt: 'selective focus photography of three brown puppies'
 imageCredit: 'Anoir Chafik'
 imageCreditLink: 'https://unsplash.com/photos/2_3c4dIFYFU'

@@ -28,6 +28,10 @@ pre {
   color: var(--tertiary);
  }
 
+ img{
+   mix-blend-mode: multiply;
+ }
+
 /* Changes the style of everything at the top of the homepage */
 
 .intro{
@@ -841,6 +845,12 @@ hr{
   letter-spacing: 0.02em;
   font-weight: 400;
   line-height: 1.5;
+}
+
+.caption{
+  font-family: var(--annotationFont);
+  font-size: 14px;
+  color: var(--tertiary)
 }
 
 .post__authors{

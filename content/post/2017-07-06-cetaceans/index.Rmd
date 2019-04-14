@@ -23,6 +23,8 @@ imageAlt: 'Silhouetted people of various ages stare into aquarium at several dol
 imageCredit: 'Chris Blonk'
 imageCreditLink: 'https://unsplash.com/photos/-snBBn-UnbA'
 type: ''
+aliases:
+  - /work/2017/07/06/cetaceans/
 ---
 
 ## The Premise

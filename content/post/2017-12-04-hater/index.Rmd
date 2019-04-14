@@ -22,6 +22,8 @@ imageAlt: 'zoomed in keyboard with pink key with heart on it'
 imageCredit: 'athree23'
 imageCreditLink: 'https://pixabay.com/users/athree23-6195572/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3698156'
 type: ''
+aliases:
+  - /work/2017/12/04/haterdater/
 ---
 
 ## The Premise

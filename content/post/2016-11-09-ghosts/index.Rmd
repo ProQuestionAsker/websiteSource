@@ -17,6 +17,8 @@ imageCredit: ''
 imageCreditLink: ''
 type: ''
 disqus: 'true'
+aliases:
+    - /projects/2016/11/09/ghosts/
 ---
 
 

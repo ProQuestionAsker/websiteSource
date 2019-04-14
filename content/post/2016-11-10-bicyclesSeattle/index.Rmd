@@ -18,6 +18,8 @@ imageCredit: 'Tiffany Nutt'
 imageCreditLink: 'https://unsplash.com/photos/0ClfreiNppM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'
 type: ''
 disqus: 'true'
+aliases:
+    - /projects/2016/11/10/bicyclesseattle/
 ---
 
 -   [Introduction](#introduction)

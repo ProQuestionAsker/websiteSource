@@ -23,6 +23,8 @@ imageAlt: 'Blurred image of infant feet.'
 imageCredit: 'Picsea'
 imageCreditLink: 'https://unsplash.com/photos/kd3qRzgEl70'
 type: ''
+aliases:
+  - /work/2017/05/24/babytiming/
 ---
 
 

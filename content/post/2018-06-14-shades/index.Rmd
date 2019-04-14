@@ -24,6 +24,8 @@ imageAlt: 'three makeup brushes on top of compact powders'
 imageCredit: 'Raphael Lovaski'
 imageCreditLink: 'https://unsplash.com/photos/DEuob2v77wI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'
 type: ''
+aliases:
+  - /work/2018/06/14/makeupshades/
 ---
 
 ## The Premise

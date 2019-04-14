@@ -11,7 +11,7 @@ tags:
   - d3.js
   - The Pudding
 buttons:
-  - link: 'The Dining Habits and Companions of Americans'
+  - link: 'https://pudding.cool/2017/07/eating-alone/'
     text: Interactive Essay
 description: 'The dining habits and companions of Americans.'
 disqus: ''
@@ -21,6 +21,8 @@ imageAlt: 'A burger on a white plate on a large white table'
 imageCredit: 'Toa Heftiba'
 imageCreditLink: 'https://unsplash.com/photos/ThtzElwvwyM'
 type: ''
+aliases:
+  - /work/2017/07/27/eatingalone/
 ---
 
 ## The Premise

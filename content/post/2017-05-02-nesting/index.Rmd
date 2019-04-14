@@ -17,6 +17,8 @@ imageAlt: 'Pink, yellow, and green dyed eggs sit in their own individual small n
 imageCredit: 'annca'
 imageCreditLink: 'https://pixabay.com/photos/easter-nest-nest-easter-eggs-2164822/'
 type: ''
+aliases:
+  - /blog/2017/05/02/d3nest/
 ---
 
 -   [Introduction](#introduction)

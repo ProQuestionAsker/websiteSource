@@ -18,6 +18,8 @@ imageAlt: 'selective focus photography of three brown puppies'
 imageCredit: 'Anoir Chafik'
 imageCreditLink: 'https://unsplash.com/photos/2_3c4dIFYFU'
 type: ''
+aliases:
+    - /projects/2016/11/16/dogsseattle/
 ---
 
 -   [Introduction](#introduction)

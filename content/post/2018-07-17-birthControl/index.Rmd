@@ -22,6 +22,8 @@ imageAlt: 'multicolored condoms aligned on a table'
 imageCredit: 'Bruno Glätsch'
 imageCreditLink: 'https://pixabay.com/photos/condoms-condom-rubber-prevention-3112007/'
 type: ''
+aliases:
+  - /work/2018/07/17/birth-control/
 ---
 
 ## The Premise

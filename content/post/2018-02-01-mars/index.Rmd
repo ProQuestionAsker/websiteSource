@@ -23,6 +23,8 @@ imageAlt: 'Pen resting on postcard on table'
 imageCredit: 'Mira Metzer'
 imageCreditLink: 'https://pixabay.com/photos/postcard-pen-write-writing-3958197/'
 type: ''
+aliases:
+  - /work/2018/02/01/mars-weather/
 ---
 
 ## The Premise

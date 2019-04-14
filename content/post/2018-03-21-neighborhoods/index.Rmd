@@ -24,6 +24,8 @@ imageAlt: 'Photo of the space needle against a purple and orange sky.'
 imageCredit: 'Timothy Eberly'
 imageCreditLink: 'https://unsplash.com/photos/CXEqz2g0j9g?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'
 type: ''
+aliases:
+  - /work/2018/03/21/neighborhoods/
 ---
 
 ## The Premise

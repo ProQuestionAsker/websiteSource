@@ -628,6 +628,28 @@ pre {
   color: var(--grayDark);
 }
 
+.item__meta-link{
+  padding: 3px 8px;
+  font-size: 16px;
+  color: var(--accent);
+  font-family: var(--bodyFont);
+  background-color: var(--elevationHover);
+  border: none;
+  box-shadow: var(--mainShadow);
+  border-radius: var(--radius);
+  align-self: center;
+  transition: var(--fastFade);
+  margin: 0 5px 20px 0;
+  cursor: pointer;
+}
+
+.item__meta-link:hover{
+  color: var(--elevationHover);
+  background-color: var(--accent);
+  box-shadow: var(--shadowHover);
+  transition: var(--fastFade);
+}
+
 .card-tag{
   font-family: var(--bodyFont);
   color: var(--accent);

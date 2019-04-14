@@ -25,9 +25,8 @@
 
       {{ if .Params.buttons }}
         <div class="post__links">
-          <p class='post__tags-meta'>View:</p>
           {{ range .Params.buttons }}
-            <a href={{ .link }}><span class='item__meta-tag post-links'>{{ .text }}</span></a>
+            <a href={{ .link }}><span class='item__meta-link post-links'>{{ .text }}</span></a>
           {{ end }}
         </div>
       {{ end }}

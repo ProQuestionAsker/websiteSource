@@ -682,6 +682,11 @@ pre {
   color: var(--accent);
 }
 
+.toTop:hover{
+  color: var(--content);
+  transition: var(--fastFade);
+}
+
 .toTop.is-hidden{
   opacity: 0;
   transition: var(--fastFade);
@@ -920,14 +925,14 @@ code{
   flex: 1;
   display: flex;
   align-items: center;
-  color: var(--content);
+  color: var(--accent);
   margin-right: auto;
   transition: var(--fastFade);
 }
 
 .goHome a{
   text-decoration: none;
-  color: var(--content);
+  color: var(--accent);
   transition: var(--fastFade);
   margin: 0 5px;
   display: flex;
@@ -943,7 +948,7 @@ code{
 }
 
 .goHome a:hover span{
-  color: var(--accent);
+  color: var(--content);
   transition: var(--fastFade);
 }
 
@@ -967,13 +972,13 @@ code{
 
 .single-toggle{
   margin-left: 5px;
-  color: var(--content);
+  color: var(--accent);
   transition: var(--fastFade);
   cursor: pointer;
 }
 
 .single-toggle:hover{
-  color: var(--accent);
+  color: var(--content);
   transition: var(--fastFade);
 }
 
@@ -991,7 +996,7 @@ code{
 .scroll-text{
   font-family: var(--bodyFont);
   font-size: 11px;
-  color: var(--content);
+  color: var(--accent);
   opacity: 1;
   transition: var(--fastFade);
 }

@@ -183,7 +183,7 @@ if (toTopButton){
   window.onscroll = function(){handleScroll()}
 
   function handleScroll(){
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
       toTopButton.classList.remove('is-hidden')
       scrollText[0].classList.add('is-hidden')
       scrollText[1].classList.add('is-hidden')

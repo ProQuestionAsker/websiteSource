@@ -37,7 +37,7 @@ Array.from(selectedTags).forEach(function(element) {
 var macy = Macy({
     container: '.portfolio__grid',
     trueOrder: true,
-    waitForImages: false,
+    waitForImages: true,
     margin: {
       x: 25,
       y: 25

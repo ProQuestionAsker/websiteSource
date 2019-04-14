@@ -268,10 +268,12 @@ pre {
   height: 32px;
   border-radius: var(--radius);
   cursor: pointer;
+  transition: var(--fastFade);
 }
 
 .theme-toggle:hover span{
-  color: var(--accent);
+  color: var(--content);
+  transition: var(--fastFade);
 }
 
 .theme-toggle .inline-svg{
@@ -490,6 +492,13 @@ pre {
   border-radius: var(--radius);
 }
 
+.item .item__link:focus{
+  box-shadow: var(--mainShadowHover);
+  background-color: var(--elevationHover);
+  transition: var(--slowFade);
+  border-radius: var(--radius);
+}
+
 .item[data-macy-complete="1"] {
   transform: translateY(0);
   transition: top var(--slowFade),left var(--slowFade),transform var(--slowFade);
@@ -531,6 +540,10 @@ pre {
 }
 
 .item__link:hover .details__title h4{
+  text-decoration: underline;
+}
+
+.item__link:focus .details__title h4{
   text-decoration: underline;
 }
 

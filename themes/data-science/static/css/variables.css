@@ -15,7 +15,7 @@
 }
 
 body.light{
-  --accent: #DA1F3F; /* magenta */
+  --accent: #C81937; /* magenta */
   --content: #1A2849; /* dark blue */
   --tertiary: #696E84; /* mid blue */
   --page: #FBE0DE; /* light pink */
@@ -26,11 +26,11 @@ body.light{
   --elevationHover: #FFFFFF; /* white */
   --introGradient: linear-gradient(180deg, #FDF0EF 0%, var(--page) 100%);
   --codeBG: #FFFFFF;
-  --codeFont: #DA1F3F;
+  --codeFont: #C81937;
 }
 
 body.dark{
-  --accent: #FFF9F9; /* cream */
+  --accent: #FFCAD3; /* light pink */ /*#FFF9F9;*/ /* cream */
   --content: #FFF9F9; /* cream */
   --tertiary: #C4C4CA; /* light gray */
   --page: #252D3E; /* dark blue */

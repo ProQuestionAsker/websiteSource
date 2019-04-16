@@ -36,8 +36,16 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
     -   [Machine Learning Courses](#machine-learning-courses)
     -   [SQL Databases](#sql-database)
     -   [Other Courses](#other-courses)
--   [Wrap-Up](#wrap-up)    
+-   [Wrap-Up](#wrap-up)
 
+<style>
+div.dc {color: var(--tertiary)}
+div.dc p{font-size: 14px !important;}
+</style>
+
+
+:warning:**IMPORTANT UPDATE** April 14, 2019:warning:
+*In my original version of this post, I highly recommended several DataCamp courses because they were relatively inexpensive and I truly enjoyed them. I am now rescinding my recommendation of this platform. It has come to my attention that they have [very poorly handled](https://twitter.com/no_reply/status/1113923302915837958) an issue of sexual assault by one of their executives on an employee and that is not the kind of behavior I can condone. They have also released a "[Note to the Community](https://www.datacamp.com/community/blog/note-to-our-community)" (after months of pressure from the instructors on the platform) regarding these issues which indicates that the harasser received little to no consequences for their action, the target of the harassment was not given any resources to make them or others feel more safe (in fact, their note is filled with victim-blaming language), AND the note has been [non-indexed](https://twitter.com/noamross/status/1116709899159916544), meaning that it won't be surfaced in search engines. This complete cover-up is [unacceptable](https://t.co/SHp16vOiU9) and I no longer recommend using the DataCamp platform. Folks are compiling some alternatives [here](https://twitter.com/EngelhardtCR/status/1116743032492253185)*
 
 
 # Introduction
@@ -65,7 +73,7 @@ I already had a solid background in:
 
 and experience in using R for specific purposes.  If you don't have these background skills yet (particularly statistics), I'd highly recommend starting there. 
 
-I'd suggest looking for courses offered at [Coursera](https://www.coursera.org), [DataCamp](https://www.datacamp.com), [Udemy](https://www.udemy.com/), and [Khan Academy](https://www.khanacademy.org/) to fill in those gaps.  
+I'd suggest looking for courses offered at [Coursera](https://www.coursera.org), ~~DataCamp~~, [Udemy](https://www.udemy.com/), and [Khan Academy](https://www.khanacademy.org/) to fill in those gaps.  
 
 # Courses I've Taken
 
@@ -91,83 +99,66 @@ While I've been programming and conducting analysis in R for years, I had only b
     + **Time to Complete**: Suggested 4 weeks
     + **Comments**: The lectures do a good job of familiarizing you with the basics of R programming, but the assignments often felt far too advanced given the basic subject matter of the course. 
     
-* **[Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r)** by [DataCamp](https://www.datacamp.com)
-    + **My Rating**: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-    + **Difficulty Level**: Beginner
-    + **Cost**: FREE
-    + **Time to Complete**: 4 Hours
-    + **Comments**: This interactive platform is excellent for teaching you the very basics.
     
-* **[Intermediate R](https://www.datacamp.com/courses/intermediate-r)** by [DataCamp](https://www.datacamp.com)
-    + **My Rating**: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-    + **Difficulty Level**: Intermediate
-    + **Cost**: $29/month for unlimited access to DataCamp's entire course library
-    + **Time to Complete**: 6 Hours
-    + **Comments**: Video courses mixed in with interactive exercises help make these more complicated concepts easier. Also has option of a 2nd [practice course](https://www.datacamp.com/courses/intermediate-r-practice).
+
+* ~~**Introduction to R** by DataCamp~~ 
+<div class = "dc">
+*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them. [Here's one of many alternatives](https://rstudio.cloud/learn/primers/1).*
+</div>
+
+    
+* ~~**Intermediate R** by DataCamp~~
+<div class = "dc">
+*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+</div>
  
-* **[Importing and Cleaning Data](https://www.datacamp.com/courses/importing-data-in-r-part-1)** by [DataCamp](https://www.datacamp.com)
-    + **My Rating**: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
-    + **Difficulty Level**: Beginner
-    + **Cost**: $29/month for unlimited access to DataCamp's entire course library
-    + **Time to Complete**: 3 Hours (Total 10 for both parts and case studies)
-    + **Comments**: Great overview course to importing any kind of data into R.  Also has a [Part 2 course](https://www.datacamp.com/courses/importing-data-in-r-part-2) and a course with [case studies](https://www.datacamp.com/courses/importing-cleaning-data-in-r-case-studies) for practice.  
+* ~~**Importing and Cleaning Data** by DataCamp~~
+<div class = "dc">
+*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+</div>
   
-* **[Cleaning Data in R](https://www.datacamp.com/courses/cleaning-data-in-r)** by [DataCamp](https://www.datacamp.com)
-    + **My Rating**: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-    + **Difficulty Level**: Beginner
-    + **Cost**: $29/month for unlimited access to DataCamp's entire course library
-    + **Time to Complete**: 4 Hours 
-    + **Comments**: If you need help turning a messy dataset into a clean one, this course will do the trick.  The focus is primarily on the `tidyr` package.
+* ~~**Cleaning Data in R** by DataCamp~~
+<div class = "dc">
+*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+</div>
     
-* **[Writing Functions in R](https://www.datacamp.com/courses/writing-functions-in-r)** by [DataCamp](https://www.datacamp.com)
-    + **My Rating**: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-    + **Difficulty Level**: Intermediate
-    + **Cost**: $29/month for unlimited access to DataCamp's entire course library
-    + **Time to Complete**: 4 Hours 
-    + **Comments**: This course is taught by [Charlotte](http://cwick.co.nz/) and [Hadley](http://hadley.nz/) Wickham and is wonderful. Functions are challenging to write but this course made it seem simple. 
+* ~~**Writing Functions in R** by DataCamp~~
+<div class = "dc">
+*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them. [Here's one of many alternatives](https://rstudio.cloud/learn/primers/6).*
+</div>
     
-* **[Data Manipulation in R with dplyr](https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial)** by [DataCamp](https://www.datacamp.com)
-    + **My Rating**: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-    + **Difficulty Level**: Intermediate
-    + **Cost**: $29/month for unlimited access to DataCamp's entire course library
-    + **Time to Complete**: 4 Hours 
-    + **Comments**: If I could give this class 6 stars, I would. It's well taught and it certainly kicked off my love of the `dplyr` package.  
+* ~~**Data Manipulation in R with dplyr** by DataCamp~~
+<div class = "dc">
+*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+</div>
     
 ## RStudio Courses
 
 Until recently, I only ever used R in the command interface, but after these courses on using RStudio and RMarkdown, I'm never looking back.  **Fun fact**: This website was written using RStudio!
 
-* **[Working with RStudio IDE](https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-1)** by [DataCamp](https://www.datacamp.com)
-    + **My Rating**: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-    + **Difficulty Level**: Beginner
-    + **Cost**: $29/month for unlimited access to DataCamp's entire course library
-    + **Time to Complete**: 3 Hours 
-    + **Comments**: The class was simple and helpful in orienting me to some of the basic features of RStudio. 
+* ~~**Working with RStudio IDE** by DataCamp~~
+<div class = "dc">
+*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+</div>
     
-* **[Reporting with RMarkdown](https://www.datacamp.com/courses/reporting-with-r-markdown)** by [DataCamp](https://www.datacamp.com)
-    + **My Rating**: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-    + **Difficulty Level**: Beginner
-    + **Cost**: $29/month for unlimited access to DataCamp's entire course library
-    + **Time to Complete**: 3 Hours 
-    + **Comments**: I had no idea how simple RMarkdown could be before this course. Now I use RMarkdown all the time. In fact, each of my [blog posts](/blog) and [projects](/portfolio) were written using RMarkdown, making report-writing simple. 
+* ~~**Reporting with RMarkdown** by DataCamp~~
+<div class = "dc">
+*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+</div>
     
 ## Machine Learning Courses
 
 As I'm sure you've read by now, machine learning is an often sought after for data scientists, so having a good foundation is key.  I've taken:
 
-* **[Introduction to Machine Learning](https://www.datacamp.com/courses/introduction-to-machine-learning-with-r)** by [DataCamp](https://www.datacamp.com)
-    + **My Rating**: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
-    + **Difficulty Level**: Intermediate - Advanced
-    + **Cost**: $29/month for unlimited access to DataCamp's entire course library
-    + **Time to Complete**: 6 Hours 
-    + **Comments**: This class gave me a good foundation of *how* to do some machine learning, but some of the theory behind it seemed to be a little lacking. 
+* ~~**Introduction to Machine Learning** by DataCamp~~
+<div class = "dc">
+*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+</div>
     
-* **[Machine Learning Toolbox](https://www.datacamp.com/courses/machine-learning-toolbox)** by [DataCamp](https://www.datacamp.com)
-    + **My Rating**: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
-    + **Difficulty Level**: Intermediate - Advanced
-    + **Cost**: $29/month for unlimited access to DataCamp's entire course library
-    + **Time to Complete**: 4 Hours 
-    + **Comments**: Honestly, I got through this course and didn't feel like I understood *why* I was being asked to do any of the specific tasks. It was only after completing the course that I realized that the `caret` package (which they focus on throughout the course) is super useful. 
+* ~~**Machine Learning Toolbox** by DataCamp~~
+<div class = "dc">
+*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+</div>
     
 * **[Statistical Learning](https://lagunita.stanford.edu/courses/HumanitiesSciences/StatLearning/Winter2016/info)** by [Stanford University Lagunita](https://lagunita.stanford.edu/dashboard)
     + **My Rating**: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
@@ -176,12 +167,10 @@ As I'm sure you've read by now, machine learning is an often sought after for da
     + **Time to Complete**: 15+ Hours
     + **Comments**: While you can complete assignments for credit in this course, I've been enjoying it as a YouTube playlist of videos that accompanies the book [Introduction to Statistical Learning](http://www-bcf.usc.edu/~gareth/ISL/). The material is thorough and has helped clear up some misconceptions for me, but the pace is a bit slow for my taste.
     
-* **[Kaggle R Tutorial for Machine Learning ](https://www.datacamp.com/community/open-courses/kaggle-r-tutorial-on-machine-learning)** by  [DataCamp](https://www.datacamp.com)
-    + **My Rating**: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
-    + **Difficulty Level**: Intermediate 
-    + **Cost**: FREE
-    + **Time to Complete**: 1 Hour
-    + **Comments**: This course helps walk you through submitting your first entry to a [Kaggle](https://www.kaggle.com) competition. It is fun and very helpful for submitting an entry, but probably not worth your time if you aren't planning on using Kaggle. 
+* ~~**Kaggle R Tutorial for Machine Learning** by DataCamp~~
+<div class = "dc">
+*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+</div>
     
 ## SQL Database
 
@@ -210,12 +199,10 @@ While the [Importing and Cleaning Data](https://www.datacamp.com/courses/importi
     
 ## Other Courses
 
-* **[Manipulating Time Series Data in R with xts and zoo](https://www.datacamp.com/courses/manipulating-time-series-data-in-r-with-xts-zoo)** by  [DataCamp](https://www.datacamp.com)
-    + **My Rating**: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
-    + **Difficulty Level**: Intermediate 
-    + **Cost**: $29/month for unlimited access to DataCamp's entire course library
-    + **Time to Complete**: 4 Hours
-    + **Comments**: While this course does an OK job of explaining how to use the `xts` package to analyze time series, the *why* of it isn't necessarily explained well. 
+* ~~**Manipulating Time Series Data in R with xts and zoo** by DataCamp~~
+<div class = "dc">
+*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+</div>
     
 # Wrap-Up
 

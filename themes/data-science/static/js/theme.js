@@ -67,7 +67,7 @@ function makeDark(load){
     sunIcon.hidden = false
 
   // if this is run on a page where the image exists, switch to the dark one
-  if (image) image.src = 'images/introImage-dark.svg'
+  if (image) image.src = 'images/introImage-dark.png'
 
   // if this is a page with an indicator of what the button means, adjust the text
   if (themeText) themeText.innerText = 'Enable Light Mode'
@@ -100,7 +100,7 @@ function makeLight(load){
     // the light image is default,
     // so if this isn't the first load & there's an image, change to the light image
     if (image){
-      image.src = 'images/introImage-light.svg'
+      image.src = 'images/introImage-light.png'
     }
 
     // if this is a page with an indicator of what the button means, adjust the text

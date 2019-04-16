@@ -28,9 +28,14 @@ pre {
   color: var(--tertiary);
  }
 
- img{
-   mix-blend-mode: multiply;
- }
+.dark img{
+ mix-blend-mode: hard-light;
+}
+
+.dark .intro-container img{
+  mix-blend-mode: normal !important;
+}
+
 
 /* Changes the style of everything at the top of the homepage */
 

@@ -1,6 +1,6 @@
 baseURL = "/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Amber Thomas Data Portfolio & Blog"
 theme = "data-science"
 disqusShortname = "yourdiscussshortname"
 enableEmoji = true
@@ -11,6 +11,8 @@ preserveTaxonomyNames = true
 
 [permalinks]
     post = "/:year/:month/:day/:slug/"
+    
+
 
 
 
@@ -21,6 +23,9 @@ preserveTaxonomyNames = true
 
 [params]
   author = "Amber Thomas"
+  description = "A collection of my data science projects and blog posts about R, d3, and everything in between."
+  twitterAuthor = "@ProQuesAsker"
+  twitterSite = "@ProQuesAsker"
 
   # options for highlight.js (version, additional languages, and theme)
   highlight = true

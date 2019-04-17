@@ -1,0 +1,34 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{{ if eq .URL "/" }}
+  <title>{{ .Site.Title }}</title>
+  <meta property="og:title" content="{{ .Site.Title }}">
+  <meta property="og:type" content="website">
+  <meta property="description" content="{{ .Site.Params.description }}">
+  <meta property="og:description" content="{{ .Site.Params.description }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="images/logo.jpg" >
+{{ else }}
+  <title>{{ .Title }}{{ with .Params.subtitle }} - {{ . }} {{ end }} - {{ .Site.Title }}</title>
+  <meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}">
+  <meta property="og:type" content="article">
+
+  {{ if .Params.thumbnail }}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{ .Params.thumbnail }}" >
+  {{ else if .Params.image }}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{ .Params.image }}" >
+  {{ else }}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="images/logo.jpg" >
+  {{ end }}
+
+{{ $defaultDescription := printf "Article posted by %s, on %s" .Params.author (.Date.Format "Monday, January 2nd, 2006") }}
+  <meta property="description" content="{{ .Description | default $defaultDescription }}">
+  <meta property="og:description" content="{{ .Description | default $defaultDescription }}">
+{{ end }}
+
+<meta name="twitter:creator" content="{{ .Params.twitterAuthor }}">
+<meta name="twitter:site" content="{{ .Params.twitterSite }}">

@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://condescending-hoover-9b5371.netlify.com/"
 languageCode = "en-us"
 title = "Amber Thomas Data Portfolio & Blog"
 theme = "data-science"
@@ -12,10 +12,6 @@ preserveTaxonomyNames = true
 [permalinks]
     post = "/:year/:month/:day/:slug/"
     
-
-
-
-
 [taxonomies]
   author = "authors"
   tag = "tags"

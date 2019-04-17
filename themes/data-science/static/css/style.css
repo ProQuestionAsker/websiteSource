@@ -736,7 +736,7 @@ pre {
   background-color: var(--elevation);
   border-radius: var(--radius);
   box-sizing: border-box;
-  box-shadow: var(--mainShadow);
+  box-shadow: var(--mainShadowHover);
   z-index: 5;
   position: relative;
   top: 80px;

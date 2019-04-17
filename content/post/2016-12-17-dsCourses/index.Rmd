@@ -41,12 +41,16 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 <style>
 div.dc {color: var(--tertiary)}
 div.dc p{font-size: 14px !important;}
+div.update{border-radius: var(--radius); padding: 5px 30px; background-color: var(--codeBG); border: 1px solid var(--accent)}
+div.update p{font-size: 14px !important}
 </style>
 
 
-:warning:**IMPORTANT UPDATE** April 14, 2019:warning:
-*In my original version of this post, I highly recommended several DataCamp courses because they were relatively inexpensive and I truly enjoyed them. I am now rescinding my recommendation of this platform. It has come to my attention that they have [very poorly handled](https://twitter.com/no_reply/status/1113923302915837958) an issue of sexual assault by one of their executives on an employee and that is not the kind of behavior I can condone. They have also released a "[Note to the Community](https://www.datacamp.com/community/blog/note-to-our-community)" (after months of pressure from the instructors on the platform) regarding these issues which indicates that the harasser received little to no consequences for their action, the target of the harassment was not given any resources to make them or others feel more safe (in fact, their note is filled with victim-blaming language), AND the note has been [non-indexed](https://twitter.com/noamross/status/1116709899159916544), meaning that it won't be surfaced in search engines. This complete cover-up is [unacceptable](https://t.co/SHp16vOiU9) and I no longer recommend using the DataCamp platform. Folks are compiling some alternatives [here](https://twitter.com/EngelhardtCR/status/1116743032492253185)*
+<div class='update'>
+:warning:**IMPORTANT UPDATE**:warning: April 14, 2019
 
+In my original version of this post, I highly recommended several DataCamp courses. I am now rescinding my recommendation of this platform. It has come to my attention that they have [very poorly handled](https://twitter.com/no_reply/status/1113923302915837958) an issue of sexual assault by one of their executives. They only [publicly acknowledged](https://www.datacamp.com/community/blog/note-to-our-community) the incident over a year later, after [months of pressure](https://twitter.com/ledell/status/1114238844503609344) from the instructors on the platform. Their public statement indicated that the harasser received little to no consequences for their action and the target of the harassment was not given any resources to make them or others feel more safe (in fact, their note is filled with [victim-blaming language](https://twitter.com/juliasilge/status/1113996214561923072)). It has also been discovered that their statement has been [non-indexed](https://twitter.com/noamross/status/1116709899159916544), meaning that it won't be surfaced in search engines, AND that at least [two employees](https://t.co/Rm1tPqewMS) [were fired](http://third-bit.com/2019/04/15/an-exchange-with-datacamp.html) (and offered money to not speak publicly about this incident) for raising concerns inside the company. This entire situation is [completely](https://twitter.com/rstudio/status/1117889763711696896) [unacceptable](https://t.co/SHp16vOiU9) and I no longer recommend using the DataCamp platform. Folks are compiling some alternatives [here](https://twitter.com/EngelhardtCR/status/1116743032492253185).
+</div>
 
 # Introduction
 
@@ -103,33 +107,33 @@ While I've been programming and conducting analysis in R for years, I had only b
 
 * ~~**Introduction to R** by DataCamp~~ 
 <div class = "dc">
-*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them. [Here's one of many alternatives](https://rstudio.cloud/learn/primers/1).*
+*Review removed due to the DataCamp executives' unwillingness to keep their community safe (see beginning of post for details). If you can afford to do so, please don't support them.  [Here's one of many alternatives](https://rstudio.cloud/learn/primers/1).*
 </div>
 
     
 * ~~**Intermediate R** by DataCamp~~
 <div class = "dc">
-*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+*Review removed due to the DataCamp executives' unwillingness to keep their community safe (see beginning of post for details). If you can afford to do so, please don't support them. *
 </div>
  
 * ~~**Importing and Cleaning Data** by DataCamp~~
 <div class = "dc">
-*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+*Review removed due to the DataCamp executives' unwillingness to keep their community safe (see beginning of post for details). If you can afford to do so, please don't support them. *
 </div>
   
 * ~~**Cleaning Data in R** by DataCamp~~
 <div class = "dc">
-*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+*Review removed due to the DataCamp executives' unwillingness to keep their community safe (see beginning of post for details). If you can afford to do so, please don't support them. *
 </div>
     
 * ~~**Writing Functions in R** by DataCamp~~
 <div class = "dc">
-*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them. [Here's one of many alternatives](https://rstudio.cloud/learn/primers/6).*
+*Review removed due to the DataCamp executives' unwillingness to keep their community safe (see beginning of post for details). If you can afford to do so, please don't support them.  [Here's one of many alternatives](https://rstudio.cloud/learn/primers/6).*
 </div>
     
 * ~~**Data Manipulation in R with dplyr** by DataCamp~~
 <div class = "dc">
-*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+*Review removed due to the DataCamp executives' unwillingness to keep their community safe (see beginning of post for details). If you can afford to do so, please don't support them. *
 </div>
     
 ## RStudio Courses
@@ -138,12 +142,12 @@ Until recently, I only ever used R in the command interface, but after these cou
 
 * ~~**Working with RStudio IDE** by DataCamp~~
 <div class = "dc">
-*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+*Review removed due to the DataCamp executives' unwillingness to keep their community safe (see beginning of post for details). If you can afford to do so, please don't support them. *
 </div>
     
 * ~~**Reporting with RMarkdown** by DataCamp~~
 <div class = "dc">
-*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+*Review removed due to the DataCamp executives' unwillingness to keep their community safe (see beginning of post for details). If you can afford to do so, please don't support them. *
 </div>
     
 ## Machine Learning Courses
@@ -152,12 +156,12 @@ As I'm sure you've read by now, machine learning is an often sought after for da
 
 * ~~**Introduction to Machine Learning** by DataCamp~~
 <div class = "dc">
-*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+*Review removed due to the DataCamp executives' unwillingness to keep their community safe (see beginning of post for details). If you can afford to do so, please don't support them. *
 </div>
     
 * ~~**Machine Learning Toolbox** by DataCamp~~
 <div class = "dc">
-*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+*Review removed due to the DataCamp executives' unwillingness to keep their community safe (see beginning of post for details). If you can afford to do so, please don't support them. *
 </div>
     
 * **[Statistical Learning](https://lagunita.stanford.edu/courses/HumanitiesSciences/StatLearning/Winter2016/info)** by [Stanford University Lagunita](https://lagunita.stanford.edu/dashboard)
@@ -169,7 +173,7 @@ As I'm sure you've read by now, machine learning is an often sought after for da
     
 * ~~**Kaggle R Tutorial for Machine Learning** by DataCamp~~
 <div class = "dc">
-*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+*Review removed due to the DataCamp executives' unwillingness to keep their community safe (see beginning of post for details). If you can afford to do so, please don't support them. *
 </div>
     
 ## SQL Database
@@ -201,7 +205,7 @@ While the [Importing and Cleaning Data](https://www.datacamp.com/courses/importi
 
 * ~~**Manipulating Time Series Data in R with xts and zoo** by DataCamp~~
 <div class = "dc">
-*DataCamp's unacceptable response (see beginning of post for details). If you can afford to do so, please don't support them.*
+*Review removed due to the DataCamp executives' unwillingness to keep their community safe (see beginning of post for details). If you can afford to do so, please don't support them. *
 </div>
     
 # Wrap-Up

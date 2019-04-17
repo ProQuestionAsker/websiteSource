@@ -77,11 +77,11 @@ One of these days I'll write a separate post about how I actually went about tra
 
 ## Things that Kinda Sorta Helped Me Feel Like Less of a Failure
 
-For me, a strong support system (both in person and online) was invaluable in pulling me through my career transition. During that time I hit some stumbling blocks and in true Hermione-fashion, I took a long while to calm down. But it wasn't a failure, at least, not on the grand scale. They were slight mistakes, like coloring outside the lines or failing a single test, that just helped me learn how to do better next time. 
+For me, a strong support system (both in person and online) was invaluable in pulling me through my career transition. During that time I hit some stumbling blocks and in true Hermione-fashion, I took a long while to calm down. But it wasn't a failure, at least, not on the grand scale. For reference, I ended up "killing" the first story I worked on for The Pudding because it just wasn't very interesting. And this felt like it would be a new-path-killer as well, but in the end it (and many others) were slight mistakes, like coloring outside the lines or failing a single test, that just helped me learn how to do better next time. 
 
-So if you're currently going through a career change, I want you to hear the words that helped me: You are not a failure for leaving your last career. It doesn't matter why you left. You are brave for trying something new and you can do it. And if that's not enough, cute animal videos on the internet always helped make me smile. 
+So if you're currently going through a career change, I want you to hear the words that helped me: You are not a failure for leaving your last career. It doesn't matter why you left. You are brave for trying something new and you can do it. 
 
-If that doesn't work for you, here are a few other things that I have since found particularly helpful: 
+If you're looking for more, here are a few other things that I have found particularly helpful: 
 
 Hank Green's 2014 XOXO talk. "You have no obligation to your former self."
 ```{r echo = FALSE}

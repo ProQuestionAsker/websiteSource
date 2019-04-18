@@ -2,7 +2,7 @@ baseURL = "/"
 languageCode = "en-us"
 title = "Amber Thomas Data Portfolio & Blog"
 theme = "data-science"
-disqusShortname = "amberthomas0823"
+disqusShortname = "amberthomas"
 enableEmoji = true
 # allow search engines to search/crawl everything
 enableRobotsTXT = true

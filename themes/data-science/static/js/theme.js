@@ -15,14 +15,14 @@ const scrollText = document.getElementsByClassName('scroll-text')
 const syntaxLight = document.getElementById('syntaxLight')
 const syntaxDark = document.getElementById('syntaxDark')
 
-console.log({syntaxLight, syntaxDark})
-
 
 // looking for any stored value in session storage of 'theme'
 let theme = sessionStorage['theme']
 
 // looking for any tags selected from the non-home-page
 let tag = sessionStorage['tag']
+
+console.log({theme})
 
 //////////////////////////////////////////////////
 ///////// Light vs. Dark Theme Code //////////////
@@ -38,7 +38,7 @@ if (theme){
   // and the value stored is dark, keep it dark
   if (theme === 'dark') makeDark('newPage')
 }
-if (!theme){
+if (!theme || theme === "undefined"){
   // if there is no value stored for theme
   // and if the user has a preference in their web browser for dark theme
   if (themePreference['matches'] === true) {
@@ -89,10 +89,17 @@ function makeLight(load){
   // set the key in session storage to 'light'
   sessionStorage['theme'] = 'light'
 
+  // if this is the first time it loads, turn off the moon icon
+  if (load === 'first'){
+    moonIcon.hidden = false
+    sunIcon.hidden = true 
+  }
+
   // if this is not the first page load
   if (load != 'first'){
     // remove the dark tag
     body.classList.remove('dark')
+
     // remove the circle class and replace it with the (default) moon
     moonIcon.hidden = false
     sunIcon.hidden = true

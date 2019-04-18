@@ -1153,7 +1153,7 @@ footer{
 .disqus-comments{
   max-height: 600px;
   width: 100%;
-  overflow: hidden;
+  overflow: scroll;
   transition: var(--fastFade);
 }
 

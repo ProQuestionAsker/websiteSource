@@ -68,9 +68,9 @@
         <div class="item {{ range .Params.categories }}{{ . }}{{ end }}" data-tags="{{ delimit .Params.tags ", " }}">
           <a class="item__link" href="{{ .Permalink }}">
             {{ if .Params.thumbnail }}
-              <img class="item__image" src="{{ path.Join .Permalink .Params.thumbnail }}" alt="{{ .Params.imageAlt }}" class="img-responsive">
+              <img class="item__image" src="{{ .RelPermalink }}{{ .Params.thumbnail }}" alt="{{ .Params.imageAlt }}" class="img-responsive">
             {{else if .Params.image}}
-              <img class="item__image" src="{{ path.Join .Permalink .Params.image }}" alt="{{ .Params.imageAlt }}" class="img-responsive">
+              <img class="item__image" src="{{ .RelPermalink }}{{ .Params.image }}" alt="{{ .Params.imageAlt }}" class="img-responsive">
             {{end}}
             <div class="item__details">
               {{ range .Params.categories }}

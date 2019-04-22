@@ -24,6 +24,7 @@ preserveTaxonomyNames = true
   description = "A collection of my data science projects and blog posts about R, d3, and everything in between."
   twitterAuthor = "@ProQuesAsker"
   twitterSite = "@ProQuesAsker"
+  images = ['logo.jpg']
 
   # options for highlight.js (version, additional languages, and theme)
   highlight = true

@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://amber.rbind.io/"
 languageCode = "en-us"
 title = "Amber Thomas Data Portfolio & Blog"
 theme = "data-science"
@@ -13,7 +13,7 @@ preserveTaxonomyNames = true
 
 [permalinks]
     post = "/:year/:month/:day/:slug/"
-    
+
 [taxonomies]
   author = "authors"
   tag = "tags"

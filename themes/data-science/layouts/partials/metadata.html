@@ -16,10 +16,10 @@
 
   {{ if .Params.thumbnail }}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{{ .Site.BaseURL }}" >
+    <meta name="twitter:image" content="{{ .Site.BaseURL }}{{ path.Join .Permalink .Params.thumbnail }}" >
   {{ else if .Params.image }}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{{ path.Join .Permalink .Params.image }}" >
+    <meta name="twitter:image" content="{{ .Site.BaseURL }}{{ path.Join .Permalink .Params.image }}" >
   {{ else }}
     <meta name="twitter:card" content="summary">
     <meta name="twitter:image" content="https://amber.rbind.io/images/logo.jpg" >

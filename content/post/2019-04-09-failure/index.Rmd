@@ -2,7 +2,7 @@
 title: 'Dear Career Switchers: You are not a Failure'
 authors: 
   - Amber Thomas
-date: '2019-04-09'
+date: '2019-06-02'
 slug: failure
 categories:
   - post
@@ -19,7 +19,7 @@ imageCreditLink: 'https://unsplash.com/photos/2Ts5HnA67k8'
 imageSrc: 'Unsplash'
 imageSrcLink: 'https://unsplash.com'
 type: ''
-draft: 'true'
+draft: 'false'
 ---
 
 ## Me and Failure Go Wayyy Back
@@ -39,7 +39,7 @@ blogdown::shortcode("figure", src="https://media.giphy.com/media/rTapV77tqAWZO/g
 ```
 
 
-Each time I hit a failure of sorts, it would take a long while to calm me down too. And again and again my parents re-taught me that a single grade was not enough to mess up my dreams. After all, I had a whole year's worth of grades that would combine together into an average for the year - thank goodness for averages! As I got older, this idea started to sink in and I became less obsessed with the grade on an individual test or even in an individual quarter. I began to forgive myself for making mistakes as long as I kept trying and working towards that marine biology goal. 
+Each time I hit a failure of sorts, it would take a long while to calm me down too. And again and again I had to re-learn that a single grade was not enough to mess up my dreams. After all, I had a whole year's worth of grades that would combine together into an average for the year - thank goodness for averages! As I got older, this idea started to sink in and I became less obsessed with the grade on an individual test or even in an individual quarter. I began to forgive myself for making mistakes as long as I kept trying and working towards that marine biology goal. 
 
 I made it through high school and college. I still loved what I was doing and decided to stay on the academia track a bit longer and get a Master's degree in Marine Sciences. Then all that was left was to get a job. This was so stressful, and if you've learned anything about me from this story, I'm sure you can guess that I felt like I'd *never find a job ever*. But, eventually, I did and it seemed like a dream come true. 
 
@@ -51,7 +51,7 @@ I moved to Florida to work as a researcher in an aquarium. I got to learn about 
 
 I started thinking really critically about my life as a marine biologist and what I liked and what I didn't. I found that I loved data analysis, data visualization, and explaining complex things in a simple way. I did not love living paycheck to paycheck, having a schedule that forced me to work every weekend, having my hard work end up in a silo, and feeling like my job needed to come before my personal life and well-being. 
 
-This was a hard pill to swallow because it meant that maybe this dream, the only one I'd ever had for my career, wasn't so perfect after all. At first, I told myself that I could keep doing it. I could take that job that pays next to nothing, in a part of the country I didn't want to move to, doing work I wasn't interested in so that I could remain a :sparkles: marine biologist :sparkles:. It seemed like losing the title would be admitting that I had failed at my biggest dream.
+This was a hard pill to swallow because it meant that maybe this dream, the only one I'd ever had for my career, wasn't so perfect after all. At first, I told myself that I could keep doing it. I could take that job that pays next to nothing, in a part of the country I didn't want to move to, doing work I wasn't interested in so that I could remain a :sparkles: marine biologist :sparkles:. It seemed like losing the title would be admitting that I had failed at my biggest dream. And in some very real way, it felt like I was losing a part of myself.
 
 ## So You Feel Like You've Failed, Now What?
 
@@ -83,6 +83,8 @@ One of these days I'll write a separate post about how I actually went about tra
 
 For me, a strong support system (both in person and online -- shoutout to the #rstats folks on Twitter :raised_hands:) was invaluable in pulling me through my career transition. During that time I hit some stumbling blocks and in true Hermione-fashion, I took a long while to calm down. But it wasn't a failure, at least, not on the grand scale. For reference, I ended up "killing" the first story I worked on for The Pudding because it just wasn't very interesting. And this felt like it would be a new-path-killer as well, but in the end it (and many others) were slight mistakes, like coloring outside the lines or failing a single test, that just helped me learn how to do better next time. 
 
+The road from one career to another was hard and scary, but I consider myself to be very lucky. My new role gives me so much more freedom and I'm much happier and healthier than I was, something I did not always imagine to be possible. 
+
 So if you're currently going through a career change, I want you to hear the words that helped me: You are not a failure for leaving your last career. It doesn't matter why you left. You are brave for trying something new and you can do it. 
 
 If you're looking for more, here are a few other things that I have found particularly helpful: 
@@ -106,4 +108,4 @@ This quote from [Justin Reynold's](https://twitter.com/andthisjustin) novel _The
 ---
 One more thing:
 
-This post reflects my personal experiences in career-switching and I recognize how lucky and privileged I am to even have this story to tell. I couldn't have done this without lots of support from my family, friends, and my partner, Parker. I'm privileged that I had the ability to take the educational paths I took and then had the ability to switch to something new. If I can now use some of that luck/privilege from this side of the "career-switching" door to help hold it open for you, let me know. I'll do my very best to help. :sparkling_heart: 
+This post reflects my personal experiences in career-switching and I recognize how lucky and privileged I am to even have this story to tell. I couldn't have done this without lots of support from my family, friends, and my partner, Parker. If I can now use some of that luck/privilege from this side of the "career-switching" door to help hold it open for you, let me know. I'll do my very best to help. :sparkling_heart: 

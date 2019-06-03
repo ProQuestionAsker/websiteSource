@@ -1,0 +1,56 @@
+---
+title: Sing My Name
+authors: 
+  - Amber Thomas
+date: '2019-05-23'
+slug: names-lyrics
+categories:
+  - project
+tags:
+  - d3.js
+  - data viz
+  - The Pudding
+buttons:
+  - link: 'https://pudding.cool/2019/05/names-in-songs'
+    text: Interactive Article
+  - link: 'https://github.com/the-pudding/data/tree/master/names-in-songs'
+    text: Download Data
+description: 'How many artists sing about you (or at least, your namesake)?'
+disqus: 'true'
+thumbnail: 
+image: 
+imageAlt: 
+imageCredit: 
+imageCreditLink: 
+imageSrc: 
+imageSrcLink: 
+type: ''
+---
+
+## The Premise
+
+While watching the film *Baby Driver*, I became curious about a conversation between two of the characters. They had been talking about names, and more specifically which names are used in song lyrics. This project is my wandering through data trying to answer that question.
+
+## My Contributions
+
+* Data cleaning & analysis
+* Story writing
+* Front-end development (HTML, CSS, and D3)
+
+## Collaborators
+
+This story was primarily a solo project, but I am appreciative of [Colin Morris](http://colinmorris.github.io/)' help in attaining many of the song lyrics used in my analysis.
+
+
+## Screenshots
+
+```{r echo = FALSE, out.width = "640", fig.align = "center"}
+knitr::include_graphics("names-video.gif")
+```
+
+```{r echo = FALSE, out.width = "100%"}
+knitr::include_graphics("names-1.png")
+knitr::include_graphics("names-2.png")
+knitr::include_graphics("names-3.png")
+knitr::include_graphics("names-4.png")
+```

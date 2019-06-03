@@ -1,0 +1,57 @@
+---
+title: Colorism in High Fashion
+authors: 
+  - Malaika Handa
+  - Amber Thomas
+  - Jan Diehm
+date: '2019-04-24'
+slug: vogue
+categories:
+  - project
+tags:
+  - The Pudding
+  - d3.js
+  - data viz
+buttons:
+- link: 'https://pudding.cool/2019/04/vogue'
+  text: Interactive Article
+- link: 'https://github.com/the-pudding/data/tree/master/vogue'
+  text: Download Data
+description: 'We looked at 19 years of covers to find how Vogue magazine represents women of all shades.'
+disqus: 'false'
+thumbnail: 'thumbnail.jpg'
+image: 'full_image.jpg'
+imageAlt: 'Person out of focus, with smaller image visible through camera lens held in hand'
+imageCredit: 'PHOTOSBYPHAB'
+imageCreditLink: 'http://www.instagram.com/photosbyphab'
+imageSrc: 'nappy.co'
+imageSrcLink: 'https://nappy.co'
+type: ''
+---
+
+## The Premise
+
+Vogue magazine has been a bastion of fashion for over a century. Over time, they have increased the diversity of the people gracing the cover by including people of different races and ethnicities. But, are they actually representing people of different shades similarly?
+
+## My Contributions
+
+* Story Editing
+* Front-end development (HTML, CSS, and D3)
+
+## Collaborators
+
+This story was brought to us by freelancer [Malaika Handa](https://twitter.com/malicodes). She collected and analyzed all the data and wrote the article. The design and some of the front-end code came from [Jan Diehm](https://twitter.com/jadiehm).
+
+
+## Screenshots
+
+```{r echo = FALSE, out.width = "640", fig.align = "center"}
+knitr::include_graphics("vogue-video.gif")
+```
+
+```{r echo = FALSE, out.width = "100%"}
+knitr::include_graphics("vogue-1.png")
+knitr::include_graphics("vogue-2.png")
+knitr::include_graphics("vogue-3.png")
+knitr::include_graphics("vogue-4.png")
+```

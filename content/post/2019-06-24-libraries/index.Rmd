@@ -1,0 +1,56 @@
+---
+title: Hipster Summer Reading List
+authors: 
+  - Russell Goldenberg
+  - Amber Thomas
+date: '2019-06-24'
+slug: libraries
+categories:
+  - project
+tags:
+  - d3.js
+  - The Pudding
+buttons:
+  - link: 'https://pudding.cool/2019/06/summer-reading/'
+    text: Interactive Article
+  - link: 'https://github.com/the-pudding/data/tree/master/summer-reading'
+    text: Download Data
+description: 'Forget the books that everyone is reading. Here are 200+ books that no one has checked out from the Seattle Public Library in a decade.'
+disqus: 'true'
+thumbnail: 'thumbnail.jpeg'
+image: 'bookPile.jpg'
+imageAlt: 'Person sitting on stack of paper-back books'
+imageCredit: 'Gaelle Marcel'
+imageCreditLink: 'https://unsplash.com/@gaellemarcel'
+imageSrc: 'Unsplash'
+imageSrcLink: 'https://unsplash.com'
+---
+
+## The Premise
+
+It’s officially summer and you’re looking for your next read. But you don’t want to read what everyone else is reading. No, you want something more obscure. You’ll take the books that no one is reading. Better yet, how about the books no one has touched in years?
+
+We (programmatically) sifted through over 100 million checkout records from the Seattle Public Library to find fiction books that haven’t been checked out in over a decade*. Sounds like they’re just your speed.
+
+## My Contributions
+
+* Data cleaning & analysis
+* Some story writing
+* Some design
+* Front-end development (HTML, CSS, and D3)
+
+## Collaborators
+
+This story was in collaboration with The Pudding's [Russell Goldenberg](https://twitter.com/codenberg). The idea was originally Russell's but we worked together on cleaning the data, designing the experience and coding it for the internet.
+
+## Screenshots
+
+```{r echo = FALSE, out.width = "640", fig.align = "center"}
+knitr::include_graphics("hipster_social.gif")
+```
+
+```{r echo = FALSE, out.width = "100%"}
+knitr::include_graphics("libraries_1.png")
+knitr::include_graphics("libraries_2.png")
+```
+

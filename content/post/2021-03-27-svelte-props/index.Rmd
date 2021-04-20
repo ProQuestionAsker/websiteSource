@@ -1,0 +1,256 @@
+---
+title: Passing Information Between Components in Svelte
+authors: 
+  - Amber Thomas
+date: '2021-03-27'
+slug: svelte-props
+categories:
+  - post
+tags:
+  - svelte
+  - tutorial
+description: 'An exploration into passing information from parent components to children and back again.'
+disqus: 'true'
+image: 'thumbnail.jpeg'
+imageAlt: 'One hand passing a black heart paper cut-out to another outstretched hand'
+imageCredit: 'Kelly Sikkema'
+imageCreditLink: 'https://unsplash.com/@kellysikkema'
+imageSrc: 'Unsplash'
+imageSrcLink: 'https://unsplash.com'
+draft: true
+---
+
+-   [The Backstory](#the-backstory)
+-   [Component Structure](#component-structure)
+-   [From parent to child](#from-parent-to-child)
+    - [Props](#props)
+-   [From child to parent (and back again)](#from-child-to-parent-and-back-again)
+    - [Two-way Binding with bind:](#two-way-binding-with-bind)
+
+## The Backstory
+It's been quite some time since I've written a blog post. I like writing posts when I'm in the process of learning something new and want a place to process my thoughts and keep examples that make sense to me where I know that I'll be able to find them. And, well, I haven't _really_ been in a place to learn and explore new things deeply in a while. 
+
+That is, until [Amelia Wattenberger](https://twitter.com/Wattenberger) and [Russell Goldenberg](https://twitter.com/codenberg) introduced our team at [The Pudding](https://pudding.cool/) to [Svelte](https://svelte.dev/).
+
+I'm not going to dive too deep into what Svelte is, but according to their [announcement blog post](https://svelte.dev/blog/svelte-3-rethinking-reactivity):
+
+> Svelte is a component framework — like React or Vue — but with an important difference... Svelte runs at build time, converting your components into highly efficient imperative code that surgically updates the DOM. As a result, you're able to write ambitious applications with excellent performance characteristics.
+
+Right. I typically create relatively small projects or single page experiences, so something intended for :sparkles:ambitious applications:sparkles: is sometimes more heavy-handed than what I need. But after playing with Svelte for the past few months, I don't want to build in any other environment.
+
+There's a lot about Svelte that I like, but probably my favorite feature is that Svelte encourages you to work in single page components by default. This has been game-changing when I'm building data-visualizations and data stories. I'll give an example. 
+
+Before I started using Svelte, I used HTML, CSS, and "vanilla" JavaScript (with some help from d3.js) to create data visualizations. Each viz had 3 or 4 files associated with it:
+
+**graph.html**
+
+A single HTML file that I would usually use to outline any text like chart titles, alt text, captions etc. I would typically also put some sort of semantic element like a `<figure>` to contain my viz once I create it. The most bare-bones version looked something like this:
+```{html}
+<div class="chart-container">
+  <h3>Chart title</h3>
+  <p>Chart subtitle</p>
+  <figure class="chart"></figure>
+</div>
+```
+
+**viz.js**
+
+Then I would have a JavaScript file that would do, well, everything. It'd need to load the data, clean it, process it, make an SVG element, add all of the lines or dots or whatever shape I needed to that SVG element, add axes etc. etc. This file often got very big and contained *everything* that happened to that chart. Here's a basic example of a waffle chart.
+
+```{js}
+// Select your div
+const waffle = d3.select('.chart');
+
+// Create an array with numbers 0 - 99
+const numbers = d3.range(100);
+
+// For each item in the array, add a div element
+// if the number is < 5, color it red, otherwise gray
+waffle
+	.selectAll('.block')
+	.data(numbers)
+	.enter()
+	.append('div')
+	.attr('class', 'block')
+	.style('background-color', d => (d < 5 ? '#FE4A49' : '#CCCCCC'));
+```
+
+Sometimes, instead of putting everything in a single file, I'd break it out into other `.js` files. There would be a single file where I would import the data and process it, and a *separate* file where I'd create the chart. This second file would [export a function](https://bost.ocks.org/mike/chart/) that would, ultimately, make the chart when you passed the data as an argument. 
+
+```{js}
+// in one file, make a "chart creation" function that accepts data as an argument
+
+export default makeChart(data){
+// all the stuff needed to make your chart goes in this function
+}
+
+// in the other file, import that function and call it
+
+import makeChart from './makeChart.js'
+
+makeChart(data)
+```
+
+**chart.css**
+
+Then I'd have a separate file for all of the CSS styles. 
+
+---
+
+Now, this method works. I have used it for years and there's absolutely nothing wrong with it. But, in my opinion, Svelte makes this process easier. For that same chart that took 3-4 files (1 HTML, 1 CSS, 1-2 JS), you may have 6 or 7 `.svelte` files. On purpose. Because instead of having one (or two) giant files that do _everything_ your chart needs, you can have a single component that just makes the axis. A separate one for making the dots for your scatter plot. Another that adds annotations. And each one is fully self-contained, so it holds all the HTML, CSS, and JS that that piece needs all in one file (mostly). It might look something like this:
+
+```{html}
+<script>
+	let name = 'world';
+</script>
+
+<h1>Hello {name}!</h1>
+```
+
+The fabulous thing about this system, for me, is that once I figure out a way to make a certain element great, I can re-use it in multiple projects easily. It also means that the axis I made for my scatter plot can also be easily used for the line chart further down in my story. No need to do it multiple times. 
+
+Ok, so now here's the thing. In my pre-Svelte days, if I split the JS code for my chart into multiple files, I had to `import` the code from one into another, and pass some argument (usually data) between them. Svelte components need to do something similar, but with the added flexibility that Svelte components provide, there are a lot more ways to pass information between them. I'm going to do my best to describe them, and the times where I have found each one useful so far. 
+
+> A few notes at this point, the [official Svelte Tutorial](https://svelte.dev/tutorial/basics) is fabulous and I highly recommend checking it out for learning all things Svelte in an interactive way. If you'd prefer to learn about this stuff in video form, Amelia and Russell have covered this topic in their YouTube series [The Svelte Way](https://www.youtube.com/watch?v=lqvY_0gJf_I) and I highly recommend checking it out. 
+
+## Component Structure
+
+I'm going to be talking about this in reference to my own work, which, again, is typically several data visualizations all on the same page. But, this can be used for all sorts of things! 
+
+But for my purposes, let's imagine that we had a scatter plot and a line chart. Each of them have several `.svelte` components associated with them. We'll imagine each has a `parent` element that will be at the highest level and then some `child` and `grandchild` components. 
+
+The **Parent.svelte** component may, then, look something like this:
+```{html}
+<script>
+  import ChildA from './ChildA.svelte';
+  import ChildB from './ChildB.svelte';
+</script>
+  
+  <ChildA />
+  <ChildB />
+```
+
+Where the **ChildA.svelte** component may look something like this:
+```{html}
+<script>
+  import GrandchildA from './GrandchildA.svelte'
+</script>
+  
+  <GrandchildA />
+```
+
+So, essentially, the `parent` component imports and runs the `children` and `children` imports and runs the `grandchildren`. I'll continue to use this structure throughout the rest of this post. 
+
+## From parent to child
+### Props
+
+Passing information "down stream", that is, from parent to child, or child to grandchild is among the most straightforward ways of passing information in Svelte. And it's very similar to my old vanilla JS example. 
+In vanilla JS, you'd have two files, import a function from one into the other, and then pass some information as an argument of that function: 
+
+```{js}
+// in one file, make a "chart creation" function that accepts data as an argument
+
+export default makeChart(data){
+// all the stuff needed to make your chart goes in this function
+}
+
+// in the other file, import that function and call it
+
+import makeChart from './makeChart.js'
+
+makeChart(data)
+```
+
+In Svelte, you can do essentially the same thing, except instead of "arguments", they're called ["props"](https://svelte.dev/docs#Attributes_and_props). So, if you need to pass some value from the parent to the child, you'd use a prop:
+
+```{html}
+<script>
+  import ChildA from './ChildA.svelte';
+
+  let data = 42;
+</script>
+  
+  <ChildA data={data} />
+```
+
+Adding `data={data}` to the component call, passes the variable `data` to the child. With one other "gotcha". If, in my vanilla JS example, the `makeChart` function was written like this:
+
+```{js}
+export default makeChart(){
+// all the stuff needed to make your chart goes in this function
+}
+```
+
+no arguments are specified, so even if the parent file runs `makeChart(data)`, the `makeChart` function doesn't know what to do with `data` because it wasn't expecting it. Svelte props are similar in that the child needs to know what types of props to expect to be passed to it.
+
+Inside child elements, props can be exposed to the parents by declaring them using the keyword `export`, like this:
+```{html}
+<script>
+  export let data;
+</script>
+```
+
+Now, the child component expects that some value (passed from the parent) will be assigned to the variable `data` and the child element can do things with that!
+
+## From child to parent (and back again)
+Usually, in Svelte, you want information to flow from parent -> child -> grandchild etc. But sometimes it's useful to be able to send information back up from child to parent. This is particularly useful when using form elements like checkboxes, radio buttons, text inputs etc. which may exist in a child element, but the parent may need to know which boxes are checked, which radio button is selected, or what text has been input. There are a few ways to handle situations like this:
+
+### Two way binding with bind:
+For form elements, Svelte has a built-in way of handling this. In a form element, you can add the directive `bind:` like this:
+
+```{html}
+<script>
+  let name;
+</script>
+  
+<input bind:value={name}>
+```
+
+The `<input>` creates an HTML input element. The `bind:value={name}` means that anytime the `value` of that element is updated (i.e., when text is input by a user), the variable `name` is updated to reflect that. Essentially, `name` and whatever text has been typed into the input field will remain the same. 
+
+But what if you're not working with a form element? What if you just want to pass some variable up from child to parent? Well, you can do that too. Let's imagine that we wanted to pass that `input` text from a child component to the parent. 
+
+We'd need to expose `let name` to the parent component by adding `export`:
+```{html}
+# ChildA.svelte
+<script>
+  export let name;
+</script>
+  
+<input bind:value={name}>
+```
+
+and then in the parent component, we'd need to bind that value a second time:
+```{html}
+# Parent.svelte
+<script>
+  import ChildA from './ChildA.svelte';
+
+  let textValue;
+</script>
+  
+  <ChildA bind:name={textValue} />
+```
+
+So now, in the parent component, `textValue` will reflect the same thing as the text input information. 
+
+Yay! We're passing information from child to parent, but here be dragons etc etc. What we have just created is referred to as "two way binding" which means that this binding can go both ways. We can change the text that exists in our `input` by typing directly into the text box (which is bound to the child and then passed to the parent). **Or** if the parent component changes the value of `textValue` that change will be passed to the child and change the value of the `input` element. 
+
+Now, this could be useful if, say, you wanted to add a "clear" button in the parent component, and when you clicked it, `textValue = ''`, which means that the child component's `name` would also become an empty string, and your `input` element would auto-magically contain no text.
+
+But, it also means if you have, say, two checkboxes and both use `bind:value={checkValue}`, then checking one will check them both. (Speaking from experience, I was about ready to toss my computer trying to figure out why clicking one was affecting the other. They needed to be saved to different variable names to not overwrite one another.)
+
+If you want your attempted two way binding to only go from child to parent (and not back down), you can make the variable that is bound directly to the `input` element local to only the child, like this:
+
+```{html}
+# ChildA.svelte
+<script>
+  export let name;
+	let localName;
+	$: name = localName
+</script>
+  
+<input bind:value={localName}>
+```
+
+The `name` variable is still being exported to the parent and, due to the `$:` nomenclature, it will be updated everytime that `localName` is updated. But, since the parent element doesn't have access to `localName` (since it isn't exposed via `export`) there is no way for the parent element to overwrite it. Meaning information can go from child to parent but not back again. 

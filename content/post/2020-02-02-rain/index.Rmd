@@ -1,0 +1,56 @@
+---
+title: Where Will You Need Your Umbrella?
+authors: 
+  - Amber Thomas
+date: '2020-02-02'
+slug: rain
+categories:
+  - project
+tags:
+  - d3.js
+  - data viz
+  - The Pudding
+buttons:
+  - link: 'https://pudding.cool/2020/02/rain/'
+    text: Interactive Article
+  - link: 'https://github.com/the-pudding/data/tree/master/rain'
+    text: Download Data & Scripts
+description: 'Seattle may be further down the list than you would think'
+disqus: 'true'
+image: 'thumbnail.jpeg'
+imageAlt: 'Person with long dark hair and a brown coat holds orange tulips beneath a transparent umbrella. Pigeons take flight in the background.'
+imageCredit: 'Sabina Sturzu'
+imageCreditLink: 'https://unsplash.com/@sabinasturzu'
+imageSrc: 'Unsplash'
+imageSrcLink: 'https://unsplash.com'
+---
+
+
+## The Premise
+
+I moved to Seattle from Orlando, FL in 2016. Since then, the most common question I'm asked is how I deal with all the rain. This question has always perplexed me because it was much more common for me to get caught in thunderous down pours in Orlando than it ever has been in Seattle. I decided to depict this difference in precipitation levels and the ways that we talk about precipitation using data visualization and data from the Global Historical Climatology Network. 
+
+## My Contributions
+
+* Story ideation
+* Data cleaning & analysis
+* Story writing
+* Front-end development (HTML, CSS, and D3)
+
+## Collaborators
+
+This piece was a bit of a passion project of mine and thus I completed it on my own.
+
+## Screenshots
+
+## Screenshots
+
+```{r echo = FALSE, out.width = "640", fig.align = "center"}
+knitr::include_graphics("rain_video.gif")
+```
+
+```{r echo = FALSE, out.width = "100%"}
+knitr::include_graphics("rain_1.png")
+knitr::include_graphics("rain_2.png")
+knitr::include_graphics("rain_3.png")
+```

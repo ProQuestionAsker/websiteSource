@@ -1,0 +1,39 @@
+---
+title: Welcome to the Cloud Zoo
+authors: 
+ - RJ Andrews
+ - Amber Thomas
+date: '2020-11-09'
+slug: zoo
+categories:
+  - project
+tags:
+  - The Pudding
+buttons:
+  - link: 'https://pudding.cool/2020/11/cloud-zoo/'
+    text: Interactive Article
+description: 'Live-streamed animals from your favorite zoos and aquariums all in one place'
+image: ''
+
+---
+
+## The Premise
+
+During the Covid pandemic, many zoos and aquariums started hosting live streams of their most popular exhibits. We decided to find a way to create short clips from nearly 100 of these live streams from around the world and put them all in one place. Designed to look like a zoo in the clouds, this project is meant to be the opposite of "doom scrolling". Joy scroll your way through the cloud zoo. 
+
+## My Contributions
+
+* Finding and vetting all possible zoo and aquarium live streams
+* Writing script to autonomously visit live streams, take screen shots, and assemble them into a gif
+* Front-end development (HTML, CSS, D3)
+* Copy writing
+
+## Collaborators
+
+This story was in collaboration with freelance contributor [RJ Andrews](https://twitter.com/infowetrust). The idea was originally RJ's but we worked together to figure out how to create a "digital zoo" without negatively impacting the facilities that were freely providing live streams. RJ worked on the art direction and design of the piece and created all of the artwork that houses the GIFs. 
+
+## Screenshots
+
+```{r echo = FALSE, out.width = "640", fig.align = "center"}
+knitr::include_graphics("zoo_video.gif")
+```

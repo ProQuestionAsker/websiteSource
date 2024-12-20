@@ -21,8 +21,8 @@ aliases:
   - /blog/2017/05/02/d3nest/
 ---
 
-<link href="/rmarkdown-libs/font-awesome/css/all.css" rel="stylesheet" />
-<link href="/rmarkdown-libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+<link href="{{< blogdown/postref >}}index_files/font-awesome/css/all.min.css" rel="stylesheet" />
+<link href="{{< blogdown/postref >}}index_files/font-awesome/css/v4-shims.min.css" rel="stylesheet" />
 
 
 <ul>
@@ -66,8 +66,12 @@ aliases:
 ## 6   Jun    17</code></pre>
 <p>These data are just random numbers, but for our purposes, we’ll say that they are monthly sales of strawberries. And although there are a few ways we could represent this totally fake data, for demonstration purposes, we’ll use a line chart.</p>
 <p><i class="fa fa-question-circle" aria-hidden="true"></i> <strong>The basics for creating a line chart in d3 are outside the scope of this post, but if you need more background, <a href="http://www.d3noob.org/2016/08/create-simple-line-graph-using-d3js-v4.html">this</a> is a good place to start.</strong></p>
-<p>Here’s what the final product looks like: <img src="Example1.png" width="80%" style="display: block; margin: auto;" /></p>
-<p><i class="fa fa-github" aria-hidden="true"></i> <strong>The javascript, HTML and CSS needed to generate this figure are available <a href="https://bl.ocks.org/ProQuestionAsker/9a909417edf206f2d3ff38cd41a30524/c7c24def8aea8d2e3f50453ee1d963e8f6ffc09b#file-example1-csv">here</a>. </strong> Now, if we use <code>console.log()</code> to look at the structure of the data, it looks like this: <img src="Example1Structure.png" width="60%" style="display: block; margin: auto;" /> So there’s an array with 12 objects inside: one for each month. And each object contains both the month variable and the Sales count. When generating the path for the line graph, we can access the data like this:</p>
+<p>Here’s what the final product looks like:
+<img src="Example1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><i class="fa fa-github" aria-hidden="true"></i> <strong>The javascript, HTML and CSS needed to generate this figure are available <a href="https://bl.ocks.org/ProQuestionAsker/9a909417edf206f2d3ff38cd41a30524/c7c24def8aea8d2e3f50453ee1d963e8f6ffc09b#file-example1-csv">here</a>. </strong>
+Now, if we use <code>console.log()</code> to look at the structure of the data, it looks like this:
+<img src="Example1Structure.png" width="60%" style="display: block; margin: auto;" />
+So there’s an array with 12 objects inside: one for each month. And each object contains both the month variable and the Sales count. When generating the path for the line graph, we can access the data like this:</p>
 <pre class="js"><code>// Define the line
 var valueLine = d3.line()
     .x(function(d) { return x(d.Month); })
@@ -79,7 +83,11 @@ var valueLine = d3.line()
       .append(&quot;path&quot;)
         .attr(&quot;class&quot;, &quot;line&quot;)
         .attr(&quot;d&quot;, valueLine)</code></pre>
-<p>So far so good. Now let’s expand the data and add a nest. # Nest Level 1 Ok, so now that we’ve plotted our monthly fake strawberry sales for one year, let’s add in our (again, randomly generated) grape and blueberry sales data. That requires adding one column to look like this:</p>
+<p>So far so good.
+Now let’s expand the data and add a nest.
+# Nest Level 1
+Ok, so now that we’ve plotted our monthly fake strawberry sales for one year, let’s add in our (again, randomly generated) grape and blueberry sales data.
+That requires adding one column to look like this:</p>
 <pre><code>##   Month Sales      Fruit
 ## 1   Jan    87 strawberry
 ## 2   Feb     3 strawberry
@@ -87,11 +95,15 @@ var valueLine = d3.line()
 ## 4   Apr    56 strawberry
 ## 5   May     1 strawberry
 ## 6   Jun    17 strawberry</code></pre>
-<p>If we try plotting the line chart the exact same way as before, we end up with something that looks like this: <img src="Example2.png" width="80%" style="display: block; margin: auto;" /> Whoops, it looks like d3 tried to plot all of our data as one continuous line, which makes sense because we didn’t tell it that there are 3 separate categories here. For native R users, the solution to this issue would be simple. In ggplot2, you’d just use the <code>group=</code> and/or <code>color=</code> options like this:</p>
+<p>If we try plotting the line chart the exact same way as before, we end up with something that looks like this:
+<img src="Example2.png" width="80%" style="display: block; margin: auto;" />
+Whoops, it looks like d3 tried to plot all of our data as one continuous line, which makes sense because we didn’t tell it that there are 3 separate categories here.
+For native R users, the solution to this issue would be simple. In ggplot2, you’d just use the <code>group=</code> and/or <code>color=</code> options like this:</p>
 <pre class="r"><code>library(ggplot2)
-ggplot(ex2, aes(x = Month, y = Sales, group = Fruit, color = Fruit)) + 
-    geom_path()</code></pre>
-<p><img src="/post/2017-05-02-nesting/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /> In d3, this is where nests come in. <i class="fa fa-question-circle" aria-hidden="true"></i> <strong>Looking for the actual documentation? Find it <a href="https://github.com/d3/d3-collection/blob/master/README.md#nests">here</a>.</strong></p>
+ggplot(ex2, aes(x = Month, y = Sales, group = Fruit, color = Fruit)) + geom_path() </code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+In d3, this is where nests come in.
+<i class="fa fa-question-circle" aria-hidden="true"></i> <strong>Looking for the actual documentation? Find it <a href="https://github.com/d3/d3-collection/blob/master/README.md#nests">here</a>.</strong></p>
 <p>Just like with ggplot, we need to figure out which variable we want to group our data by. In this case, we want a separate line for each fruit’s sales. In R that’s <code>group = Fruit</code> and in d3, you need to set the <em>key</em> to the Fruit variable.</p>
 <p>It looks like this:</p>
 <pre class="js"><code>var nest = d3.nest()
@@ -116,17 +128,17 @@ var valueLine = d3.line()
       .data(nest)
       .enter()
       .append(&quot;path&quot;)
-          .attr(&quot;class&quot;, &quot;line&quot;)
-          .attr(&quot;d&quot;, function(d){
-            return valueLine(d.values);
-          });</code></pre>
+	      .attr(&quot;class&quot;, &quot;line&quot;)
+	      .attr(&quot;d&quot;, function(d){
+	      	return valueLine(d.values);
+	      });</code></pre>
 <p>Notice that there are only two things that have changed here, but they’re important things!</p>
 <ul>
 <li><code>.data([data])</code> became <code>.data(nest)</code>
 <ul>
 <li>Make sure to change the data source to your new nested data</li>
 </ul></li>
-<li><code>.attr(&quot;d&quot;, valueLine)</code> became <code>.attr(&quot;d&quot;, function(d){ return valueLine(d.values); })</code>
+<li><code>.attr("d", valueLine)</code> became <code>.attr("d", function(d){ return valueLine(d.values); })</code>
 <ul>
 <li>Instead of being able to generate a line directly from the data as is, you need to now specify that you’d like to make a path from the values of the data (in this case, our Sales variable)</li>
 </ul></li>
@@ -140,9 +152,11 @@ var valueLine = d3.line()
 <p>Now that we’ve been able to draw 3 separate lines (one for each fruit), we can see the theoretical monthly sales for each fruit. But what if we wanted to compare the annual sales for each fruit instead?</p>
 <p>For native R-users, the easiest option may come from the <code>dplyr</code> package and the <code>group_by</code> and <code>summarise</code> functions. That may look something like this:</p>
 <pre class="r"><code>library(dplyr)
-annualSales &lt;- ex2 %&gt;% group_by(Fruit) %&gt;% summarise(Annual = sum(Sales))
+annualSales &lt;- ex2 %&gt;% 
+  group_by(Fruit) %&gt;% 
+  summarise(Annual = sum(Sales))
 annualSales</code></pre>
-<pre><code>## # A tibble: 3 x 2
+<pre><code>## # A tibble: 3 × 2
 ##   Fruit      Annual
 ##   &lt;chr&gt;       &lt;int&gt;
 ## 1 blueberry     729
@@ -155,11 +169,12 @@ annualSales</code></pre>
     return d.Fruit;
   })
   .rollup(function(leaves){
-        return d3.sum(leaves, function(d) {return (d.Sales)});
-    })
+ 		return d3.sum(leaves, function(d) {return (d.Sales)});
+	})
   .entries(data)</code></pre>
 <p>The rollup function generates a sum of the sales data for each Fruit value, similarly to the <code>dplyr</code> <code>group_by</code> and <code>summarise</code> functions.</p>
-<p>The data structure then looks like this: <img src="Example3Structure.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>The data structure then looks like this:
+<img src="Example3Structure.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Since we’ve reduced the data to just 3 values (one for each fruit), we can no longer represent the data using a line chart. Instead, here’s a bar chart generated with the nested and rolled-up data.</p>
 <p><img src="Example3Complete.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>Although the code is different due to the difference in chart type, here is the code to generate the bars.</p>
@@ -168,11 +183,11 @@ annualSales</code></pre>
       .data(nest)
       .enter()
       .append(&quot;rect&quot;)
-          .attr(&quot;class&quot;, &quot;bar&quot;)
-          .attr(&quot;x&quot;, function(d) { return x(d.key); })
-          .attr(&quot;y&quot;, function(d) { return y(d.value); })
-          .attr(&quot;width&quot;, x.bandwidth())
-          .attr(&quot;height&quot;, function(d) { return height - y(d.value); });</code></pre>
+      	  .attr(&quot;class&quot;, &quot;bar&quot;)
+	      .attr(&quot;x&quot;, function(d) { return x(d.key); })
+	      .attr(&quot;y&quot;, function(d) { return y(d.value); })
+	      .attr(&quot;width&quot;, x.bandwidth())
+	      .attr(&quot;height&quot;, function(d) { return height - y(d.value); });</code></pre>
 <p>Notice that the <code>d.key</code> (remember, the key is our Fruit variable) is used for the x component of creating the shapes. Similarly the <code>d.value</code> (this is our rolled up Sum of Sales data) is used for the y component of the bars.</p>
 <div id="sorting-keys" class="section level2">
 <h2>Sorting Keys</h2>
@@ -183,8 +198,8 @@ annualSales</code></pre>
   })
   .sortKeys(d3.ascending)
   .rollup(function(leaves){
-        return d3.sum(leaves, function(d) {return (d.Sales)});
-    })
+ 		return d3.sum(leaves, function(d) {return (d.Sales)});
+	})
   .entries(data)</code></pre>
 <p>Which results in an updated chart like this:</p>
 <p><img src="Example3Complete2.png" width="60%" style="display: block; margin: auto;" /></p>
@@ -259,7 +274,7 @@ var colors = d3.scaleOrdinal()
   })
   .attr(&quot;class&quot;, &quot;line&quot;)
   .style(&quot;stroke-dasharray&quot;, function(d){ 
-    return (d.key == 2015) ? (&quot;3, 3&quot;) : (&quot;0, 0&quot;)}); // Adding dashes to 2015!</code></pre>
+  	return (d.key == 2015) ? (&quot;3, 3&quot;) : (&quot;0, 0&quot;)}); // Adding dashes to 2015!</code></pre>
 <p>And we end up with this:</p>
 <p><img src="Example4Dash.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>Yay! We now have 6 lines, 2 for each of our 3 fruits.</p>
@@ -268,7 +283,8 @@ var colors = d3.scaleOrdinal()
 </div>
 <div id="creating-dropdown-menus-from-1st-level-nests" class="section level1">
 <h1>Creating Dropdown Menus from 1st Level Nests</h1>
-<p>While the above chart totally works, it’s a little too crowded to help us gain valuable insights about specific fruits. It might help to add some drop-down menus so that we can choose which fruit we want to view. Adding a drop-down menu is relatively simple. First, you need to add a section into your html for the dropdown. Inside the <code>&lt;body&gt;</code> of your HTML file, add a div element for your dropdown. Something like this would work:</p>
+<p>While the above chart totally works, it’s a little too crowded to help us gain valuable insights about specific fruits. It might help to add some drop-down menus so that we can choose which fruit we want to view.
+Adding a drop-down menu is relatively simple. First, you need to add a section into your html for the dropdown. Inside the <code>&lt;body&gt;</code> of your HTML file, add a div element for your dropdown. Something like this would work:</p>
 <pre class="html"><code>&lt;div id = &quot;fruitDropdown&quot;&gt;&lt;/div&gt;</code></pre>
 <p>Then, in your Javascript file, you’ll need to create the dropdown. Select the id that you assigned to the div element in your HTML file and append a “select” element to it. Then you append the “options” to the select element. In this case, we wanted the dropdown to contain a list of fruit names. Since our first level keys were the d.Fruit variables, assigning the “value” and “text” of our dropdowns to d.key fills them with the names of our 3 fruits.</p>
 <pre class="js"><code>var fruitMenu = d3.select(&quot;#fruitDropdown&quot;)
@@ -288,41 +304,41 @@ var colors = d3.scaleOrdinal()
 <p><img src="Example5Menu.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>Currently, clicking on the different options doesn’t do anything. We need to set up an event listener for the dropdown menu so that when something is changed, something happens on our figure. In this case, we’ll initially draw the chart with only the data for strawberries, and we’ll make the data update when the menu item is changed.</p>
 <p>To do that, I’ve created 2 functions. The first, draws the initial graph:</p>
-<pre class="js"><code>    // Function to create the initial graph
-    var initialGraph = function(fruit){
-        // Filter the data to include only fruit of interest
-        var selectFruit = nest.filter(function(d){
+<pre class="js"><code> 	// Function to create the initial graph
+ 	var initialGraph = function(fruit){
+ 		// Filter the data to include only fruit of interest
+ 		var selectFruit = nest.filter(function(d){
                 return d.key == fruit;
               })
-        var selectFruitGroups = svg.selectAll(&quot;.fruitGroups&quot;)
-            .data(selectFruit, function(d){
-              return d ? d.key : this.key;
-            })
-            .enter()
-            .append(&quot;g&quot;)
-            .attr(&quot;class&quot;, &quot;fruitGroups&quot;)
-        var initialPath = selectFruitGroups.selectAll(&quot;.line&quot;)
-            .data(function(d) { return d.values; })
-            .enter()
-            .append(&quot;path&quot;)
-        initialPath
-            .attr(&quot;d&quot;, function(d){
-                return valueLine(d.values)
-            })
-            .attr(&quot;class&quot;, &quot;line&quot;)
-    }</code></pre>
+	    var selectFruitGroups = svg.selectAll(&quot;.fruitGroups&quot;)
+		    .data(selectFruit, function(d){
+		      return d ? d.key : this.key;
+		    })
+		    .enter()
+		    .append(&quot;g&quot;)
+		    .attr(&quot;class&quot;, &quot;fruitGroups&quot;)
+		var initialPath = selectFruitGroups.selectAll(&quot;.line&quot;)
+			.data(function(d) { return d.values; })
+			.enter()
+			.append(&quot;path&quot;)
+		initialPath
+			.attr(&quot;d&quot;, function(d){
+				return valueLine(d.values)
+			})
+			.attr(&quot;class&quot;, &quot;line&quot;)
+ 	}</code></pre>
 <p>Notice that this function is written almost exactly the same as the code used to draw our figures earlier. The only thing that has been added is the <code>nest.filter</code> section which simply filters our data to only include the data for the fruit we’re interested in.</p>
-<p>Then by running <code>initialGraph(&quot;strawberry&quot;)</code>, the figure including only data for strawberry sales is created.</p>
+<p>Then by running <code>initialGraph("strawberry")</code>, the figure including only data for strawberry sales is created.</p>
 <p>Next, we need a function to update the graph. that looks like this:</p>
 <pre class="js"><code>var updateGraph = function(fruit){
-        // Filter the data to include only fruit of interest
-        var selectFruit = nest.filter(function(d){
+ 		// Filter the data to include only fruit of interest
+ 		var selectFruit = nest.filter(function(d){
                 return d.key == fruit;
               })
-        // Select all of the grouped elements and update the data
-        var selectFruitGroups = svg.selectAll(&quot;.fruitGroups&quot;)
-            .data(selectFruit)
-            // Select all the lines and transition to new positions
+ 		// Select all of the grouped elements and update the data
+	    var selectFruitGroups = svg.selectAll(&quot;.fruitGroups&quot;)
+		    .data(selectFruit)
+		    // Select all the lines and transition to new positions
             selectFruitGroups.selectAll(&quot;path.line&quot;)
                .data(function(d){
                   return (d.values);
@@ -332,7 +348,7 @@ var colors = d3.scaleOrdinal()
                   .attr(&quot;d&quot;, function(d){
                     return valueLine(d.values)
                   })
-    }</code></pre>
+ 	}</code></pre>
 <p>That will update the data and smoothly transition between the line shapes. Now, we just need to connect the update function to a change event on the dropdown menu. That looks like this:</p>
 <pre class="js"><code> // Run update function when dropdown selection changes
  fruitMenu.on(&#39;change&#39;, function(){
@@ -362,66 +378,67 @@ var colors = d3.scaleOrdinal()
 <p>That would look like this:</p>
 <pre class="js"><code>var nest = d3.nest()
   .key(function(d){
-        return d.Fruit;
+    	return d.Fruit;
     })
-    .rollup(function(leaves){
+	.rollup(function(leaves){
           var max = d3.max(leaves, function(d){
-            return d.Sales
+          	return d.Sales
           })
           var year = d3.nest().key(function(d){
-            return d.Year
+          	return d.Year
           })
           .entries(leaves);
           return {max:max, year:year};
           })
   .entries(data)</code></pre>
-<p>The resulting data structure would then look like this: <img src="Example6Structure.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>The resulting data structure would then look like this:
+<img src="Example6Structure.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>Now it’s just a matter of accessing and using this data. We already have a good initial structure for how to build this figure, so now to update it.</p>
 <p>Here’s the updated function to create the initial graph:</p>
-<pre class="js"><code>    // Function to create the initial graph
-    var initialGraph = function(fruit){
-        // Filter the data to include only fruit of interest
-        var selectFruit = nest.filter(function(d){
+<pre class="js"><code> 	// Function to create the initial graph
+ 	var initialGraph = function(fruit){
+ 		// Filter the data to include only fruit of interest
+ 		var selectFruit = nest.filter(function(d){
                 return d.key == fruit;
               })
-        var selectFruitGroups = svg.selectAll(&quot;.fruitGroups&quot;)
-            .data(selectFruit, function(d){
-              return d ? d.key : this.key;
-            })
-            .enter()
-            .append(&quot;g&quot;)
-            .attr(&quot;class&quot;, &quot;fruitGroups&quot;)
-            .each(function(d){
+	    var selectFruitGroups = svg.selectAll(&quot;.fruitGroups&quot;)
+		    .data(selectFruit, function(d){
+		      return d ? d.key : this.key;
+		    })
+		    .enter()
+		    .append(&quot;g&quot;)
+		    .attr(&quot;class&quot;, &quot;fruitGroups&quot;)
+		    .each(function(d){
                 y.domain([0, d.value.max])
             }); // this is new! And necessary to change the y-axis
-        var initialPath = selectFruitGroups.selectAll(&quot;.line&quot;)
-            .data(function(d) { return d.value.year; })
-            .enter()
-            .append(&quot;path&quot;)
-        initialPath
-            .attr(&quot;d&quot;, function(d){
-                return valueLine(d.values)
-            })
-            .attr(&quot;class&quot;, &quot;line&quot;)
-          // Add the Y Axis
-           var yaxis = svg.append(&quot;g&quot;)
-               .attr(&quot;class&quot;, &quot;y axis&quot;)
-               .call(d3.axisLeft(y)
-                  .ticks(5)
-                  .tickSizeInner(0)
-                  .tickPadding(6)
-                  .tickSize(0, 0));
-          
-          // Add a label to the y axis
-          svg.append(&quot;text&quot;)
-                .attr(&quot;transform&quot;, &quot;rotate(-90)&quot;)
-                .attr(&quot;y&quot;, 0 - 60)
-                .attr(&quot;x&quot;, 0 - (height / 2))
-                .attr(&quot;dy&quot;, &quot;1em&quot;)
-                .style(&quot;text-anchor&quot;, &quot;middle&quot;)
-                .text(&quot;Monthly Sales&quot;)
-                .attr(&quot;class&quot;, &quot;y axis label&quot;);
-    }</code></pre>
+		var initialPath = selectFruitGroups.selectAll(&quot;.line&quot;)
+			.data(function(d) { return d.value.year; })
+			.enter()
+			.append(&quot;path&quot;)
+		initialPath
+			.attr(&quot;d&quot;, function(d){
+				return valueLine(d.values)
+			})
+			.attr(&quot;class&quot;, &quot;line&quot;)
+		  // Add the Y Axis
+		   var yaxis = svg.append(&quot;g&quot;)
+		       .attr(&quot;class&quot;, &quot;y axis&quot;)
+		       .call(d3.axisLeft(y)
+		          .ticks(5)
+		          .tickSizeInner(0)
+		          .tickPadding(6)
+		          .tickSize(0, 0));
+		  
+		  // Add a label to the y axis
+		  svg.append(&quot;text&quot;)
+		        .attr(&quot;transform&quot;, &quot;rotate(-90)&quot;)
+		        .attr(&quot;y&quot;, 0 - 60)
+		        .attr(&quot;x&quot;, 0 - (height / 2))
+		        .attr(&quot;dy&quot;, &quot;1em&quot;)
+		        .style(&quot;text-anchor&quot;, &quot;middle&quot;)
+		        .text(&quot;Monthly Sales&quot;)
+		        .attr(&quot;class&quot;, &quot;y axis label&quot;);
+ 	}</code></pre>
 <p>There’s a few minor, but notable changes to make this work:</p>
 <ul>
 <li>Notice the addition of <code>.each(function(d){ y.domain([0, d.value.max]) });</code> to the end of the group. This adjusts the Y domain of each view, based on the maximum value calculated in our rollup function.</li>
@@ -430,17 +447,17 @@ var colors = d3.scaleOrdinal()
 </ul>
 <p>Now to update our update function.</p>
 <pre class="js"><code>var updateGraph = function(fruit){
-        // Filter the data to include only fruit of interest
-        var selectFruit = nest.filter(function(d){
+ 		// Filter the data to include only fruit of interest
+ 		var selectFruit = nest.filter(function(d){
                 return d.key == fruit;
               })
-        // Select all of the grouped elements and update the data
-        var selectFruitGroups = svg.selectAll(&quot;.fruitGroups&quot;)
-            .data(selectFruit)
-            .each(function(d){
+ 		// Select all of the grouped elements and update the data
+	    var selectFruitGroups = svg.selectAll(&quot;.fruitGroups&quot;)
+		    .data(selectFruit)
+		    .each(function(d){
                 y.domain([0, d.value.max])
             });
-            // Select all the lines and transition to new positions
+		    // Select all the lines and transition to new positions
             selectFruitGroups.selectAll(&quot;path.line&quot;)
                .data(function(d) { return d.value.year; })
                .transition()
@@ -457,7 +474,7 @@ var colors = d3.scaleOrdinal()
                       .tickSizeInner(0)
                       .tickPadding(6)
                       .tickSize(0, 0));
-    }</code></pre>
+ 	}</code></pre>
 <p>Again, we’ve added the <code>.each(function(d){ y.domain([0, d.value.max]) });</code> to the end of our group. We’ve updated the <code>.data</code> call to <code>.data(function(d) { return d.value.year; })</code> just like in the above function. I’ve also included a way to update the Y axis based on the new data.</p>
 <p>And that’s it!</p>
 <p>Here’s what the graphs now look like. And check out those Y-axes!</p>
@@ -472,11 +489,11 @@ var colors = d3.scaleOrdinal()
 <p>And another dropdown menu via JavaScript.</p>
 <pre class="js"><code>var yearMenu = d3.select(&quot;#yearDropdown&quot;)
 yearMenu
-    .data(nest)
+	.data(nest)
     .append(&quot;select&quot;)
     .selectAll(&quot;option&quot;)
   .data(function(d) { return d.value.year; })
-      .enter()
+ 	  .enter()
     .append(&quot;option&quot;)
     .attr(&quot;value&quot;, function(d){
         return d.key;
@@ -491,12 +508,12 @@ yearMenu
 <p>This should work:</p>
 <pre class="js"><code>// Change color of selected line when year dropdown changes
 yearMenu.on(&#39;change&#39;, function(){
-    // Find which year was selected
-    var selectedYear = d3.select(this)
-        .select(&quot;select&quot;)
-        .property(&quot;value&quot;)
-    // Change the class of the matching line to &quot;selected&quot;
-    var selLine = svg.selectAll(&quot;.line&quot;)
+	// Find which year was selected
+	var selectedYear = d3.select(this)
+		.select(&quot;select&quot;)
+		.property(&quot;value&quot;)
+	// Change the class of the matching line to &quot;selected&quot;
+	var selLine = svg.selectAll(&quot;.line&quot;)
           // de-select all the lines
           .classed(&quot;selected&quot;, false)
           .filter(function(d) {
@@ -512,12 +529,12 @@ yearMenu.on(&#39;change&#39;, function(){
 <p>Luckily in d3v4, this is an easy fix thanks to <code>.raise()</code>. We can add that to the end of our Year dropdown event listener:</p>
 <pre class="js"><code>// Change color of selected line when year dropdown changes
 yearMenu.on(&#39;change&#39;, function(){
-    // Find which year was selected
-    var selectedYear = d3.select(this)
-        .select(&quot;select&quot;)
-        .property(&quot;value&quot;)
-    // Change the class of the matching line to &quot;selected&quot;
-    var selLine = svg.selectAll(&quot;.line&quot;)
+	// Find which year was selected
+	var selectedYear = d3.select(this)
+		.select(&quot;select&quot;)
+		.property(&quot;value&quot;)
+	// Change the class of the matching line to &quot;selected&quot;
+	var selLine = svg.selectAll(&quot;.line&quot;)
           // de-select all the lines
           .classed(&quot;selected&quot;, false)
           .filter(function(d) {
@@ -533,7 +550,7 @@ yearMenu.on(&#39;change&#39;, function(){
 // Select all the lines and transition to new positions
   selectFruitGroups.selectAll(&quot;path.line&quot;)
      .data(function(d) { return d.value.year; }, 
-            function(d){ return d.key; }) // defining the index!
+     		function(d){ return d.key; }) // defining the index!
      .transition()
         .duration(1000)
         .attr(&quot;d&quot;, function(d){

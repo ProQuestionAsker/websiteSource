@@ -94,10 +94,6 @@ Hank Green's 2014 XOXO talk. "You have no obligation to your former self."
 blogdown::shortcode("youtube", "lPtopvsxmZY")
 ```
 
-This tweet from Lauren Rad
-```{r echo = FALSE}
-blogdown::shortcode("twitter", "1103814491727253504")
-```
 
 This quote from [Justin Reynold's](https://twitter.com/andthisjustin) novel _The Opposite of Always_ which has nothing to do with career switching but is absolutely charming and wonderful and talks a lot about the ideas of "almost" getting things and failure.
 

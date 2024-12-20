@@ -41,9 +41,7 @@ If you aren’t currently in high school, it’s probably been a while since you
 
 This project has been no small undertaking and it would not have been possible without the help of so many people. Thank you to my editor, [Matt Daniels](https://twitter.com/matthewfdaniels), for providing feedback on all (what feels like) 8493084 versions of this story. To [Parker Young](https://twitter.com/animoplex) for helping me iterate through every angle for months, and to both Parker and [Jan Diehm](https://twitter.com/jadiehm) for the invaluable design assistance. To the many outside reviewers that read through drafts of this story and provided vital feedback. To the data assistants, Kait Thomas and Anna Houston, that helped unbury me from a pile of virtual student handbooks. And to the entire Pudding team who kept me going. 💖
 
-```{r echo = FALSE}
-blogdown::shortcode("tweet", "1093547315690762241")
-```
+
 
 
 ## Screenshots

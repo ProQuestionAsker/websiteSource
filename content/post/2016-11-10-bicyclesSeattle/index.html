@@ -192,14 +192,14 @@ mymap &lt;- get_map(location = &quot;Seattle&quot;, maptype = &quot;roadmap&quot
 # Plot a single point for each Station ID
 ggmap(mymap) + geom_point(aes(x = long, y = lat), data = station_locs, 
     alpha = 0.7, color = &quot;darkred&quot;, size = 2)</code></pre>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-8-1.png" alt="Zoomed out map of Seattle showing red dots around downtown and university district" />
-<p class="caption">Zoomed out map of Seattle showing red dots around downtown and university district</p>
+<div class="figcaption">Zoomed out map of Seattle showing red dots around downtown and university district</div>
 </div>
 <p>So it looks like all of the stations are located near the Lower Queen Anne, Belltown, International District, Capitol Hill and University of Washington areas. Let’s take a more zoomed-in look.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-9-1.png" alt="Zoomed in map of Seattle showing red dots around downtown and university district" />
-<p class="caption">Zoomed in map of Seattle showing red dots around downtown and university district</p>
+<div class="figcaption">Zoomed in map of Seattle showing red dots around downtown and university district</div>
 </div>
 <p>Great! So the locations are pretty well clustered. I wonder what order they were added in.</p>
 <div id="station-installations" class="section level4">
@@ -226,12 +226,13 @@ station %&gt;% group_by(install_date) %&gt;% summarise(count = n()) %&gt;%
 ## 8   2016-07-03     1
 ## 9   2016-08-09     1</code></pre>
 <p>It looks like the vast majority (86%) of the stations were added on opening day. Let’s see where those original ones were and where the rest were added.</p>
-<p><img src="unnamed-chunk-12-1.png" alt="Zoomed in map of Seattle showing red dots in the original locations of the bike stations - mostly around downtown and university district" /> <img src="unnamed-chunk-12-2.png" alt="Zoomed in map of Seattle showing various color dots, each color representing the date that each station was added to the network." /></p>
+<p><img src="unnamed-chunk-12-1.png" alt="Zoomed in map of Seattle showing red dots in the original locations of the bike stations - mostly around downtown and university district" />
+<img src="unnamed-chunk-12-2.png" alt="Zoomed in map of Seattle showing various color dots, each color representing the date that each station was added to the network." /></p>
 <p>So they added more stations throughout the district that they serve, instead of adding several new stations to a single neighborhood all at once. Good to know.</p>
 <p>Now, I wonder how many bikes can be parked at each station (as of August 31,2016)?</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-13-1.png" alt="Bar graph showing that most bike stations currently house between 13 an 20 bikes." />
-<p class="caption">Bar graph showing that most bike stations currently house between 13 an 20 bikes.</p>
+<div class="figcaption">Bar graph showing that most bike stations currently house between 13 an 20 bikes.</div>
 </div>
 <p>Well that’s weird, some of the stations have a dock count of 0. I’m assuming they didn’t start that way. Let’s calculate the change in dock count from station installation to August 31, 2016 and plot it on a map.</p>
 <pre class="r"><code>dock_change &lt;- station %&gt;% group_by(station_id) %&gt;% select(station_id, 
@@ -240,9 +241,9 @@ station %&gt;% group_by(install_date) %&gt;% summarise(count = n()) %&gt;%
 <div id="change-in-number-of-bike-docks-per-station" class="section level5">
 <h5>Change in Number of Bike Docks Per Station</h5>
 <p>Any stations with no change in number of docks are not shown here.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-15-1.png" alt="Map of Seattle with different sized and colored dots showing the amount of bikes that have been added or removed from docking stations. Most stations have lost bikes." />
-<p class="caption">Map of Seattle with different sized and colored dots showing the amount of bikes that have been added or removed from docking stations. Most stations have lost bikes.</p>
+<div class="figcaption">Map of Seattle with different sized and colored dots showing the amount of bikes that have been added or removed from docking stations. Most stations have lost bikes.</div>
 </div>
 <p>Wow! Looks like quite a few stations took away bike docks and none gained any. Perhaps those stations weren’t being used very frequently. We’ll have to look at that a bit later.</p>
 </div>
@@ -250,9 +251,9 @@ station %&gt;% group_by(install_date) %&gt;% summarise(count = n()) %&gt;%
 <div id="current-station-size" class="section level4">
 <h4>Current Station Size</h4>
 <p>I’m going to take one quick look at the current size of each station before moving on to the next dataset. <em>Note: I did not include any stations that were closed as of August 31, 2016 in this map</em></p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-16-1.png" alt="Zoomed in map of Seattle with various size dots showing the current station size of all bike stations." />
-<p class="caption">Zoomed in map of Seattle with various size dots showing the current station size of all bike stations.</p>
+<div class="figcaption">Zoomed in map of Seattle with various size dots showing the current station size of all bike stations.</div>
 </div>
 <p>So it looks like the biggest stations tend to be on the outskirts of the rest. Where there are several stations in close proximity, there tend to be fewer bike docks at each station. That makes sense, logically speaking. If you go to a station and there is no bike to rent, you can easily go to another nearby, assuming there is another nearby. In areas where the stations are more secluded, it’s more important that there be bikes and open spaces readily available for users.</p>
 <p>Alright, I’m feeling good about exploring this dataset. Time to check out the trip dataset!</p>
@@ -288,9 +289,9 @@ trip_2 &lt;- trip_2 %&gt;% mutate(stop_date = paste(month(stop_dt),
     day(stop_dt), year(stop_dt), sep = &quot;/&quot;))
 trip_2$stop_date &lt;- mdy(trip_2$stop_date)</code></pre>
 <p>Great! Time to visualize the number of rides per day.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-19-1.png" alt="line graph showing daily fluctuations in the number of trips made per day." />
-<p class="caption">line graph showing daily fluctuations in the number of trips made per day.</p>
+<div class="figcaption">line graph showing daily fluctuations in the number of trips made per day.</div>
 </div>
 <p>Hmm, grouping by day is a little noisy. Perhaps we should try by month?</p>
 <div id="plotting-trips-per-month-by-season" class="section level4">
@@ -299,9 +300,9 @@ trip_2$stop_date &lt;- mdy(trip_2$stop_date)</code></pre>
 <pre class="r"><code>start_date_ym &lt;- trip_2 %&gt;% mutate(ym = paste(year(start_date), 
     month(start_date), sep = &quot;/&quot;))</code></pre>
 <p>Now plot. I think I’ll plot this by month but color it by season (where December, January, and February are “winter”, March, April, and May are “spring”, June, July, August are “summer”, and September, October, November are “autumn”)</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-21-1.png" alt="Line graph showing the number of trips taken per month over the course of the year and colored by season. Trips are highest in the summer, lowest in the winter." />
-<p class="caption">Line graph showing the number of trips taken per month over the course of the year and colored by season. Trips are highest in the summer, lowest in the winter.</p>
+<div class="figcaption">Line graph showing the number of trips taken per month over the course of the year and colored by season. Trips are highest in the summer, lowest in the winter.</div>
 </div>
 <p>Well that intuitively makes sense. The number of trips taken per month increases in the spring, reaches a maximum in the summer, declines through the fall, remains fairly stable in the winter and then repeats.</p>
 </div>
@@ -313,9 +314,9 @@ Trip_Duration_Month &lt;- start_date_ym %&gt;% mutate(trip_duration_min = tripdu
     group_by(ym) %&gt;% select(ym, trip_duration_min) %&gt;% summarise(Avg = mean(trip_duration_min), 
     sd = sd(trip_duration_min)) %&gt;% mutate(se = sd/sqrt(n()))</code></pre>
 <p>Now to plot the average trip duration (in minutes) (plus or minus standard error), with colors indicating season.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-23-1.png" alt="A line graph showing the duration (with standard error error bars) of the average trip per month, colored for each season. Trip durations peak in the summer and are low in the winter." />
-<p class="caption">A line graph showing the duration (with standard error error bars) of the average trip per month, colored for each season. Trip durations peak in the summer and are low in the winter.</p>
+<div class="figcaption">A line graph showing the duration (with standard error error bars) of the average trip per month, colored for each season. Trip durations peak in the summer and are low in the winter.</div>
 </div>
 <p>There’s surprisingly not a huge range in trip durations here.</p>
 <p>The little bit of variation here makes logical sense. Longer trips were being taken in the spring and summer months rather than the fall and winter. It’s also notable that the spring and summer of 2016 may have shown fewer trips than the previous year, show a slight increase in average trip length.</p>
@@ -326,23 +327,23 @@ Trip_Duration_Month &lt;- start_date_ym %&gt;% mutate(trip_duration_min = tripdu
 <p>First, let’s create a Day of the Week variable.</p>
 <pre class="r"><code>trip_2$wd &lt;- wday(trip_2$start_date, label = TRUE)</code></pre>
 <p>Now to plot the total number of trips by day of the week.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-25-1.png" alt="A line graph showing number of trips taken by day of the week. There are slightly more trips taken Monday - Friday." />
-<p class="caption">A line graph showing number of trips taken by day of the week. There are slightly more trips taken Monday - Friday.</p>
+<div class="figcaption">A line graph showing number of trips taken by day of the week. There are slightly more trips taken Monday - Friday.</div>
 </div>
 <p>Ok, so there are definitely more trips during the week than on the weekends. I wonder if this varies by season too.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-26-1.png" alt="Line graph with a line for each season showing the number of trips taken by day of the week. The lines are all pretty consistent within a season, and summer has the highest of all seasons." />
-<p class="caption">Line graph with a line for each season showing the number of trips taken by day of the week. The lines are all pretty consistent within a season, and summer has the highest of all seasons.</p>
+<div class="figcaption">Line graph with a line for each season showing the number of trips taken by day of the week. The lines are all pretty consistent within a season, and summer has the highest of all seasons.</div>
 </div>
 <p>So it looks like usage is relatively consistent across seasons, at least as far as the number of trips are concerned.</p>
 </div>
 <div id="number-of-trips-by-time-of-day" class="section level4">
 <h4>Number of Trips by Time of Day</h4>
 <p>How about time of day? Are people using these around commuting times during the week and later on weekends?</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-27-1.png" alt="Seven, side-by-side graphs one for each day of the week. Each has a separate line for each of the four seasons, showing activity by hour of the day. Weekdays have spikes during rush hour and weekends are consistent throughout the day." />
-<p class="caption">Seven, side-by-side graphs one for each day of the week. Each has a separate line for each of the four seasons, showing activity by hour of the day. Weekdays have spikes during rush hour and weekends are consistent throughout the day.</p>
+<div class="figcaption">Seven, side-by-side graphs one for each day of the week. Each has a separate line for each of the four seasons, showing activity by hour of the day. Weekdays have spikes during rush hour and weekends are consistent throughout the day.</div>
 </div>
 <p>Wow, looks like regardless of the season, people are commuting to/from work using this service (there’s a spike between 8 and 10 AM and another between 4 and 7 PM Monday through Friday). But the weekends seem to be popular between 10 AM and 10 PM.</p>
 </div>
@@ -350,9 +351,9 @@ Trip_Duration_Month &lt;- start_date_ym %&gt;% mutate(trip_duration_min = tripdu
 <h4>Number of Trips by Member Type</h4>
 <p>I wonder if different types of members (those who have a membership vs. those that bought a 24 hour or 3 day pass) vary in the number of trips they take.</p>
 <p>If I were to guess, I’d think the short-term passes would be ideal for tourists or people looking for a quick weekend trip, whereas members may be more likely to continue using the service year-round. Let’s check out my assumptions by plotting, once again colored by season.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-28-1.png" alt="Line graph with 2 lines, one showing the number of trips per month, colored by season, for members, and one showing the number of trips per month, colored by season, for pass holders. The shape is similar, but passholders take fewer trips every month, especially in winter." />
-<p class="caption">Line graph with 2 lines, one showing the number of trips per month, colored by season, for members, and one showing the number of trips per month, colored by season, for pass holders. The shape is similar, but passholders take fewer trips every month, especially in winter.</p>
+<div class="figcaption">Line graph with 2 lines, one showing the number of trips per month, colored by season, for members, and one showing the number of trips per month, colored by season, for pass holders. The shape is similar, but passholders take fewer trips every month, especially in winter.</div>
 </div>
 <p>Surprisingly (to me, at least), different types of users seem to follow similar patterns of usage. Spring and Summer are definitely the most popular times for anyone to ride a bike in the Seattle area.</p>
 </div>
@@ -360,9 +361,9 @@ Trip_Duration_Month &lt;- start_date_ym %&gt;% mutate(trip_duration_min = tripdu
 <h4>Trip Duration by Member Type</h4>
 <p>While it may seem that the trip duration shouldn’t vary widely by member type, a quick look at <a href="https://www.prontocycleshare.com/pricing">Pronto!’s pricing structure</a> may make you reconsider that assumption. You see, while you have to purchase either an annual membership ($85/year), a 24-Hour Pass ($8) or a 3-Day Pass ($16) there is still a cap on the duration of your trip. For members, any ride under 45 minutes is free, but any ride going over 45 minutes will incur a fee of $2 for every additional 30 minutes. For short-term users, any ride under 30 minutes is free, but going over that time limit would cost you an additional $2 for the first 30 minutes and $5 for each additional 30 minutes after that!</p>
 <p>Let’s see if these time limits cause differing behaviors in our users.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-29-1.png" alt="Two side-by-side histograms, showing member and short term pass holder trip duration with a black dotted line indicating the time when fees start accruing. Pass holers take a wider range of trip lengths and pay more fees." />
-<p class="caption">Two side-by-side histograms, showing member and short term pass holder trip duration with a black dotted line indicating the time when fees start accruing. Pass holers take a wider range of trip lengths and pay more fees.</p>
+<div class="figcaption">Two side-by-side histograms, showing member and short term pass holder trip duration with a black dotted line indicating the time when fees start accruing. Pass holers take a wider range of trip lengths and pay more fees.</div>
 </div>
 <p>Ok, so our members are pretty good about making sure that they return their bike before they incur extra charges, but the short-term pass holders frequently go over their time limit. I wonder how the cost of a trip varies for members and pass holders. Let’s try to calculate the cost of a trip.</p>
 <pre class="r"><code>trip_cost &lt;- trip_2 %&gt;% mutate(cost = ifelse(usertype == &quot;Member&quot; &amp; 
@@ -375,9 +376,9 @@ Trip_Duration_Month &lt;- start_date_ym %&gt;% mutate(trip_duration_min = tripdu
         &quot;Short-Term Pass Holder&quot; &amp; tripduration_m &gt; 60, (2 + 
         5 * ((tripduration_m - 60)/30)), &quot;unknown&quot;)))))))</code></pre>
 <p>That was a complicated nested if/else statement! Let’s see how much these folks are paying in additional fees!</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-31-1.png" alt="Two bar graphs side by side, showing member and short-term pass holder fee paying behavior. Short-term pass holders pay more fees." />
-<p class="caption">Two bar graphs side by side, showing member and short-term pass holder fee paying behavior. Short-term pass holders pay more fees.</p>
+<div class="figcaption">Two bar graphs side by side, showing member and short-term pass holder fee paying behavior. Short-term pass holders pay more fees.</div>
 </div>
 <p>Looks like short-term pass holders (who are already paying a higher price per day of biking), are also paying lots of extra fees. This could be because they are unfamiliar with the pricing structure and don’t realize they need to return their bike to a station within 30 minutes without getting charged. It is also possible that short-term users may be tourists who don’t know their way around as easily, and thus can’t find their way to a station within the time limit.</p>
 </div>
@@ -390,9 +391,9 @@ trip_age &lt;- trip_2 %&gt;% mutate(age = year(start_dt) - birthyear)
 
 hist(trip_age$age, main = &quot;Member Age&quot;, xlab = &quot;Number of Riders&quot;, 
     col = &quot;#56B4E9&quot;, breaks = 25)</code></pre>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-32-1.png" alt="Histogram showing that the most riders are in their late 20s to early 30s." />
-<p class="caption">Histogram showing that the most riders are in their late 20s to early 30s.</p>
+<div class="figcaption">Histogram showing that the most riders are in their late 20s to early 30s.</div>
 </div>
 <p>My first instinct here is to say “Wow! There’s a lot of 20 and 30-somethings that use this service!” But this figure (and these data) may be a little misleading. You see, we don’t have any sort of Rider ID number, meaning we can’t take “individual activity level” into account. So we can’t tell if the tallest spike is because 5 very athletic 28-year-olds went on 4,000 trips each, or if 100 people went on 200 trips each, or if there were 20,000 28-year-olds who each only used the service once.</p>
 <p>The same problem would arise if we looked at gender, so I’m just going to move beyond demographics.</p>
@@ -424,9 +425,9 @@ trip_route$stop_long &lt;- station_coord[match(trip_route$to_station_id,
     station_coord$station_id), &quot;long&quot;]</code></pre>
 <p>Great! Now to start looking at routes.</p>
 <p>I’ll start by looking at the possible routes of the very first trip.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-34-1.png" alt="Two side-by-side satellite images of Seattle, each showing a potential bike route from one place to another." />
-<p class="caption">Two side-by-side satellite images of Seattle, each showing a potential bike route from one place to another.</p>
+<div class="figcaption">Two side-by-side satellite images of Seattle, each showing a potential bike route from one place to another.</div>
 </div>
 <p>Cool! So Google Maps API was able to give us two potential routes for this particular trip. We can make a best guess on which trip was taken by determining the trip duration.</p>
 <pre class="r"><code># Converting trip duration to minutes
@@ -444,7 +445,8 @@ trip_route[1, &quot;tripduration&quot;]</code></pre>
 ## 2     B 5.583333</code></pre>
 <p>Hmm, looks like Google estimates those trips should have only taken between 5 and 6 minutes. It is very possible that our user did not go directly from one station to the other. It’s also possible that he got stopped at a few red lights along his route.</p>
 <p>Perhaps this, being the first trip, was a demo of some sort. Let’s check out the last trip that was recorded and see if we still run into the same time disconnect.</p>
-<p><img src="unnamed-chunk-37-1.png" alt="Three side-by-side satellite images of Seattle, each showing a potential bike route from one place to another." /> Well this was certainly a longer ride than the first one we looked at!</p>
+<p><img src="unnamed-chunk-37-1.png" alt="Three side-by-side satellite images of Seattle, each showing a potential bike route from one place to another." />
+Well this was certainly a longer ride than the first one we looked at!</p>
 <p>How long did this trip take?</p>
 <pre class="r"><code>trip_route[nrow(trip_route), &quot;tripduration&quot;]</code></pre>
 <pre><code>## [1] 31.60052</code></pre>
@@ -466,16 +468,16 @@ trip_route[1, &quot;tripduration&quot;]</code></pre>
 <h4>Station Usage</h4>
 <div id="trip-departure" class="section level5">
 <h5>Trip Departure</h5>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-40-1.png" alt="Zoomed in map of Seattle with different sized dots showing the departure of bikes. These are spread throughout the city." />
-<p class="caption">Zoomed in map of Seattle with different sized dots showing the departure of bikes. These are spread throughout the city.</p>
+<div class="figcaption">Zoomed in map of Seattle with different sized dots showing the departure of bikes. These are spread throughout the city.</div>
 </div>
 </div>
 <div id="trip-arrival" class="section level5">
 <h5>Trip Arrival</h5>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-41-1.png" alt="Zoomed in map of Seattle with different sized dots showing the arrival of bikes (or where they were returned at the end of a trip). Most of these are near the coast." />
-<p class="caption">Zoomed in map of Seattle with different sized dots showing the arrival of bikes (or where they were returned at the end of a trip). Most of these are near the coast.</p>
+<div class="figcaption">Zoomed in map of Seattle with different sized dots showing the arrival of bikes (or where they were returned at the end of a trip). Most of these are near the coast.</div>
 </div>
 <p>Great, so it looks like the station that sends the highest number of bikes out and takes the highest number of bikes in is located at Pier 69 / Alaskan Way &amp; Clay Street. Looks like this is pretty close to a few parks and several big tourist attractions.</p>
 <p>Also, if you flip between “Departures” and “Arrivals”, you’ll notice that quite a few bikes are picked up in the Capitol Hill area, but are returned down by the coast. If you’re unfamiliar with Seattle’s topography, Capitol Hill is aptly named because it’s situated on a very steep hill. It makes sense that people would borrow bikes to ride <em>down</em> the hill, but not want to borrow a bike to go back <em>up</em> the hill. Interesting!</p>
@@ -609,31 +611,31 @@ weather$Events &lt;- as.factor(weather$Events)</code></pre>
 <h4>Temperature</h4>
 <div id="minimum" class="section level5">
 <h5>Minimum</h5>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-51-1.png" alt="Line graph showing fluctuating daily minimum temperatures in Seattle" />
-<p class="caption">Line graph showing fluctuating daily minimum temperatures in Seattle</p>
+<div class="figcaption">Line graph showing fluctuating daily minimum temperatures in Seattle</div>
 </div>
 </div>
 <div id="mean" class="section level5">
 <h5>Mean</h5>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-52-1.png" alt="Line graph showing fluctuating daily mean temperatures in Seattle" />
-<p class="caption">Line graph showing fluctuating daily mean temperatures in Seattle</p>
+<div class="figcaption">Line graph showing fluctuating daily mean temperatures in Seattle</div>
 </div>
 </div>
 <div id="maximum" class="section level5">
 <h5>Maximum</h5>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-53-1.png" alt="Line graph showing fluctuating daily maximum temperatures in Seattle" />
-<p class="caption">Line graph showing fluctuating daily maximum temperatures in Seattle</p>
+<div class="figcaption">Line graph showing fluctuating daily maximum temperatures in Seattle</div>
 </div>
 </div>
 </div>
 <div id="events" class="section level4">
 <h4>Events</h4>
-<div class="figure">
-<img src="unnamed-chunk-54-1.png" alt="Bar graph showing that the most common weather events were rain and other" />
-<p class="caption">Bar graph showing that the most common weather events were rain and “other”</p>
+<div class="float">
+<img src="unnamed-chunk-54-1.png" alt="Bar graph showing that the most common weather events were rain and “other”" />
+<div class="figcaption">Bar graph showing that the most common weather events were rain and “other”</div>
 </div>
 </div>
 <div id="combining-weather-and-trip-datasets" class="section level4">
@@ -648,27 +650,27 @@ trip_3$Date &lt;- trip_3$start_date
 # Left join the trip and weather dataframes by date.
 trip_weather &lt;- left_join(trip_3, weather, by = &quot;Date&quot;)</code></pre>
 </div>
-<div id="mean-temperature-vs.number-of-trips" class="section level4">
+<div id="mean-temperature-vs.-number-of-trips" class="section level4">
 <h4>Mean Temperature vs. Number of Trips</h4>
 <p>Ok. Now let’s see how the number of trips per day is influenced by weather (mean temperature, rounded to the nearest 5 degrees F)</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-56-1.png" alt="Line graph showing that the number of trips peaks when temperatures are 60-70 degrees with higher or lower temperatures resulting in fewer rides." />
-<p class="caption">Line graph showing that the number of trips peaks when temperatures are 60-70 degrees with higher or lower temperatures resulting in fewer rides.</p>
+<div class="figcaption">Line graph showing that the number of trips peaks when temperatures are 60-70 degrees with higher or lower temperatures resulting in fewer rides.</div>
 </div>
 <p>So, as expected, there are more trips when the weather is mild but not too warm (over 70F) or too cold (below 50F). However, this figure may be influenced by the overall number of days that exhibited each mean temperature. Let’s try to standardize that.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-57-1.png" alt="Line graph showing that bike rides increased with an increase in temperature, relative to the number of days at each temperature." />
-<p class="caption">Line graph showing that bike rides increased with an increase in temperature, relative to the number of days at each temperature.</p>
+<div class="figcaption">Line graph showing that bike rides increased with an increase in temperature, relative to the number of days at each temperature.</div>
 </div>
 <p>So when we standardize our measurements, correcting for the number of days that actually reached each temperature, we see a steady increase in the number of trips until around 75F where the trend levels off. People are more likely to ride a bike when it’s warm outside.</p>
 </div>
-<div id="precipitation-vs.number-of-trips" class="section level4">
+<div id="precipitation-vs.-number-of-trips" class="section level4">
 <h4>Precipitation vs. Number of Trips</h4>
 <p>If you’ve ever heard of Seattle, you probably hear that it rains all the time there. Let’s see if that has an impact on the number of trips taken in a day.</p>
 <p>We’ll start with a figure standardized for number of days at a precipitation level, rounded to the nearest 0.2 inches.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-58-1.png" alt="Line graph showing that the number of trips dropped as the precipitation level increased." />
-<p class="caption">Line graph showing that the number of trips dropped as the precipitation level increased.</p>
+<div class="figcaption">Line graph showing that the number of trips dropped as the precipitation level increased.</div>
 </div>
 <p>Looks like even Seattleites have a limit when it comes to riding a bike in the rain. The more it rained, the fewer trips were taken per day.</p>
 </div>

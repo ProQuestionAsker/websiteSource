@@ -543,18 +543,18 @@ dogs_5$size_class &lt;- as.factor(dogs_5$size_class)</code></pre>
 <div id="dog-popularity-by-breed" class="section level3">
 <h3>Dog Popularity – By Breed</h3>
 <p>Now let’s look at some visualizations. We’ll start with the popularity of each dog breed within Seattle. This figure shows the top 24 most popular breeds in the city.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-23-1.png" alt="Bar graph showing the most popular dog breeds in Seattle, labradors, chihuahuas, and golden retrievers are the most popular" />
-<p class="caption">Bar graph showing the most popular dog breeds in Seattle, labradors, chihuahuas, and golden retrievers are the most popular</p>
+<div class="figcaption">Bar graph showing the most popular dog breeds in Seattle, labradors, chihuahuas, and golden retrievers are the most popular</div>
 </div>
 <p>Wow! Looks like labrador retrievers are by far the most popular breed of dog in Seattle.</p>
 </div>
 <div id="dog-popularity-by-size" class="section level3">
 <h3>Dog Popularity – By Size</h3>
 <p>How do the numbers of dogs break down by dog size?</p>
-<div class="figure">
-<img src="unnamed-chunk-24-1.png" alt="Bar graph showing the most popular dog sizes in Seattle. The highest number of dogs is considered large, followed by medium, small, giant" />
-<p class="caption">Bar graph showing the most popular dog sizes in Seattle. The highest number of dogs is considered “large”, followed by “medium”, “small”, “giant”</p>
+<div class="float">
+<img src="unnamed-chunk-24-1.png" alt="Bar graph showing the most popular dog sizes in Seattle. The highest number of dogs is considered “large”, followed by “medium”, “small”, “giant”" />
+<div class="figcaption">Bar graph showing the most popular dog sizes in Seattle. The highest number of dogs is considered “large”, followed by “medium”, “small”, “giant”</div>
 </div>
 <p>For a city filled with apartment buildings, Seattle-ites really love large dogs (almost as much as medium and small dogs combined!).</p>
 <p>I wonder if this trend varies depending on which part of the city the pets are living in.</p>
@@ -576,9 +576,9 @@ sum(is.na(dogs_5$zip))</code></pre>
 <pre><code>## [1] 365</code></pre>
 <p>Ok, so there were 365 dog licenses that didn’t list appropriate zip codes. That’s alright, that’s less than 1% of our dataset. Let’s move forward.</p>
 <p><em>It looks like several of the zipcodes listed are “industrial” zip codes. We’ll replace the zip code with the residential zip code that each industrial one falls within.</em></p>
-<div class="figure">
-<img src="unnamed-chunk-26-1.png" alt="Choropleth map showing the dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle“" />
-<p class="caption">Choropleth map showing the dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle“</p>
+<div class="float">
+<img src="unnamed-chunk-26-1.png" alt="Choropleth map showing the dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle”" />
+<div class="figcaption">Choropleth map showing the dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle”</div>
 </div>
 <p>Looks like the highest populations of licensed dogs are found in zipcodes 98115, 98103, and 98117. That corresponds roughly to Northeast Seattle, the area between Fremont and Greenwood, and the Ballard to Crown Hill area. It is certainly possible that the high dog populations in those areas could be correlated with the human population in the same areas. Let’s see how many licensed dogs there are per person in these areas.</p>
 <p><em>Human Population Data Obtained <a href="http://zipatlas.com/us/wa/seattle/zip-code-comparison/population-density.htm">Here</a></em></p>
@@ -605,9 +605,9 @@ pop_zip_2 &lt;- rename(pop_zip_2, value = dog_human)
 # Plot
 zip_choropleth(pop_zip_2, zip_zoom = (pop_zip_2$region), legend = &quot;Dog:Human Ratio&quot;, 
     reference_map = TRUE, num_colors = 1)</code></pre>
-<div class="figure">
-<img src="unnamed-chunk-27-1.png" alt="Choropleth map showing the dog population per human in various zip codes throughout Seattle. The highest proportions are in central Seattle“" />
-<p class="caption">Choropleth map showing the dog population per human in various zip codes throughout Seattle. The highest proportions are in central Seattle“</p>
+<div class="float">
+<img src="unnamed-chunk-27-1.png" alt="Choropleth map showing the dog population per human in various zip codes throughout Seattle. The highest proportions are in central Seattle”" />
+<div class="figcaption">Choropleth map showing the dog population per human in various zip codes throughout Seattle. The highest proportions are in central Seattle”</div>
 </div>
 <p>Generally speaking, central Seattle has a higher “Licensed Dogs : People” Ratio than the neighborhoods along the north and south edges. The highest proportion is found in zipcode 98117 or the Ballard to Crown Hill area with roughly 1 licensed dog for every 10 people. That is a residential area with lots of homes and fewer apartment buildings than the downtown-area.</p>
 <p>I wonder if there are more large dogs in those house-filled areas and small dogs in apartment-laden areas. Let’s map dog populations by their size.</p>
@@ -617,30 +617,30 @@ zip_choropleth(pop_zip_2, zip_zoom = (pop_zip_2$region), legend = &quot;Dog:Huma
 <h3>Dog Populations by Size</h3>
 <div id="small" class="section level4">
 <h4>Small</h4>
-<div class="figure">
-<img src="unnamed-chunk-28-1.png" alt="Choropleth map showing the small dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in downtown Seattle“" />
-<p class="caption">Choropleth map showing the small dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in downtown Seattle“</p>
+<div class="float">
+<img src="unnamed-chunk-28-1.png" alt="Choropleth map showing the small dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in downtown Seattle”" />
+<div class="figcaption">Choropleth map showing the small dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in downtown Seattle”</div>
 </div>
 </div>
 <div id="medium" class="section level4">
 <h4>Medium</h4>
-<div class="figure">
-<img src="unnamed-chunk-29-1.png" alt="Choropleth map showing the medium dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle“" />
-<p class="caption">Choropleth map showing the medium dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle“</p>
+<div class="float">
+<img src="unnamed-chunk-29-1.png" alt="Choropleth map showing the medium dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle”" />
+<div class="figcaption">Choropleth map showing the medium dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle”</div>
 </div>
 </div>
 <div id="large" class="section level4">
 <h4>Large</h4>
-<div class="figure">
-<img src="unnamed-chunk-30-1.png" alt="Choropleth map showing the large dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle“" />
-<p class="caption">Choropleth map showing the large dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle“</p>
+<div class="float">
+<img src="unnamed-chunk-30-1.png" alt="Choropleth map showing the large dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle”" />
+<div class="figcaption">Choropleth map showing the large dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern Seattle”</div>
 </div>
 </div>
 <div id="giant" class="section level4">
 <h4>Giant</h4>
-<div class="figure">
-<img src="unnamed-chunk-31-1.png" alt="Choropleth map showing the giant dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern and southern Seattle“" />
-<p class="caption">Choropleth map showing the giant dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern and southern Seattle“</p>
+<div class="float">
+<img src="unnamed-chunk-31-1.png" alt="Choropleth map showing the giant dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern and southern Seattle”" />
+<div class="figcaption">Choropleth map showing the giant dog population compared to the entire dog population in various zip codes throughout Seattle. the highest proportions are in northern and southern Seattle”</div>
 </div>
 </div>
 </div>
@@ -670,9 +670,9 @@ names &lt;- tm_map(names, content_transformer(tolower))
 wordcloud(names, scale = c(5, 0.2), max.words = 150, random.order = FALSE, 
     rot.per = 0.35, use.r.layout = TRUE, colors = brewer.pal(6, 
         &quot;Greens&quot;)[c(4, 5, 6, 7, 8, 9)])</code></pre>
-<div class="figure">
-<img src="unnamed-chunk-32-1.png" alt="Word cloud of dog names. Some of the largest include Lucy, Charlie, Null, Daisy, dog, buddy, and bella“" />
-<p class="caption">Word cloud of dog names. Some of the largest include Lucy, Charlie, Null, Daisy, dog, buddy, and bella“</p>
+<div class="float">
+<img src="unnamed-chunk-32-1.png" alt="Word cloud of dog names. Some of the largest include Lucy, Charlie, Null, Daisy, dog, buddy, and bella”" />
+<div class="figcaption">Word cloud of dog names. Some of the largest include Lucy, Charlie, Null, Daisy, dog, buddy, and bella”</div>
 </div>
 <p>Oops! Looks like a few of those are probably not real names. We’ll go ahead and remove “dog”, “null”, “altered”, “female”, “male”, “labrador”, “retriever”, “year”, and “seattle” from the wordcloud.</p>
 <pre class="r"><code># Remove non-names
@@ -683,9 +683,9 @@ names_2 &lt;- tm_map(names, removeWords, c(&quot;dog&quot;, &quot;null&quot;, &q
 wordcloud(names_2, scale = c(5, 0.2), max.words = 150, random.order = FALSE, 
     rot.per = 0.25, use.r.layout = TRUE, colors = brewer.pal(6, 
         &quot;Greens&quot;)[c(4, 5, 6, 7, 8, 9)])</code></pre>
-<div class="figure">
-<img src="unnamed-chunk-33-1.png" alt="Word cloud of dog names after removing non-names. Some of the largest include Lucy, Charlie, Bella, Daisy“" />
-<p class="caption">Word cloud of dog names after removing non-names. Some of the largest include Lucy, Charlie, Bella, Daisy“</p>
+<div class="float">
+<img src="unnamed-chunk-33-1.png" alt="Word cloud of dog names after removing non-names. Some of the largest include Lucy, Charlie, Bella, Daisy”" />
+<div class="figcaption">Word cloud of dog names after removing non-names. Some of the largest include Lucy, Charlie, Bella, Daisy”</div>
 </div>
 <p>Wow! Lucy looks like the clear winner here!</p>
 <p>Looks like some other well-known dog names (like Buddy) are pretty common in Seattle. How about “Rover”?</p>

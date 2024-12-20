@@ -112,30 +112,30 @@ full[factor_variables] &lt;- lapply(full[factor_variables], function(x) as.facto
 <h3>Distribution of Continuous Variables by Creature Type</h3>
 <div id="bone-length" class="section level4">
 <h4>Bone Length</h4>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-6-1.png" alt="Box and whisker plot showing that Goblin bone length is roughly overlapping ghost and ghoul bone length" />
-<p class="caption">Box and whisker plot showing that Goblin bone length is roughly overlapping ghost and ghoul bone length</p>
+<div class="figcaption">Box and whisker plot showing that Goblin bone length is roughly overlapping ghost and ghoul bone length</div>
 </div>
 </div>
 <div id="rotting-flesh" class="section level4">
 <h4>Rotting Flesh</h4>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-7-1.png" alt="Box and whisker plot showing that all 3 monsters have similar amounts of rotting flesh with Ghost being slightly higher and Goblin being slightly lower than the rest." />
-<p class="caption">Box and whisker plot showing that all 3 monsters have similar amounts of rotting flesh with Ghost being slightly higher and Goblin being slightly lower than the rest.</p>
+<div class="figcaption">Box and whisker plot showing that all 3 monsters have similar amounts of rotting flesh with Ghost being slightly higher and Goblin being slightly lower than the rest.</div>
 </div>
 </div>
 <div id="hair-length" class="section level4">
 <h4>Hair Length</h4>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-8-1.png" alt="Box and whisker plot showing that Ghosts have much shorter hair than either goblins or ghouls." />
-<p class="caption">Box and whisker plot showing that Ghosts have much shorter hair than either goblins or ghouls.</p>
+<div class="figcaption">Box and whisker plot showing that Ghosts have much shorter hair than either goblins or ghouls.</div>
 </div>
 </div>
 <div id="soul" class="section level4">
 <h4>Soul</h4>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-9-1.png" alt="Box and whisker plot showing that Ghouls have the most soul (followed by Goblins, then ghosts)" />
-<p class="caption">Box and whisker plot showing that Ghouls have the most soul (followed by Goblins, then ghosts)</p>
+<div class="figcaption">Box and whisker plot showing that Ghouls have the most soul (followed by Goblins, then ghosts)</div>
 </div>
 </div>
 </div>
@@ -143,23 +143,23 @@ full[factor_variables] &lt;- lapply(full[factor_variables], function(x) as.facto
 <h3>Distribution of Color by Creature Type</h3>
 <div id="ghost" class="section level4">
 <h4>Ghost</h4>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-10-1.png" alt="Bar graph showing that most ghosts are either white, clear, or black in that order." />
-<p class="caption">Bar graph showing that most ghosts are either white, clear, or black in that order.</p>
+<div class="figcaption">Bar graph showing that most ghosts are either white, clear, or black in that order.</div>
 </div>
 </div>
 <div id="ghoul" class="section level4">
 <h4>Ghoul</h4>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-11-1.png" alt="Bar graph showing that most ghouls are either white, clear, or black, in that order." />
-<p class="caption">Bar graph showing that most ghouls are either white, clear, or black, in that order.</p>
+<div class="figcaption">Bar graph showing that most ghouls are either white, clear, or black, in that order.</div>
 </div>
 </div>
 <div id="goblin" class="section level4">
 <h4>Goblin</h4>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-12-1.png" alt="Bar graph showing that most goblins are either clear, white, black, or green, in that order." />
-<p class="caption">Bar graph showing that most goblins are either clear, white, black, or green, in that order.</p>
+<div class="figcaption">Bar graph showing that most goblins are either clear, white, black, or green, in that order.</div>
 </div>
 </div>
 </div>
@@ -174,15 +174,15 @@ full[factor_variables] &lt;- lapply(full[factor_variables], function(x) as.facto
 <p>Maybe I’m missing some interesting connection between variables?</p>
 <pre class="r"><code>pairs(full[, 2:5], col = full$type, labels = c(&quot;Bone Length&quot;, 
     &quot;Rotting Flesh&quot;, &quot;Hair Length&quot;, &quot;Soul&quot;))</code></pre>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-13-1.png" alt="Matrix of overlapping dots showing little to no separation between ghosts, goblins, and ghouls based on bone length, rotting flesh, hair length, or soul percentage." />
-<p class="caption">Matrix of overlapping dots showing little to no separation between ghosts, goblins, and ghouls based on bone length, rotting flesh, hair length, or soul percentage.</p>
+<div class="figcaption">Matrix of overlapping dots showing little to no separation between ghosts, goblins, and ghouls based on bone length, rotting flesh, hair length, or soul percentage.</div>
 </div>
 <p>Nope. But perhaps we can take advantage of a combination of characteristics that do seem to show some promise: most notably “Hair Length” and “Soul”. Do we get any better separation among creatures if we combine these variables into one?</p>
 <pre class="r"><code>full &lt;- full %&gt;% mutate(hair_soul = hair_length * has_soul)</code></pre>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-15-1.png" alt="Box and whisker plot showing that combining hair length and soul amount allows for a more clean separation of ghosts from goblins and ghouls." />
-<p class="caption">Box and whisker plot showing that combining hair length and soul amount allows for a more clean separation of ghosts from goblins and ghouls.</p>
+<div class="figcaption">Box and whisker plot showing that combining hair length and soul amount allows for a more clean separation of ghosts from goblins and ghouls.</div>
 </div>
 <p>That may have separated Ghosts a little further from the other two… Let’s try a few more variable interactions.</p>
 <pre class="r"><code>full &lt;- full %&gt;% mutate(bone_flesh = bone_length * rotting_flesh, 
@@ -279,9 +279,9 @@ full2$Dataset &lt;- NULL
 # Perform k-means clustering with 3 clusters, repeat 30 times
 creature_km_1 &lt;- kmeans(full2, 3, nstart = 30)</code></pre>
 <p>Ok, so now we have clusters, time to see how well they did. Let’s look at them graphically first. This was created using the <code>plotcluster()</code> function from the <code>fpc</code> package.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-19-1.png" alt="Overlapping groups of red number 2s, green 3s, and black 1s" />
-<p class="caption">Overlapping groups of red number 2s, green 3s, and black 1s</p>
+<div class="figcaption">Overlapping groups of red number 2s, green 3s, and black 1s</div>
 </div>
 <p>Hmm, those clusters don’t look very discrete. Let’s look at <a href="https://en.wikipedia.org/wiki/Dunn_index">Dunn’s Index</a> mathematically to see if we’re missing something visually. This calculation comes from the <code>dunn</code> function in the <code>clValid</code> package.</p>
 <pre class="r"><code>dunn_ckm_1 &lt;- dunn(clusters = creature_km_1$cluster, Data = full2)
@@ -324,9 +324,9 @@ rf_model &lt;- train(type ~ bone_length + rotting_flesh + hair_length +
     flesh_hair + flesh_soul, tuneLength = 3, data = train_complete, 
     method = &quot;ranger&quot;, trControl = myControl, importance = &quot;impurity&quot;)</code></pre>
 <p>Let’s look at the levels of importance of each factor in this model.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-25-1.png" alt="Bar graph showing that the combination of hair &amp; soul, combo of bone &amp; hair, and rotting flesh are the most influential on the model" />
-<p class="caption">Bar graph showing that the combination of hair &amp; soul, combo of bone &amp; hair, and rotting flesh are the most influential on the model</p>
+<div class="figcaption">Bar graph showing that the combination of hair &amp; soul, combo of bone &amp; hair, and rotting flesh are the most influential on the model</div>
 </div>
 <p>Huh. Our “hair_soul” variable seems to be the most important to this model and our other interactions rank pretty highly. I suppose we can hold on to them for now. Color, on the other hand, hardly plays into this. Let’s try removing it from a second random forest model.</p>
 <pre class="r"><code>set.seed(10)
@@ -389,9 +389,9 @@ summary(resampled)</code></pre>
 ## glmnet2 0.5260  0.5555 0.6254 0.6321  0.6758 0.7965    0</code></pre>
 <pre class="r"><code># Plot the differences between model fits
 dotplot(resampled, metric = &quot;Accuracy&quot;)</code></pre>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-29-1.png" alt="Dot plot showing that the second glmnet has the highest accuracy." />
-<p class="caption">Dot plot showing that the second glmnet has the highest accuracy.</p>
+<div class="figcaption">Dot plot showing that the second glmnet has the highest accuracy.</div>
 </div>
 </div>
 </div>

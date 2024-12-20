@@ -580,7 +580,7 @@ fcc_df2$.id &lt;- as.factor(fcc_df2$.id)</code></pre>
 ## [460] &quot;Zipline: Use the Twitch.tv JSON API&quot;                                       
 ## [461] &quot;Zipline: Use the Twitchtv JSON API&quot;                                        
 ## [462] &quot;Zipline: Wikipedia Viewer&quot;</code></pre>
-<p>Wow! So 462 challenges. A quick skim of the levels indicate that these data are pretty clean but it’s hard to tell if there are duplicates. There are definitely some NA values, and some labelled as “”. I’m going to remove those from this dataset.</p>
+<p>Wow! So 462 challenges. A quick skim of the levels indicate that these data are pretty clean but it’s hard to tell if there are duplicates. There are definitely some NA values, and some labelled as ““. I’m going to remove those from this dataset.</p>
 <pre class="r"><code>fcc_df3 &lt;- fcc_df2 %&gt;% filter(!is.na(name)) %&gt;% filter(!name == 
     &quot;&quot;) %&gt;% droplevels()
 
@@ -628,17 +628,17 @@ fcc_all$completedDate &lt;- as.POSIXct((fcc_all$completedDate),
 <p>Perfect. Were all the dates coded correctly?</p>
 <p>Let’s see if any entries are recorded as being completed before FCC launched in October 2014.</p>
 <pre class="r"><code>wrong_dates &lt;- fcc_all %&gt;% 
-            filter(completedDate &lt; &quot;2014-10-01&quot;)</code></pre>
+			filter(completedDate &lt; &quot;2014-10-01&quot;)</code></pre>
 <p>Oops! 19 of our entries have incorrectly coded dates. We’ll remove those from the dataset.</p>
 <pre class="r"><code>fcc_all &lt;- fcc_all %&gt;% 
-           filter(completedDate &gt; &quot;2014-10-01&quot;)</code></pre>
+	       filter(completedDate &gt; &quot;2014-10-01&quot;)</code></pre>
 <p>Do we have any NA values in our completedDate column? If so, we’ll remove those as well.</p>
 <pre class="r"><code># Count NA
 sum(is.na(fcc_all$completedDate))</code></pre>
 <pre><code>## [1] 0</code></pre>
 <pre class="r"><code># Remove NA
 fcc_all &lt;- fcc_all %&gt;% 
-           filter(!is.na(completedDate))</code></pre>
+	       filter(!is.na(completedDate))</code></pre>
 <p>Ok, so far so good. Let’s take another quick look at our structure.</p>
 <pre class="r"><code>str(fcc_all)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    7216723 obs. of  5 variables:
@@ -665,7 +665,7 @@ fcc_all &lt;- fcc_all %&gt;%
 <p>We’ll look at one student first:</p>
 <p><em>I chose the second student because that student only completed 25 courses, a much more reasonable starting-point than the 226 completed by student #1</em></p>
 <pre class="r"><code>second_student &lt;- fcc_all %&gt;% 
-                 filter(.id == &quot;2&quot;)
+			     filter(.id == &quot;2&quot;)
 
 second_student</code></pre>
 <pre><code>##    .id type                             course       completedDate
@@ -722,14 +722,14 @@ second_student</code></pre>
 ## 25 function meetBonfire(argument) {\n  // Good luck!\n  console.log(&quot;you can read this function&#39;s argument in the developer tools&quot;, argument);\n\n  return true;\n}\n\n\n\nmeetBonfire(&quot;You can do this!&quot;);</code></pre>
 <p>So the second student in our list completed 25 courses. I’m going to try extracting the information I want on this sub-sample first to ensure that it’s behaving the way I’d expect before using it to generate information for 102,000 students.</p>
 <pre class="r"><code>second_student_2 &lt;- second_student %&gt;% 
-        group_by(.id) %&gt;% 
-        arrange(completedDate) %&gt;% 
-            mutate(st_cour_num = rank(completedDate), 
-                time_since_last = completedDate - lag(completedDate), 
-                from_type = lag(type), 
-                from_course = lag(course), 
-                        to_type = lead(type), 
-                to_course = lead(course))
+		group_by(.id) %&gt;% 
+		arrange(completedDate) %&gt;% 
+    		mutate(st_cour_num = rank(completedDate), 
+			    time_since_last = completedDate - lag(completedDate), 
+			    from_type = lag(type), 
+			    from_course = lag(course), 
+        			    to_type = lead(type), 
+			    to_course = lead(course))
 
 head(second_student_2)</code></pre>
 <pre><code>## Source: local data frame [6 x 11]
@@ -748,18 +748,18 @@ head(second_student_2)</code></pre>
 ## #   to_type &lt;fctr&gt;, to_course &lt;fctr&gt;</code></pre>
 <p>Great! That works just as we’d expect. Let’s make sure it doesn’t do anything strange when there are more than one student.</p>
 <pre class="r"><code>second_third &lt;- fcc_all %&gt;% 
-             filter(.id %in% c(&quot;2&quot;, &quot;3&quot;)) %&gt;% 
-                 group_by(.id) %&gt;% 
-             arrange(completedDate) %&gt;% 
-             mutate(st_cour_num = rank(completedDate, ties.method = &quot;first&quot;), 
-                     time_since_last = completedDate - lag(completedDate), 
-                     from_type = lag(type), 
-                     from_course = lag(course), 
-                     to_type = lead(type), 
-                     to_course = lead(course))
+			 filter(.id %in% c(&quot;2&quot;, &quot;3&quot;)) %&gt;% 
+    			 group_by(.id) %&gt;% 
+			 arrange(completedDate) %&gt;% 
+			 mutate(st_cour_num = rank(completedDate, ties.method = &quot;first&quot;), 
+			 	     time_since_last = completedDate - lag(completedDate), 
+				     from_type = lag(type), 
+				     from_course = lag(course), 
+				     to_type = lead(type), 
+				     to_course = lead(course))
 
 second_third &lt;- second_third %&gt;% 
-             arrange(.id, st_cour_num)</code></pre>
+			 arrange(.id, st_cour_num)</code></pre>
 <p>So far so good. Let’s check rows 25 - 27 to make sure our counts started over again with a new student.</p>
 <pre class="r"><code>second_third[25:27, c(&quot;.id&quot;, &quot;st_cour_num&quot;)]</code></pre>
 <pre><code>## Source: local data frame [3 x 2]
@@ -787,7 +787,7 @@ course_table2 &lt;- as.data.frame(course_table2)</code></pre>
 <li>What number course is this inside each section and inside the entire map?</li>
 </ul>
 <pre class="r"><code>course_table3 &lt;- course_table2 %&gt;% 
-    mutate(section = ifelse(row_number() %in% 1:5, &quot;Getting Started&quot;, 
+	mutate(section = ifelse(row_number() %in% 1:5, &quot;Getting Started&quot;, 
 ifelse(row_number() %in% 6:73, &quot;HTML5 and CSS&quot;, 
     ifelse(row_number() %in% 74:104, &quot;Responsive Design with Bootstrap&quot;, 
         ifelse(row_number() %in% 105:108, &quot;Gear up for Success&quot;, 
@@ -847,7 +847,7 @@ course_table4$course &lt;- gsub(&quot;\\s$&quot;, &quot;&quot;, course_table4$co
 <p>Ok, any other non-matches come from errors in our original dataset or courses whose name was different (or that no longer existed) when this dataset was published.</p>
 <p>Here are a few quick fixes to the original dataset.</p>
 <pre class="r"><code>fcc_all2 &lt;- fcc_all %&gt;% 
-        mutate(course = recode(course, `Add Font Awesome Icons all of our Buttons` = &quot;Add Font Awesome Icons to all of our Buttons&quot;), 
+		mutate(course = recode(course, `Add Font Awesome Icons all of our Buttons` = &quot;Add Font Awesome Icons to all of our Buttons&quot;), 
     course = gsub(&quot;Pintrest&quot;, &quot;Pinterest&quot;, course), course = gsub(&quot;Node(\\s)js|Nodejs&quot;, 
         &quot;Node\\.js&quot;, course), course = gsub(&quot;Build Web Apps with Expressjs|Build Web Apps with Express\\.js|Build Web Apps with Express js&quot;, 
         &quot;Build Web Apps with Express\\.js&quot;, course), course = recode(course, 
@@ -948,8 +948,8 @@ sc_full3 &lt;- rename(sc_full3, type = type.y)</code></pre>
 </ul>
 <pre class="r"><code># Separate out first courses
 first &lt;- sc_full4 %&gt;% 
-       filter(st_cour_num == 1) %&gt;% 
-       droplevels()
+	   filter(st_cour_num == 1) %&gt;% 
+	   droplevels()
 
 # How many different courses were the first ones taken?
 length(unique(sc_full4))</code></pre>
@@ -966,8 +966,9 @@ fig1 &lt;- hchart(first_2, &quot;column&quot;, x = course, y = n, zoomType = &qu
     hc_chart(zoomType = &quot;x&quot;)
 
 fig1</code></pre>
-<p><img src="figure1.png" alt="Bar graph showing how many students have taken each course. The course Learn how FCC works is the most popular" /><br />
-<em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
+<p><img src="figure1.png" alt="Bar graph showing how many students have taken each course. The course “Learn how FCC works” is the most popular" /><br />
+</p>
+<p><em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
 <p>So about 48% of users start with the very first course in the curriculum “Learn How Free Code Camp Works”, another 10% skip straight to the first course in the “HTML5 and CSS” section to start their FCC journey. The remaining 42% of users started their first class on random courses throughout the curriculum.</p>
 </div>
 <div id="which-classes-are-the-most-popular" class="section level3">
@@ -979,9 +980,9 @@ fig1</code></pre>
 </ul></li>
 </ul>
 <pre class="r"><code>pop_fig &lt;- sc_full4 %&gt;% 
-        group_by(overallnum, section, course) %&gt;% 
-            summarise(count = n()) %&gt;% 
-        arrange(overallnum) %&gt;% ungroup()
+		group_by(overallnum, section, course) %&gt;% 
+    		summarise(count = n()) %&gt;% 
+		arrange(overallnum) %&gt;% ungroup()
 
 
 # Plot
@@ -991,24 +992,25 @@ fig2 &lt;- hchart(pop_fig, &quot;column&quot;, x = course, y = count, color = se
     hc_yAxis(title = list(text = &quot;Number of Students&quot;), max = 1e+05) %&gt;% 
     hc_chart(zoomType = &quot;xy&quot;) %&gt;% 
     hc_tooltip(headerFormat = &quot;&quot;, 
-        pointFormat = &quot;&lt;b&gt;Class: {point.course}&lt;/b&gt; &lt;br&gt;
-        Section: {point.section}&lt;br&gt;
-        Number of Students: {point.y}&quot;)
+    	pointFormat = &quot;&lt;b&gt;Class: {point.course}&lt;/b&gt; &lt;br&gt;
+    	Section: {point.section}&lt;br&gt;
+    	Number of Students: {point.y}&quot;)
 
 fig2</code></pre>
 <p><img src="figure2.png" alt="Bar graph showing how many students have taken in the order that the courses are offered. The first video in each section appears to be most popular and then attendance drops off for subsequent classes" /><br />
-<em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
+</p>
+<p><em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
 <p>It definitely seems like the courses offered earlier in the curriculum are completed more frequently than courses offered later in the curriculum. There is also a spike in course completion at the beginning of the “HTML5 and CSS” and “Responsive Design with Boostrap” sections that declines throughout the course section. In the latter, that drop-off seems to happen sharply after the course “Line up Form Elements Responsively with Bootstrap” where almost 11,000 did not complete the next course.</p>
 <p>I wonder how the amount of time spent on courses changes throughout the curriculum, as courses (theoretically) get more difficult.</p>
 <p><em>For this figure, I eliminated all course completion times that were over 1,210,000 seconds (14 days).</em></p>
 <pre class="r"><code>time_spent &lt;- sc_full4 %&gt;% 
-            group_by(overallnum, section, course) %&gt;% 
-                filter(!is.na(time_since_last)) %&gt;% 
-            filter(time_since_last &lt; 1210000) %&gt;% 
-            mutate(time_since_last_m = time_since_last/60) %&gt;% 
-                summarise(median = median(time_since_last_m), 
-                      mean = mean(time_since_last_m), 
-                              sd = sd(time_since_last_m))
+			group_by(overallnum, section, course) %&gt;% 
+    			filter(!is.na(time_since_last)) %&gt;% 
+			filter(time_since_last &lt; 1210000) %&gt;% 
+			mutate(time_since_last_m = time_since_last/60) %&gt;% 
+    			summarise(median = median(time_since_last_m), 
+					  mean = mean(time_since_last_m), 
+        					  sd = sd(time_since_last_m))
 
 fig3 &lt;- hchart(time_spent, &quot;column&quot;, x = course, y = mean, color = section) %&gt;% 
     hc_title(text = &quot;Average Time for Course Completion&quot;) %&gt;% 
@@ -1021,7 +1023,8 @@ fig3 &lt;- hchart(time_spent, &quot;column&quot;, x = course, y = mean, color = 
 
 fig3</code></pre>
 <p><img src="figure3.png" alt="Bar graph showing the average time for course completion (in minutes) not including their first class." /><br />
-<em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
+</p>
+<p><em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
 <p>The class that took the longest to complete (“Claim Your Backend Development Certificate” with average 6845 minutes or 4.75 days) is the last and one of the least popular courses in the curriculum. It is possible that students completed all of the other courses and returned to FCC days later to claim their certificate.</p>
 <p>The next courses that took the longest to complete were:</p>
 <ul>
@@ -1037,16 +1040,16 @@ fig3</code></pre>
 <p>Originally, I planned to depict student flow through the various FCC courses using a <a href="https://en.wikipedia.org/wiki/Sankey_diagram">Sankey plot</a>, but with so many courses in the curriculum this did not seem like a good option. I decided to visualize student course map as a network using the <code>igraph</code> and <code>highcharter</code> packages. Below, color indicates the section of each course, connections indicate flow of students from one course to another and the thickness of each connection indicates how many students followed that path. The size of each circle indicates how many students have taken each course.</p>
 <p><em>Hover over any point for more information and zoom in on sections for clearer detail</em></p>
 <pre class="r"><code>nodes &lt;- sc_full4 %&gt;% 
-        group_by(course, section, overallnum) %&gt;% 
-            summarise(count = n()) %&gt;% 
-        ungroup()
+		group_by(course, section, overallnum) %&gt;% 
+    		summarise(count = n()) %&gt;% 
+		ungroup()
 
 edges &lt;- sc_full4 %&gt;% 
-        group_by(from_course, to_course) %&gt;% 
-        summarise(weight = n()) %&gt;% 
-            filter(!is.na(to_course), !is.na(from_course)) %&gt;% 
-        ungroup() %&gt;% 
-            filter(weight &gt; 200)
+		group_by(from_course, to_course) %&gt;% 
+		summarise(weight = n()) %&gt;% 
+    		filter(!is.na(to_course), !is.na(from_course)) %&gt;% 
+		ungroup() %&gt;% 
+    		filter(weight &gt; 200)
         
 
 # Make graph object
@@ -1063,7 +1066,8 @@ fig4 &lt;- hchart(net, minSize = 3, maxSize = 20, layout = layout_nicely)
 
 fig4</code></pre>
 <p><img src="figure4.png" alt="Network graph showing student flow throughout the FCC courses" /><br />
-<em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
+</p>
+<p><em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
 <p>There are several notable things about this figure:</p>
 <ul>
 <li>The “Getting Started” section is the “jumping off point” for many different tracks</li>
@@ -1084,42 +1088,43 @@ fig4</code></pre>
 <h3>How many courses do students take?</h3>
 <p>Given that there are 344 courses in the curriculum map that match the courses that these students have taken, how many does each student generally take?</p>
 <pre class="r"><code>student_courses &lt;- sc_full4 %&gt;% 
-        group_by(.id) %&gt;% 
-        mutate(time = as.numeric(time_since_last, units = &quot;mins&quot;)) %&gt;% 
-        summarise(count = n(), 
-            total_time = sum(time, na.rm = TRUE), 
-            median_time = median(time, na.rm = TRUE), 
-                average_time = mean(time, na.rm = TRUE)) %&gt;% 
-            mutate(time_per_class = (total_time/count)) %&gt;% 
-                filter(count &gt; 0)
+		group_by(.id) %&gt;% 
+		mutate(time = as.numeric(time_since_last, units = &quot;mins&quot;)) %&gt;% 
+		summarise(count = n(), 
+			total_time = sum(time, na.rm = TRUE), 
+			median_time = median(time, na.rm = TRUE), 
+    			average_time = mean(time, na.rm = TRUE)) %&gt;% 
+			mutate(time_per_class = (total_time/count)) %&gt;% 
+    			filter(count &gt; 0)
 
 fig5 &lt;- hchart(student_courses$count) %&gt;% 
-    hc_title(text = &quot;Number of Courses Completed&quot;) %&gt;% 
-    hc_chart(zoomType = &quot;xy&quot;) %&gt;% 
-    hc_xAxis(title = list(text = &quot;Number of Completed Courses&quot;)) %&gt;% 
-    hc_yAxis(title = list(text = &quot;Number of Students&quot;), max = 35000) %&gt;% 
-    hc_legend(enabled = FALSE)
+	hc_title(text = &quot;Number of Courses Completed&quot;) %&gt;% 
+	hc_chart(zoomType = &quot;xy&quot;) %&gt;% 
+	hc_xAxis(title = list(text = &quot;Number of Completed Courses&quot;)) %&gt;% 
+   	hc_yAxis(title = list(text = &quot;Number of Students&quot;), max = 35000) %&gt;% 
+   	hc_legend(enabled = FALSE)
 
 fig5</code></pre>
 <p><img src="figure5.png" alt="Bar graph showing the number of courses completed per student. The vast majority of students only complete one class." /><br />
-<em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
+</p>
+<p><em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
 <p>Wow! There’s a few things to point out here:</p>
 <ul>
 <li>The highest number of students (33,563 or 33% of students) completed only between 1 and 5 courses.</li>
 <li>The highest number of courses completed is 775! Since we’re only looking at 344 courses here, that’s a bit surprising. That student would have needed to complete almost every course twice! Is that the only student who has taken courses more than once?</li>
 </ul>
 <pre class="r"><code>multi_class &lt;- student_courses %&gt;% 
-            filter(count &gt; 344)
+			filter(count &gt; 344)
 
 nrow(multi_class)</code></pre>
 <pre><code>## [1] 219</code></pre>
 <p>219 students have taken more than the offered 344 courses and thus must have repeated some! It’s possible that the other students have repeated some courses too. I’ll come back to <a href="#which-courses-tend-to-be-repeated-by-students">that</a>.</p>
 </div>
-<div id="can-you-group-students-based-on-the-number-of-classes-they-take-vs.the-amount-of-time-they-spend-per-class" class="section level3">
+<div id="can-you-group-students-based-on-the-number-of-classes-they-take-vs.-the-amount-of-time-they-spend-per-class" class="section level3">
 <h3>Can you group students based on the number of classes they take vs. the amount of time they spend per class?</h3>
 <p>The FCC folks who released this dataset seem interested in ways to group their students. I’m curious if this can be done by looking at the number of courses students have completed in comparison to the amount of time spent per course. Do students who complete classes more quickly tend to burn out quickly and ultimately take fewer courses?</p>
 <pre class="r"><code>student_courses2 &lt;- student_courses %&gt;% 
-        filter(count &gt; 1)
+		filter(count &gt; 1)
 
 
 ggplot(student_courses2, aes(x = count, y = median_time)) + geom_point(alpha = 1/4) + 
@@ -1129,14 +1134,14 @@ ggplot(student_courses2, aes(x = count, y = median_time)) + geom_point(alpha = 1
 <p>This figure is a little overwhelmed with outliers who spent a very long time completing few courses.</p>
 <p>I’d like to see what this looks like if students don’t take breaks between classes, so I’m going to remove any entries where the time to complete the course was greater than 14 days.</p>
 <pre class="r"><code>student_no_break &lt;- sc_full4 %&gt;% 
-        filter(overallnum &gt; 5) %&gt;% group_by(.id) %&gt;% 
-            mutate(time = as.numeric(time_since_last, units = &quot;mins&quot;)) %&gt;% 
-            summarise(count = n(), total_time = sum(time, na.rm = TRUE), 
-                    median_time = median(time, na.rm = TRUE), 
-            average_time = mean(time, na.rm = TRUE), 
-            max_time = max(time, na.rm = TRUE)) %&gt;% 
-            filter(count &gt; 1, max_time &lt; 20160) %&gt;% 
-        mutate(time_per_class = (total_time/count))
+		filter(overallnum &gt; 5) %&gt;% group_by(.id) %&gt;% 
+    		mutate(time = as.numeric(time_since_last, units = &quot;mins&quot;)) %&gt;% 
+    		summarise(count = n(), total_time = sum(time, na.rm = TRUE), 
+        			median_time = median(time, na.rm = TRUE), 
+			average_time = mean(time, na.rm = TRUE), 
+			max_time = max(time, na.rm = TRUE)) %&gt;% 
+    		filter(count &gt; 1, max_time &lt; 20160) %&gt;% 
+		mutate(time_per_class = (total_time/count))
 
 ggplot(student_no_break, aes(x = count, y = average_time)) + 
     geom_point(alpha = 1/4) + labs(x = &quot;Number of Completed Courses&quot;, 
@@ -1149,33 +1154,34 @@ ggplot(student_no_break, aes(x = count, y = average_time)) +
 <h3>Does taking a 2 week break help or hurt course completion?</h3>
 <p>I wanted to look at a box plot of course completion depending on the number of breaks students completed.</p>
 <pre class="r"><code>total_breaks &lt;- sc_full4 %&gt;% 
-        group_by(.id) %&gt;% 
-        mutate(time = as.numeric(time_since_last, units = &quot;mins&quot;)) %&gt;% 
-        summarise(breaks = length(.id[time &gt; 20160])) %&gt;% 
-        mutate(breaks = breaks - 1) %&gt;% 
-        ungroup()
+		group_by(.id) %&gt;% 
+		mutate(time = as.numeric(time_since_last, units = &quot;mins&quot;)) %&gt;% 
+		summarise(breaks = length(.id[time &gt; 20160])) %&gt;% 
+		mutate(breaks = breaks - 1) %&gt;% 
+		ungroup()
 
 breaks &lt;- left_join(total_breaks, student_courses, by = &quot;.id&quot;)
 
 multi_class_breaks &lt;- breaks %&gt;% 
-        filter(count &gt; 1)
+		filter(count &gt; 1)
 
 
 fig6 &lt;- highchart() %&gt;% 
-        hc_add_series_boxplot(multi_class_breaks$count, multi_class_breaks$breaks) %&gt;%  
-        hc_xAxis(title = list(text = &quot;Number of &gt; 14 Day Breaks&quot;)) %&gt;% 
-            hc_yAxis(title = list(text = &quot;Number of Completed Courses&quot;), 
-                    max = 500)
+		hc_add_series_boxplot(multi_class_breaks$count, multi_class_breaks$breaks) %&gt;% 	
+		hc_xAxis(title = list(text = &quot;Number of &gt; 14 Day Breaks&quot;)) %&gt;% 
+    		hc_yAxis(title = list(text = &quot;Number of Completed Courses&quot;), 
+        			max = 500)
 
 fig6</code></pre>
 <p><img src="figure6.png" alt="Box and whisker plot showing the number of 2 week or more breaks against the number of completed courses." /><br />
-<em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
+</p>
+<p><em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
 <p>It seems possible that taking one or more 2 week breaks from the FCC program may actually have a positive impact on the number of courses completed. However, it is unclear at this time if any of those courses are repeats. Let’s try to take out repeat courses.</p>
 <pre class="r"><code>no_repeats &lt;- sc_full4 %&gt;% 
-    group_by(.id) %&gt;% 
-    distinct(course) %&gt;% 
-        summarise(nr_count = n()) %&gt;% 
-    ungroup()
+	group_by(.id) %&gt;% 
+	distinct(course) %&gt;% 
+    	summarise(nr_count = n()) %&gt;% 
+	ungroup()
 
 
 
@@ -1185,43 +1191,44 @@ nr_multi &lt;- no_repeat_join %&gt;% filter(nr_count &gt; 1)
 
 
 fig7 &lt;- highchart() %&gt;% 
-    hc_add_series_boxplot(nr_multi$nr_count, nr_multi$breaks) %&gt;% 
-    hc_xAxis(title = list(text = &quot;Number of &gt; 14 Day Breaks&quot;)) %&gt;% 
-        hc_yAxis(title = list(text = &quot;Number of Completed Courses (Without Repeats)&quot;), 
-                    max = 300, 
-            min = 0)
+	hc_add_series_boxplot(nr_multi$nr_count, nr_multi$breaks) %&gt;% 
+	hc_xAxis(title = list(text = &quot;Number of &gt; 14 Day Breaks&quot;)) %&gt;% 
+    	hc_yAxis(title = list(text = &quot;Number of Completed Courses (Without Repeats)&quot;), 
+        			max = 300, 
+			min = 0)
 
 fig7</code></pre>
 <iframe seamless src="https://raw.githubusercontent.com/ProQuestionAsker/ProQuestionAsker.github.io/fc77f89e9108750a8af8dadca66d8f833cef39cb/content/projects/FCC_Courses_files/figure-markdown_github/fig7.html
 " width="100%" height="500" id="iframe_container">
 </iframe>
 <p><img src="figure7.png" alt="Bar graph showing the number of courses completed per student. The vast majority of students only complete one class." /><br />
-<em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
+</p>
+<p><em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
 <p>Even taking repeated courses out of the dataset seems to indicate that of students who completed more than one course, the presence of one or more 2 week breaks actually increases the median number of courses that will be completed. It may be worth encouraging students to take short breaks between classes if they feel they need to.</p>
 </div>
 <div id="which-courses-tend-to-be-repeated-by-students" class="section level3">
 <h3>Which courses tend to be repeated by students?</h3>
 <pre class="r"><code>repeats &lt;- sc_full4 %&gt;% 
-    group_by(.id, section, overallnum, course) %&gt;% 
-        summarise(course_count = n()) %&gt;% 
-    ungroup() %&gt;% 
-    group_by(overallnum, section, course) %&gt;% 
-    summarise(student_repeats = n(), 
-        avg_repeats = mean(course_count)) %&gt;% 
-        arrange(overallnum)
+	group_by(.id, section, overallnum, course) %&gt;% 
+    	summarise(course_count = n()) %&gt;% 
+	ungroup() %&gt;% 
+	group_by(overallnum, section, course) %&gt;% 
+	summarise(student_repeats = n(), 
+		avg_repeats = mean(course_count)) %&gt;% 
+    	arrange(overallnum)
 
 
 fig8 &lt;- hchart(repeats, &quot;column&quot;, x = course, y = avg_repeats, color = section) %&gt;% 
-    hc_title(text = &quot;Average Number of Times a Single Student Completed Each Course&quot;) %&gt;% 
-        hc_subtitle(text = &quot;&lt;i&gt;In course curriculum order&lt;/i&gt;&quot;) %&gt;% 
-        hc_xAxis(title = list(text = &quot;FCC Course (in order of FCC course curriculum)&quot;)) %&gt;% 
-        hc_yAxis(title = list(text = &quot;Mean # Times Single Student Completed Each Course&quot;), 
-            max = 1.5, min = 1) %&gt;% 
-    hc_chart(zoomType = &quot;xy&quot;) %&gt;% 
-        hc_tooltip(headerFormat = &quot;&quot;, pointFormat = &quot;&lt;b&gt;Class: {point.course}&lt;/b&gt; &lt;br&gt;
-        Section: {point.section}&lt;br&gt;
-        Mean times course taken by single student: {point.y} times&quot;, 
-                valueDecimals = 2)
+	hc_title(text = &quot;Average Number of Times a Single Student Completed Each Course&quot;) %&gt;% 
+    	hc_subtitle(text = &quot;&lt;i&gt;In course curriculum order&lt;/i&gt;&quot;) %&gt;% 
+    	hc_xAxis(title = list(text = &quot;FCC Course (in order of FCC course curriculum)&quot;)) %&gt;% 
+    	hc_yAxis(title = list(text = &quot;Mean # Times Single Student Completed Each Course&quot;), 
+       		max = 1.5, min = 1) %&gt;% 
+	hc_chart(zoomType = &quot;xy&quot;) %&gt;% 
+    	hc_tooltip(headerFormat = &quot;&quot;, pointFormat = &quot;&lt;b&gt;Class: {point.course}&lt;/b&gt; &lt;br&gt;
+		Section: {point.section}&lt;br&gt;
+		Mean times course taken by single student: {point.y} times&quot;, 
+        		valueDecimals = 2)
 
 fig8</code></pre>
 <p><img src="figure8.png" alt="Bar graph showing the number of times each student took each course." /> /</p>
@@ -1248,43 +1255,43 @@ fig8</code></pre>
 </ul>
 <p>First, I need to transform my dataset to fit into a frame with the needed variables. To remain consistent, I’ll once again use <code>dplyr</code> functions for this.</p>
 <pre class="r"><code>repeat_students &lt;- sc_full4 %&gt;% 
-    group_by(.id) %&gt;% 
-    summarise(total_count = n()) %&gt;% 
-        ungroup() %&gt;% 
-    filter(total_count &gt; 1)
+	group_by(.id) %&gt;% 
+	summarise(total_count = n()) %&gt;% 
+    	ungroup() %&gt;% 
+	filter(total_count &gt; 1)
 
 first_course &lt;- sc_full4 %&gt;% 
-    group_by(.id) %&gt;% 
-    filter(st_cour_num == 1) %&gt;% 
-    select(1:2) %&gt;% 
-    ungroup()
+	group_by(.id) %&gt;% 
+	filter(st_cour_num == 1) %&gt;% 
+	select(1:2) %&gt;% 
+	ungroup()
 
 repeated_courses &lt;- sc_full4 %&gt;% 
-    group_by(.id, course) %&gt;% 
-    summarise(course_count = n()) %&gt;% 
-        filter(course_count &gt; 1) %&gt;% 
-    summarise(repeat_count = n()) %&gt;% 
-    ungroup()
+	group_by(.id, course) %&gt;% 
+	summarise(course_count = n()) %&gt;% 
+    	filter(course_count &gt; 1) %&gt;% 
+	summarise(repeat_count = n()) %&gt;% 
+   	ungroup()
 
 breaks_courses &lt;- sc_full4 %&gt;% 
-    group_by(.id) %&gt;% 
-    mutate(time = as.numeric(time_since_last, units = &quot;mins&quot;)) %&gt;% 
-    summarise(breaks = length(.id[time &gt; 20160])) %&gt;% 
-    mutate(breaks = breaks - 1) %&gt;% 
-    ungroup()
+	group_by(.id) %&gt;% 
+	mutate(time = as.numeric(time_since_last, units = &quot;mins&quot;)) %&gt;% 
+	summarise(breaks = length(.id[time &gt; 20160])) %&gt;% 
+	mutate(breaks = breaks - 1) %&gt;% 
+	ungroup()
 
 median_courses &lt;- sc_full4 %&gt;% 
-    group_by(.id) %&gt;% 
-    mutate(time = as.numeric(time_since_last, units = &quot;mins&quot;)) %&gt;% 
-    filter(time &lt; 20160) %&gt;% 
-    summarise(median_time = median(time, na.rm = TRUE)) %&gt;% 
-    ungroup()
+	group_by(.id) %&gt;% 
+	mutate(time = as.numeric(time_since_last, units = &quot;mins&quot;)) %&gt;% 
+	filter(time &lt; 20160) %&gt;% 
+	summarise(median_time = median(time, na.rm = TRUE)) %&gt;% 
+	ungroup()
 
 completed_courses &lt;- sc_full4 %&gt;% 
-    group_by(.id) %&gt;% 
-    distinct(course) %&gt;% 
-    summarise(nr_count = n()) %&gt;% 
-    ungroup()
+	group_by(.id) %&gt;% 
+	distinct(course) %&gt;% 
+   	summarise(nr_count = n()) %&gt;% 
+	ungroup()
 
 mlset &lt;- left_join(repeat_students, first_course, by = &quot;.id&quot;)
 mlset &lt;- left_join(mlset, repeated_courses, by = &quot;.id&quot;)

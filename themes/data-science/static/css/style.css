@@ -7,6 +7,19 @@ body{
   background-color: var(--page);
 }
 
+.banner {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: var(--annotationFont);
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  z-index: 50;
+}
+
 a, a:visited{
   color: var(--content)
 }

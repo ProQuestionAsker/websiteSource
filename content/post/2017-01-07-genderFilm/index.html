@@ -25,8 +25,8 @@ aliases:
   - /projects/2017/01/07/gendermoviedialogue/
 ---
 
-<link href="/rmarkdown-libs/font-awesome/css/all.css" rel="stylesheet" />
-<link href="/rmarkdown-libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+<link href="{{< blogdown/postref >}}index_files/font-awesome/css/all.min.css" rel="stylesheet" />
+<link href="{{< blogdown/postref >}}index_files/font-awesome/css/v4-shims.min.css" rel="stylesheet" />
 
 
 <ul>
@@ -158,7 +158,8 @@ RO_full2 &lt;- RO_full %&gt;%
 <h4>Scatter Plot</h4>
 <p>As a native R user, my first attempt to visualize all of this data was naturally in R. I started with a simple scatter plot for each movie. I had “Number of Turns Speaking” (i.e., the number of independent times that character’s name showed up) on the x-axis, “Total Number of Words Spoken” on the y-axis, and the “Total Number of Words Spoken” also mapped to circle size. I decided to use the <code>highcharter</code> package and ended up with something like this:</p>
 <p><img src="figure1.png" alt="Scatter plot showing total number of words spoken per character compared to the number of times that character spoke at all." /><br />
-<em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
+</p>
+<p><em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
 <p>Again, this is the figure for Rogue One, and we can see some potentially interesting things here. For instance, Cassian (the male lead) speaks more than Jyn (the female lead). It’s also easy to spot characters that are a bit more long-winded when they get to speak (Bodhi Rook and Galen) while others keep things short and to the point (Baze Malbus).</p>
 <p>I looked at these figures for each movie, and found a few other entertaining outliers. In The Jungle Book, Baloo spoke the most words, but also had fewer speaking opportunities than Mowgli. He rambled more than any other character in the movie (which, didn’t actually contain too much dialogue, overall).</p>
 <p><img src="JB_Baloo.jpg" width="80%" style="display: block; margin: auto;" /></p>
@@ -170,7 +171,8 @@ RO_full2 &lt;- RO_full %&gt;%
 <h4>Bar Graph</h4>
 <p>Since the scatter plot didn’t work, I thought maybe a bar chart would. I plotted the characters along the X axis and total number of spoken words along the Y and (again for Rogue One) ended up with this:</p>
 <p><img src="figure2.png" alt="Bar chart showing the number of words spoken by each character." /><br />
-<em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
+</p>
+<p><em>Note: this figure that was once interactive has now been replaced with a static image. The above interactive code should still work, though if you choose to use it</em></p>
 <p>Still less than ideal. My biggest problem here is that there is such a big range between the main characters with lots of words and the minor characters with very few. Even in an interactive figure, you are required to zoom to get an idea of the smaller characters’ contributions.</p>
 <p>Needless to say, I wasn’t happy with the bar graph either.</p>
 </div>
@@ -215,42 +217,42 @@ var forceXSplit = d3.forceX(d =&gt; width * (d.Gender === &quot;male&quot; ? 0.3
 var forceXCombine = d3.forceX((width)/2).strength(0.1)</code></pre>
 <p>Then, in order to keep the bubbles from overlapping one another, I added a <a href="https://github.com/d3/d3-force/blob/master/README.md#forceCollide">collision</a> force. The radius of this force was scaled based on circle size so that larger circles pushed circles further from their center than smaller circles.</p>
 <pre class="js"><code>var forceCollide = d3.forceCollide(function(d){
-        return radiusScale(d.Total_Words) + 1
-      })
-      .iterations(10);</code></pre>
+		return radiusScale(d.Total_Words) + 1
+	  })
+	  .iterations(10);</code></pre>
 <p>With all of my forces defined, I could combine them in a <a href="https://github.com/d3/d3-force/blob/master/README.md#forceSimulation">simulation</a> to determine the proper location of each bubble in the group.</p>
 <pre class="js"><code>var simulation = d3.forceSimulation()
-    .force(&quot;x&quot;, forceXCombine)
-    .force(&quot;y&quot;, d3.forceY((height / 3) + 10).strength(0.15))
-    .force(&quot;collide&quot;, forceCollide);</code></pre>
+	.force(&quot;x&quot;, forceXCombine)
+	.force(&quot;y&quot;, d3.forceY((height / 3) + 10).strength(0.15))
+	.force(&quot;collide&quot;, forceCollide);</code></pre>
 <p>Then I just needed to include my data file so that each circle could be created automatically and sized according to the total number of words spoken by a character. At the same time, I added the tool tips that triggered when the user’s mouse hovered over a circle. Again, the tool tips were automatically filled with information from the data file.</p>
 <pre class="r"><code># Export data from R
 write.csv(RO_full2, &quot;RogueOne.csv&quot;)</code></pre>
 <pre class="js"><code>// Import data into Javascript
 d3.queue()
-    .defer(d3.csv, &quot;RogueOne.csv&quot;)
-    .await(ready)
+	.defer(d3.csv, &quot;RogueOne.csv&quot;)
+	.await(ready)
 function ready (error, datapoints) {
-    datapoints.forEach(d =&gt; d.Total_Words = +d.Total_Words);
-    var mousemove = function() {
-                return tooltip.style(&quot;top&quot;, (d3.event.pageY-10)+&quot;px&quot;).style(&quot;left&quot;,(d3.event.pageX+10)+&quot;px&quot;);
-            }
+	datapoints.forEach(d =&gt; d.Total_Words = +d.Total_Words);
+	var mousemove = function() {
+          		return tooltip.style(&quot;top&quot;, (d3.event.pageY-10)+&quot;px&quot;).style(&quot;left&quot;,(d3.event.pageX+10)+&quot;px&quot;);
+      		}
   var mouseout = function(){return tooltip.style(&quot;visibility&quot;, &quot;hidden&quot;);} 
-    var circles = svg.selectAll(&quot;.Character&quot;)
-        .data(datapoints)
-        .enter().append(&quot;circle&quot;)
-        .attr(&quot;class&quot;, &quot;Character&quot;)
-        .attr(&quot;r&quot;, function(d){
-        return radiusScale(d.Total_Words)
-    })
-        .style(&quot;fill&quot;, d =&gt; d.Gender === &quot;male&quot; ? &quot;#3b3f93&quot; : &quot;#ff4a6b&quot;)
-        .on(&quot;mouseover&quot;, function(d) {
+	var circles = svg.selectAll(&quot;.Character&quot;)
+	    .data(datapoints)
+	    .enter().append(&quot;circle&quot;)
+	    .attr(&quot;class&quot;, &quot;Character&quot;)
+	    .attr(&quot;r&quot;, function(d){
+		return radiusScale(d.Total_Words)
+	})
+	    .style(&quot;fill&quot;, d =&gt; d.Gender === &quot;male&quot; ? &quot;#3b3f93&quot; : &quot;#ff4a6b&quot;)
+	    .on(&quot;mouseover&quot;, function(d) {
               tooltip.html(d.Character + &quot;&lt;br&gt;&lt;br&gt; Words Spoken: &quot; + d.Total_Words);
               tooltip.style(&quot;visibility&quot;, &quot;visible&quot;);
       })
       .on(&quot;mousemove&quot;, mousemove)
-      .on(&quot;mouseout&quot;, mouseout);
-}         </code></pre>
+   	  .on(&quot;mouseout&quot;, mouseout);
+}   	  </code></pre>
 <p>I added a clickable element within each svg box to toggle between the combined and separated conditions for the bubbles. The style and functionality were inspired by the <a href="http://jfmdev.github.io/SaVaGe/docs/toggle-switch.html">toggle switch widget</a> from the <a href="http://jfmdev.github.io/SaVaGe/index.html">SaVaGe</a> library. I generated rectangles of sizes corresponding to the percentages of male and female characters and words spoken beneath my bubble grouping to give viewers an overall idea of representation within each movie. This percentage-wise stacked bar graph seemed to make the overarching trends clearest. I used <a href="http://fontawesome.io/icons/">Font Awesome</a> icons alongside each bar graph to differentiate between character and word percentages. And that’s about it! The final design looks like this:</p>
 <p><img src="FinalDesign.jpg" width="30%" style="display: block; margin: auto;" /></p>
 <p>Again, the entire code used to generate the d3.js figure is available on my <a href="https://github.com/ProQuestionAsker/ProQuestionAsker.github.io/tree/sources/content/projects/MovieDialogueInteractive">Github</a> and the interactive version is <a href="https://ProQuestionAsker.github.io/projects/MovieDialogueInteractive/">here</a></p>

@@ -63,9 +63,10 @@
     <div class="portfolio__grid">
 
       <!-- Change the range number here to affect the maximum number of items in your grid -->
-      {{ range first 50 (where .Data.Pages "Type" "post") }}
+      {{ range first 50 (where .Site.Pages "Type" "post") }}
 
-        <div class="item {{ range .Params.categories }}{{ . }}{{ end }}" data-tags="{{ delimit .Params.tags ", " }}">
+      {{ if .Params.tags }}
+        <div class="item {{ range .Params.categories }}{{ . }}{{ end }}" data-tags="{{ with .Params.tags }}{{ delimit . ", "}}{{ end }}">
           <a class="item__link" href="{{ .Permalink }}">
             {{ if .Params.thumbnail }}
               <img class="item__image" src="{{ .RelPermalink }}{{ .Params.thumbnail }}" alt="{{ .Params.imageAlt }}" class="img-responsive">
@@ -94,15 +95,17 @@
               </div>
               <div class="item__meta">
                 <!-- <p class='item__meta-category'>{{ .Params.categories }}</p> -->
-                <span class='card-tag' >{{ delimit .Params.tags ", " }}</span>
+                <span class='card-tag' >{{ with .Params.tags }}{{ delimit . ", "}}{{ end }}</span>
 
               </div>
             </div>
 
+            
+
 
           </a>
         </div>
-
+{{end}}
       {{ end }}
 
     </div>

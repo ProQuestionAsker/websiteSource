@@ -30,9 +30,6 @@ type: ''
 
 ## The Premise
 
-```{r echo = FALSE}
-blogdown::shortcode("tweet", "1067431018100011009")
-```
 
 *Seriously, this was just a "we want to experiment with making in-browser animations and make something fun on the internet" kinda thing*
 

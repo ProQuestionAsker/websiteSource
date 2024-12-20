@@ -164,9 +164,9 @@ unique(full$Titles)</code></pre>
 <p>Since the SibSp and Parch variables each give some indication as to close family members that were also aboard the ship, it would make sense to calculate family size as a combination of SibSp, Parch and the passenger in question.</p>
 <pre class="r"><code>full &lt;- mutate(full, FamilySize = SibSp + Parch + 1)</code></pre>
 <p>Let’s visualize family size</p>
-<div class="figure">
-<img src="unnamed-chunk-11-1.png" alt="Bar graph showing that most families had 2 or fewer family members with them" style="width:100.0%" />
-<p class="caption">Bar graph showing that most families had 2 or fewer family members with them</p>
+<div class="float">
+<img src="unnamed-chunk-11-1.png" style="width:100.0%" alt="Bar graph showing that most families had 2 or fewer family members with them" />
+<div class="figcaption">Bar graph showing that most families had 2 or fewer family members with them</div>
 </div>
 <p>Wow! Lots of people without immediate family with them. Perhaps these people were traveling with other family members/friends that weren’t captured in the SibSp / Parch variables.</p>
 </div>
@@ -218,7 +218,8 @@ full2$TravelGroup &lt;- as.factor(full2$TravelGroup)</code></pre>
 <pre class="r"><code>full3 &lt;- full2 %&gt;% group_by(TravelGroup) %&gt;% mutate(GroupSize = n()) %&gt;% 
     ungroup()</code></pre>
 <p>How does Travel Group Size compare to Family Group Size that we calculated earlier?</p>
-<p><img src="unnamed-chunk-17-1.png" alt="Bar graph showing that most families had 2 or fewer family members with them" /> <img src="unnamed-chunk-17-2.png" alt="Bar graph showing that most travel groups had 2 or fewer members with them" /></p>
+<p><img src="unnamed-chunk-17-1.png" alt="Bar graph showing that most families had 2 or fewer family members with them" />
+<img src="unnamed-chunk-17-2.png" alt="Bar graph showing that most travel groups had 2 or fewer members with them" /></p>
 <p>They look pretty close, again showing that most people were potentially travelling alone.</p>
 <p>Now to check if those with the unique Ticket IDs were really travelling alone:</p>
 <pre class="r"><code>filtered &lt;- filter(full3, GroupSize == 1)
@@ -296,9 +297,9 @@ full4[1044, c(3, 12)]</code></pre>
 ##   &lt;fctr&gt;   &lt;fctr&gt;
 ## 1      3        S</code></pre>
 <p>Looks like he left from ‘S’ (Southampton) as a 3rd class passenger. Let’s see what other people of the same class and embarkment port paid for their tickets.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-22-1.png" alt="Density plot showing that the highest concentration of fares were around $8" />
-<p class="caption">Density plot showing that the highest concentration of fares were around $8</p>
+<div class="figcaption">Density plot showing that the highest concentration of fares were around $8</div>
 </div>
 <pre class="r"><code>full4 %&gt;% filter(Pclass == &quot;3&quot; &amp; Embarked == &quot;S&quot;) %&gt;% summarise(missing_fare = median(Fare, 
     na.rm = TRUE))</code></pre>
@@ -368,7 +369,8 @@ levels(full4$Embarked)</code></pre>
     3, 7)), data = full4[!is.na(full4$Age), ], method = &quot;ranger&quot;, 
     trControl = trainControl(method = &quot;cv&quot;, number = 10, repeats = 10, 
         verboseIter = TRUE), importance = &quot;impurity&quot;)</code></pre>
-<p>Let’s look at what factors were the most important in modeling age: <img src="unnamed-chunk-30-1.png" alt="Bar graph showing that Fare, the title master, and passenger class 3 had the highest influence on the model" /></p>
+<p>Let’s look at what factors were the most important in modeling age:
+<img src="unnamed-chunk-30-1.png" alt="Bar graph showing that Fare, the title “master”, and passenger class 3 had the highest influence on the model" /></p>
 <p>Wow! Looks like it was a good idea to split out Titles!</p>
 <p>Now to use this information to predict the ages of passengers with missing ages and filling in their NA values.</p>
 <pre class="r"><code>full4$Age[is.na(full4$Age)] &lt;- predict(predicted_age, full4[is.na(full4$Age), 
@@ -379,13 +381,13 @@ summary(full4$Age)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    0.17   22.00   28.50   29.72   37.00   80.00</code></pre>
 <p>Let’s take a quick look at the age distribution of passengers with originally known ages, and the age distribution of the entire group (known and predicted ages) to make sure we didn’t terribly skew the distribution.</p>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-32-1.png" alt="Histogram of the known age of passengers showing that there were few passengers below age 20, with the most passengers in their late 20s - early 30s" />
-<p class="caption">Histogram of the known age of passengers showing that there were few passengers below age 20, with the most passengers in their late 20s - early 30s</p>
+<div class="figcaption">Histogram of the known age of passengers showing that there were few passengers below age 20, with the most passengers in their late 20s - early 30s</div>
 </div>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-32-2.png" alt="Histogram of the predicted age of passengers showing that there were few passengers below age 20, with the most passengers in their early to mid 30s" />
-<p class="caption">Histogram of the predicted age of passengers showing that there were few passengers below age 20, with the most passengers in their early to mid 30s</p>
+<div class="figcaption">Histogram of the predicted age of passengers showing that there were few passengers below age 20, with the most passengers in their early to mid 30s</div>
 </div>
 <p>Hmm, seems to have shifted a bit, but that could be due to a greater lack of age information collected for middle-aged passengers.</p>
 </div>
@@ -447,9 +449,9 @@ summary(resampled)</code></pre>
 ## glmnet 0.5535  0.6026 0.6842 0.6617  0.7027 0.8117    0</code></pre>
 <pre class="r"><code># Plot the differences between model fits
 dotplot(resampled, metric = &quot;Accuracy&quot;)</code></pre>
-<div class="figure">
+<div class="float">
 <img src="unnamed-chunk-37-1.png" alt="Dotplot showing that the glmnet model had a slightly higher accuracy (average around 0.84) compared to the random forest model (average around 0.82)" />
-<p class="caption">Dotplot showing that the glmnet model had a slightly higher accuracy (average around 0.84) compared to the random forest model (average around 0.82)</p>
+<div class="figcaption">Dotplot showing that the glmnet model had a slightly higher accuracy (average around 0.84) compared to the random forest model (average around 0.82)</div>
 </div>
 <p>Looks like the glmnet model is slightly more accurate than the random forest model, so we’ll use that to predict the survival rate.</p>
 <p>Ok, time to make some predictions.</p>

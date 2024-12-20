@@ -1,11 +1,17 @@
 [build]
-  publish = "public"
-  command = "hugo"
+command = 'hugo'
+publish = 'public'
 
+[build.environment]
+HUGO_VERSION = '0.126.1'
+
+[context]
+[context.branch-deploy]
+command = 'hugo -F -b $DEPLOY_PRIME_URL'
+
+[context.deploy-preview]
+command = 'hugo -F -b $DEPLOY_PRIME_URL'
+
+[context.production]
 [context.production.environment]
-  HUGO_VERSION = "0.54.0" # if older, use format: 0.53 (no trailing zero)
-  HUGO_ENV = "production"
-  HUGO_ENABLEGITINFO = "true"
-
-[context.branch-deploy.environment]
-  HUGO_VERSION = "0.54.0" # if older, use format: 0.53 (no trailing zero)
+HUGO_ENV = 'production'

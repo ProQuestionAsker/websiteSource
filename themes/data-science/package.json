@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "macy": "^2.3.2"
+    "macy": "^2.5.1"
   }
 }
